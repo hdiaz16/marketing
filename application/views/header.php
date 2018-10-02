@@ -39,26 +39,26 @@
             <li>
                 <ul class="collapsible collapsible-accordion">
 
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Dashboard</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Dashboard/index"><i class="fa fa-tachometer"></i> Dashboard</a></li>
 
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-th"></i> Red Semantica</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/RedSemantica/index"><i class="fa fa-th"></i> Red Semantica</a></li>
 
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-th"></i> Campañas</a>   
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Campañas/index"><i class="fa fa-th"></i> Campañas</a>   
                     </li>
 
 
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-book"></i> Agenda</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Agenda/index"><i class="fa fa-book"></i> Agenda</a></li>
 
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-users"></i> Usuarios</a>
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Usuario/index"><i class="fa fa-users"></i> Usuarios</a>
                     </li>
 
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-align-justify"></i> Contenido</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Contenido/index"><i class="fa fa-align-justify"></i> Contenido</a></li>
 
 
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-th"></i> Diseño</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Diseño/index"><i class="fa fa-th"></i> Diseño</a></li>
 
 
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-comments"></i> Chat</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Chat/index"><i class="fa fa-comments"></i> Chat</a></li>
 
 
                 </ul>

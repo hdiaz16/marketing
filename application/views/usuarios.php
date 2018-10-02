@@ -134,10 +134,11 @@
             </a>
 
             <ul class="list-unstyled">
-                <li><a class="btn-floating red"><i class="fa fa-star"></i></a></li>
-                <li><a class="btn-floating warning-color"><i class="fa fa-user"></i></a></li>
-                <li><a class="btn-floating green"><i class="fa fa-envelope"></i></a></li>
-                <li><a class="btn-floating blue"><i class="fa fa-shopping-cart"></i></a></li>
+                <li><a class="btn-floating green"><i class="fa fa-plus"></i></a></li>
+                <li><a class="btn-floating warning-color"><i class="fa fa-pencil-square-o"></i></a></li>
+                <li><a class="btn-floating red"><i class="fa fa-minus"></i></a></li>
+               
+                
             </ul>
         </div>
         <!-- Fixed button -->
