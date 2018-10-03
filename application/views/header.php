@@ -43,7 +43,7 @@
 
                     <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/RedSemantica/index"><i class="fa fa-th"></i> Red Semantica</a></li>
 
-                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Campañas/index"><i class="fa fa-th"></i> Campañas</a>   
+                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Campanas/index"><i class="fa fa-th"></i> Campañas</a>   
                     </li>
 
 

@@ -11,6 +11,9 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/mdb.min.js"></script>
     <!--Custom scripts-->
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.js"></script>
     <script>
         // SideNav Initialization
         $(".button-collapse").sideNav();

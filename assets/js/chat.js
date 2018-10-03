@@ -29,7 +29,7 @@
 
     // Static chat
 ChatbroLoader({
-  chatPath: 'tg/208397015/Marketing',
+  chatPath: 'tg/208397015/MK',
   containerDivId: 'staticChat',
   chatLanguage: 'es',
   // important for static chat  
