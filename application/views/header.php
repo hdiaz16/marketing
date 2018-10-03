@@ -137,7 +137,7 @@
 
                             <!--Header-->
                             <div class="modal-header">
-                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" class="rounded-circle img-fluid">
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg" class="rounded-circle img-fluid">
                             </div>
                             <!--Body-->
                             <div class="modal-body text-center mb-1">

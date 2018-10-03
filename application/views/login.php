@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Material Design Bootstrap Template</title>
+    <title>Marketing Digital</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,17 +15,16 @@
     <!-- Material Design Bootstrap -->
     <link href="<?php echo base_url();?>assets/css/mdb.min.css" rel="stylesheet"/>
     <link href="<?php echo base_url();?>assets/css/login.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
+    
     
 
  
 </head>
 
 <body>
-
-    
-
-
-
 
 <!--Main Navigation-->
     <header>
@@ -113,17 +112,17 @@
                                         <div class="modal-body mb-1">
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-envelope prefix"></i>
-                                                <input type="text" id="form2" class="form-control form-control-sm">
+                                                <input type="text" id="correo" class="form-control form-control-sm">
                                                 <label for="form2">Email</label>
                                             </div>
 
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-lock prefix"></i>
-                                                <input type="password" id="form3" class="form-control form-control-sm">
+                                                <input type="password" id="contrasena" class="form-control form-control-sm">
                                                 <label for="form3">Contraseña</label>
                                             </div>
                                             <div class="text-center mt-2">
-                                                <button class="btn btn-info">Iniciar <i class="fa fa-sign-in ml-1"></i></button>
+                                                <button class="btn btn-info" onclick="login();">Iniciar <i class="fa fa-sign-in ml-1"></i></button>
                                             </div>
                                         </div>
                                         <!--Footer-->
@@ -200,12 +199,24 @@
     <!--  SCRIPTS  -->
     <!-- JQuery -->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
+    
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/mdb.min.js"></script>
+
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/login.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+
+    
+
+    
+
+
     <script>
         new WOW().init();
     </script>
