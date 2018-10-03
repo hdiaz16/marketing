@@ -4,7 +4,7 @@
     <main>
 
         <section class="mt-2">
-            <h3 class="text-center">Agenda</h3>
+            <h3 class="text-center"><strong>Agenda</strong></h3>
 
         </section >
         

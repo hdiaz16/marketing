@@ -6,7 +6,7 @@
     <main>
 
         <section class="mt-2">
-            <h3 class="text-center">Chat </h3>
+            <h3 class="text-center"><strong>Chat</strong></h3>
 
         </section >
 

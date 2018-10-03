@@ -110,13 +110,11 @@
                 </li>
                
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Profile</span></a>
+                    <a class="nav-link " data-toggle="modal" data-target="#modalLoginAvatarDemo">
+                        <i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Profile</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Log Out</a>
-                        <a class="dropdown-item" href="#">My account</a>
-                    </div>
+                    
+                   
                 </li>
 
             </ul>
@@ -126,3 +124,40 @@
 
     </header>
     <!--Main Navigation-->
+
+
+
+
+
+    <!--Modal Form Login with Avatar Demo-->
+                <div class="modal fade" id="modalLoginAvatarDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+                        <!--Content-->
+                        <div class="modal-content">
+
+                            <!--Header-->
+                            <div class="modal-header">
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" class="rounded-circle img-fluid">
+                            </div>
+                            <!--Body-->
+                            <div class="modal-body text-center mb-1">
+
+                                <h5 class="mt-1 mb-2">Maria Doe</h5>
+
+                                <h5 class="mt-1 mb-2">Community Manager</h5>
+
+                                
+
+                               
+                            </div>
+
+                            <div class="modal-footer">
+                                                
+                                                 <a type="button" class="btn-floating btn-lm red"><i class="fa fa fa-sign-out ml-1"></i></a>
+                                        </div>
+
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+                <!--Modal Form Login with Avatar Demo-->

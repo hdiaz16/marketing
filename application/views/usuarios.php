@@ -4,7 +4,7 @@
     <main>
 
         <section class="mt-2">
-            <h3 class="text-center">Usuarios</h3>
+            <h3 class="text-center"><strong>Usuarios</strong></h3>
 
         </section >
         <section class="text-right">

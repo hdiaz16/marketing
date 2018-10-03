@@ -2,7 +2,7 @@
     <main>
 
         <section class="mt-2">
-            <h3 class="text-center">Campañas</h3>
+            <h3 class="text-center"><strong>Campañas</strong></h3>
 
             <section class="text-right">
 
