@@ -11,7 +11,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
     <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/mdb.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/mdb.css">
 
     <!-- Your custom styles (optional) -->
     <style>
@@ -19,13 +19,13 @@
     </style>
 </head>
 
-<body class="fixed-sn white-skin">
+<body class="fixed-sn mdb-skin" >
 
      <!--Main Navigation-->
     <header>
 
         <!-- Sidebar navigation -->
-        <div id="slide-out" class="side-nav sn-bg-4 fixed">
+        <div id="slide-out" class="side-nav  fixed"  >
             <ul class="custom-scrollbar">
             <!-- Logo -->
             <li class="logo-sn waves-effect">
