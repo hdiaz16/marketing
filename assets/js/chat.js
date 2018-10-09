@@ -33,19 +33,19 @@ ChatbroLoader({
   containerDivId: 'staticChat',
   chatLanguage: 'es',
   // important for static chat  
-  isStatic: true, 
+  isStatic: false, 
     
   allowMinimizeChat: false,
   // custom colors
-  chatHeaderBackgroundColor: '#0015d3',
+  chatHeaderBackgroundColor: '#243a51',
   chatHeaderTextColor: '#fff',
   chatBodyBackgroundColor: '#a3a3a3',
   chatBodyTextColor: '#fff',
-  chatInputBackgroundColor: '#0015d3',
+  chatInputBackgroundColor: '#243a51',
   chatInputTextColor: '#fff',
   chatHeight: '400',
   chatWidth: '400', 
-  chatLeft: '400px'
+  chatLeft: '450'
 });
 
 

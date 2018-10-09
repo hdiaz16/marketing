@@ -36,82 +36,43 @@
                 <!--Grid row-->
                 <div class="row">
 
-                    <!--Grid column-->
-                    <div class="col-xl-3 col-md-6 mb-4">
+                    <?php foreach ($campanas as $row) { ?>
 
-                        <!--Panel-->
-                        <div class="card">
-                            <div class="card-header white-text success-color">
-                               Campañas
+                                <!--Grid column-->
+                            <div class="col-xl-3 col-md-6 mb-4">
+
+                                <!--Panel-->
+                                <div class="card h-100">
+                                    <div class="card-header white-text success-color">
+                                       <?php echo $row->nombre?>
+                                    </div>
+
+                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Objetivo</h6>
+                                    <p class="ml-3 mt-3 font-small dark-grey-text"> <?php echo $row->objetivos?></p>
+                                    <!--/.Card Data-->
+
+                                    <!--Card content-->
+                                    <div class="card-body">
+                                        
+                                        <!--Text-->
+                                        <p class="font-small grey-text">Fecha de Inicio: <?php echo $row->fecha_inicio?></p>
+                                        <p class="font-small grey-text">Fecha de Cierre: <?php echo $row->fecha_cierre?></p>
+                                    </div>
+                                    <!--/.Card content-->
+
+                                </div>
+                                <!--/.Panel-->
+
                             </div>
+                            <!--Grid column-->
 
-                            <h6 class="ml-4 mt-5 dark-grey-text font-weight-bold"> Campañas </h6>
-                            <!--/.Card Data-->
+                        
+                   <?php  } ?>
 
-                            <!--Card content-->
-                            <div class="card-body">
-                                
-                                <!--Text-->
-                                <p class="font-small grey-text">Better than last week (25%)</p>
-                            </div>
-                            <!--/.Card content-->
+                   
+                   
 
-                        </div>
-                        <!--/.Panel-->
-
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-xl-3 col-md-6 mb-4">
-
-                        <!--Panel-->
-                        <div class="card">
-                            <div class="card-header white-text warning-color">
-                                Campañas
-                            </div>
-
-                            <h6 class="ml-4 mt-5 dark-grey-text font-weight-bold"> Campañas</h6>
-                            <!--/.Card Data-->
-
-                            <!--Card content-->
-                            <div class="card-body">
-                               
-                                <p class="font-small grey-text">Better than last week (25%)</p>
-                            </div>
-                            <!--/.Card content-->
-
-                        </div>
-                        <!--/.Panel-->
-
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-xl-3 col-md-6 mb-4">
-
-                        <!--Panel-->
-                        <div class="card">
-                            <div class="card-header white-text  danger-color">
-                                Campañas
-                            </div>
-
-                            <h6 class="ml-4 mt-5 dark-grey-text font-weight-bold"> Campañas</h6>
-                            <!--/.Card Data-->
-
-                            <!--Card content-->
-                            <div class="card-body">
-                                
-                                <!--Text-->
-                                <p class="font-small grey-text">Better than last week (25%)</p>
-                            </div>
-                            <!--/.Card content-->
-
-                        </div>
-                        <!--/.Panel-->
-
-                    </div>
-                    <!--Grid column-->
+                   
    
                 </div>
                 <!--Grid row-->
@@ -174,7 +135,7 @@
                                                     <div class="col">
                                                         <!-- Default input -->
                                                         <label>Nombre</label>
-                                                        <input type="text" class="form-control" placeholder="">
+                                                        <input type="text" class="form-control" id="nombre">
                                                     </div>
                                                     <!-- Grid column -->
 
@@ -182,7 +143,7 @@
                                                     <div class="col">
                                                         <!-- Default input -->
                                                         <label>Proposito</label>
-                                                        <input type="text" class="form-control" placeholder="">
+                                                        <input type="text" class="form-control" id="objetivo">
                                                     </div>
                                                     <!-- Grid column -->
 
@@ -196,7 +157,7 @@
                                                     <div class="col-md-6">
                                                         <!-- Default input -->
                                                         <label>Fecha de inicio</label>
-                                                        <input type="date" class="form-control" placeholder="Last name">
+                                                        <input type="date" class="form-control" id="fechaIn">
                                                     </div>
                                                     <!-- Grid column -->
 
@@ -204,7 +165,7 @@
                                                     <div class="col-md-6">
                                                         <!-- Default input -->
                                                         <label>Fecha de termino</label>
-                                                        <input type="date" class="form-control" placeholder="Proposito">
+                                                        <input type="date" class="form-control" id="fechaFn">
                                                     </div>
                                                     <!-- Grid column -->
 
@@ -220,7 +181,7 @@
 
                                         <div class="modal-footer">
                                                 
-                                                <button class="btn-floating btn-lg success-color">
+                                                <button class="btn-floating btn-lg success-color" onclick="addCampanas();">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                         </div>
@@ -236,4 +197,6 @@
                     </div>
                 </div>
                 <!--Modal: Login / Register Form Demo-->
+
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/dashboard.js"></script>            
     

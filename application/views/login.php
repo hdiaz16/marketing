@@ -112,7 +112,7 @@
                                         <div class="modal-body mb-1">
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-envelope prefix"></i>
-                                                <input type="text" id="correo" class="form-control form-control-sm">
+                                                <input type="text" id="usuario" class="form-control form-control-sm">
                                                 <label for="form2">Email</label>
                                             </div>
 
@@ -143,24 +143,20 @@
                                         <div class="modal-body">
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-envelope prefix"></i>
-                                                <input type="text" id="form14" class="form-control form-control-sm">
+                                                <input type="text" id="form14" class=" usuario1 form-control form-control-sm" >
                                                 <label for="form14">Email</label>
                                             </div>
 
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-lock prefix"></i>
-                                                <input type="password" id="form5" class="form-control form-control-sm">
+                                                <input type="password" id="form5" class=" cotrasena1 form-control form-control-sm  " id="cotrasena1">
                                                 <label for="form5">Contraseña</label>
                                             </div>
 
-                                            <div class="md-form form-sm">
-                                                <i class="fa fa-lock prefix"></i>
-                                                <input type="password" id="form6" class="form-control form-control-sm">
-                                                <label for="form6">Repita Contraseña</label>
-                                            </div>
+                                            
 
                                             <div class="text-center form-sm mt-2">
-                                                <button class="btn btn-info">Registrarse <i class="fa fa-sign-in ml-1"></i></button>
+                                                <button class="btn btn-info" onclick="registro();">Registrarse <i class="fa fa-sign-in ml-1" ></i></button>
                                             </div>
 
                                         </div>

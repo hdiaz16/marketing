@@ -13,6 +13,8 @@
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/mdb.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
     <!-- Your custom styles (optional) -->
     <style>
 
@@ -153,7 +155,7 @@
 
                             <div class="modal-footer">
                                                 
-                                                 <a type="button" class="btn-floating btn-lm red"><i class="fa fa fa-sign-out ml-1"></i></a>
+                                                 <a type="button" onclick="cerrarSesion();" class="btn-floating btn-lm red"><i class="fa fa fa-sign-out ml-1"></i></a>
                                         </div>
 
                         </div>
