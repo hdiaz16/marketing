@@ -39,7 +39,7 @@ function login()
            $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Gracias por iniciar sesion en el Sistema de Marketin Digital',type: 'green',buttons: {
                     Aceptar: function (e,data) {
 
-                      window.location.href = "../Dashboard/index/";
+                      window.location.href = "../Inicio/index/";
                     } 
                 }});
 

@@ -32,7 +32,7 @@
             <!-- Logo -->
             <li class="logo-sn waves-effect">
                 <div class="text-center">
-                    <a href="#" class="pl-0"><img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" class=""></a>
+                    <a href="<?php echo base_url();?>index.php/Inicio/index" class="pl-0"><img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" class=""></a>
                 </div>
             </li>
             <!--/. Logo -->
