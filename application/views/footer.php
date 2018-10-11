@@ -14,7 +14,9 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/header.js"></script>
     <!--Custom scripts-->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
