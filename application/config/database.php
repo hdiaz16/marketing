@@ -74,12 +74,13 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=marketing',
 	'hostname' => 'localhost',
 	'username' => 'postgres',
-	'password' => '101214y',
+	'password' => 'postgres',
 	'database' => 'marketing',
-	'dbdriver' => 'postgre',
+	'dbdriver' => 'pdo',
+  'port' => 5432,
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
