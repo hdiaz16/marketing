@@ -11,10 +11,10 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
-    <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <!-- Material Design Bootstrap -->
-    <link href="<?php echo base_url();?>assets/css/mdb.min.css" rel="stylesheet"/>
-    <link href="<?php echo base_url();?>assets/css/login.css" rel="stylesheet"/>
+    <link href="assets/css/mdb.min.css" rel="stylesheet"/>
+    <link href="assets/css/login.css" rel="stylesheet"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 
@@ -109,22 +109,25 @@
                                     <div class="tab-pane fade in show active" id="panel17" role="tabpanel">
 
                                         <!--Body-->
+                                        <?php echo validation_errors(); ?>
+                                        <?php echo form_open('login/iniciarsesion'); ?>
                                         <div class="modal-body mb-1">
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-envelope prefix"></i>
-                                                <input type="text" id="usuario" class="form-control form-control-sm">
+                                                <input type="text" id="usuario" name="correo" class="form-control form-control-sm">
                                                 <label for="form2">Email</label>
                                             </div>
 
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-lock prefix"></i>
-                                                <input type="password" id="contrasena" class="form-control form-control-sm">
+                                                <input type="password" id="contrasena" name="contrasenia" class="form-control form-control-sm">
                                                 <label for="form3">Contraseña</label>
                                             </div>
                                             <div class="text-center mt-2">
-                                                <button class="btn btn-info" onclick="login();">Iniciar <i class="fa fa-sign-in ml-1"></i></button>
+                                                <button type="submit" class="btn btn-info" >Iniciar <i class="fa fa-sign-in ml-1"></i></button>
                                             </div>
                                         </div>
+                                        </form>
                                         <!--Footer-->
                                         <div class="modal-footer">
                                             <div class="options text-center text-md-right mt-1">
@@ -195,19 +198,14 @@
     <!--  SCRIPTS  -->
     <!-- JQuery -->
 
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/login.js"></script>
-    
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
     
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="assets/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/mdb.min.js"></script>
-
-    
-
+    <script type="text/javascript" src="assets/js/mdb.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 

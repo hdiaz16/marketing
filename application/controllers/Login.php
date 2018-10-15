@@ -8,7 +8,7 @@ class Login extends CI_Controller {
     {
     	parent::__construct();
         $this->load->model('IniciarSesion_Model');
-        $this->load->helper('form');
+        $this->load->helper(['form', 'url']);
         date_default_timezone_set('America/Mexico_City');
     }
 
@@ -23,15 +23,19 @@ class Login extends CI_Controller {
 
 	 	public function iniciarSesion (){
 
-		$usuario 	= $this->input->post("usuario");
-		$contrasena = $this->input->post("contrasena");
+		$usuario 	= $this->input->post("correo");
+		$contrasena = $this->input->post("contrasenia");
 
-
+    log_message('error', 'controlador. correo: '.$usuario.' contrasenia: '.$contrasena);
 		$result  = $this->IniciarSesion_Model->iniciarSesion($usuario, $contrasena);
     
+    if(isset($result[0])){
+      $this->session->set_userdata(['usuario' => $result[0]]);
+      redirect('/inicio');
+    }else{
+      redirect('/login');
+    }
     
-    redirect('/inicio');
-
    }
 
 

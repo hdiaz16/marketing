@@ -12,10 +12,12 @@
 
 
 
-    public function iniciarSesion($usuario,$contrasena)
+    public function iniciarSesion($correo, $contrasenia)
     {
-        $querySQL = 'SELECT * FROM "usuario" WHERE "nombres" = \''.$usuario.'\' AND "contrasenia" = \''.$contrasena.'\'';
-        return $this->db->query($querySQL)->row();
+      log_message('error', 'modelo. correo: '.$correo.' contrasenia: '.$contrasenia);
+        $query = $this->db->get_where('usuario', ['correo' => $correo, 'contrasenia' => $contrasenia]);
+      log_message('error', 'query result'.json_encode($query->result()));
+        return $query->result();
     }
 
    

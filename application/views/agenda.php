@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/js/vendor/datatables/css/dataTables.bootstrap4.min.css"/>
+<link rel="stylesheet" type="text/css" href="assets/js/vendor/datatables/css/dataTables.bootstrap4.min.css"/>
 
  <!--Main layout-->
     <main>
