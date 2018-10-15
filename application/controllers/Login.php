@@ -28,68 +28,9 @@ class Login extends CI_Controller {
 
 
 		$result  = $this->IniciarSesion_Model->iniciarSesion($usuario, $contrasena);
-
-		$rol = $this->IniciarSesion_Model->rolUsuario($result->id);
-	
-
-      	if ($result != false) 
-        {
-
-
-
-			if($result->activo == 1){
-	             
-	           
-	           $sesion = array(
-	                    'id'            =>  $result->id,
-	                    'nombres' 		=> 	$result->nombres,
-	                    'apellidos' 	=> 	$result->apellidos,
-	                    'correo' 		=>	$result->correo,
-	                    'contrasena' 	=>	$result->contrasenia,
-	                    'rol'        	=>  $rol->rol_id,
-	                    'estatus'       =>  TRUE
-	           );
-
-	           $this->session->set_userdata($sesion);
-
-	           
-
-	          
-	           	if ($rol->rol_id != "") 
-            	{
-
-            		$result = array('error' => false, 'mensaje' => 'Bienvenido al Sistema de Marketing Digital');
-              		echo json_encode($result);
-
-
-
-
-
-            	}else{
-
-            		$result = array('error' => true, 'mensaje' => 'No existe el rol para el usuario');
-             		echo json_encode($result);
-            	}
-
-
-
-
-			}else{
-
-				$result = array('error' => true, 'mensaje' => 'El usuario se encuentra inhabilitado, verificar su estado con el administrador');
-            	echo json_encode($result);
-
-
-			}
-
-		}
-		else
-		{
-
-          $result = array('error' => true, 'mensaje' => 'El usuario o la Contraseña no es el correcto');
-          echo json_encode($result);
-
-		}
+    
+    
+    redirect('/inicio');
 
    }
 
