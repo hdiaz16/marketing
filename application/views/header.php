@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
+
     <!-- Your custom styles (optional) -->
     <style>
 
@@ -44,19 +46,23 @@
 
                    
 
-
+                    <?php if($this->session->userdata['rol'] == 1 || $this->session->userdata['rol'] == 2 || $this->session->userdata['rol'] == 3 || $this->session->userdata['rol'] == 4 ){ ?>
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Administrador<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="../dashboards/v-1.html" class="waves-effect">Agregar Community Managera</a>
+                                    <li><a href="<?php echo base_url();?>index.php/AgregarCM/index" class="waves-effect">Agregar Community Managera</a>
                                     </li>
-                                    <li><a href="../dashboards/v-2.html" class="waves-effect">Agregar Empresas</a>
+                                    <li><a href="<?php echo base_url();?>index.php/AgregarEmpresas/index" class="waves-effect">Agregar Empresas</a>
                                     </li>
 
                                 </ul>
                             </div>
                     </li>
 
+                    <?php } ?>
+
+
+                    <?php if($this->session->userdata['rol'] == 2 || $this->session->userdata['rol'] == 3 || $this->session->userdata['rol'] == 4 ){  ?>
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Community Manager<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
@@ -80,7 +86,11 @@
                                 </ul>
                             </div>
                     </li>
+                <?php } ?>
 
+                   
+
+                   <?php if($this->session->userdata['rol'] == 3 || $this->session->userdata['rol'] == 4 ){ ?>
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Generador de Contenido<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
@@ -95,7 +105,11 @@
                                 </ul>
                             </div>
                     </li>
+                    <?php } ?>
 
+                  
+                    
+                    <?php if($this->session->userdata['rol'] == 3 || $this->session->userdata['rol'] == 4 ){ ?>
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Diseñador Grafico<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
@@ -110,7 +124,10 @@
                                 </ul>
                             </div>
                     </li>
+                    <?php  } ?>
 
+                     
+                     <?php if($this->session->userdata['rol'] == 5){ ?>
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Cliente<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
@@ -123,12 +140,14 @@
                                 </ul>
                             </div>
                     </li>
+                    <?php } ?>
 
 
                      
-
+                    <?php if ($this->session->userdata['rol'] == 5){ ?>
                     <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Chat/index"><i class="fa fa-comments"></i> Chat</a>
                     </li>
+                    <?php } ?>
                     
                 </ul>
             </li>

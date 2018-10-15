@@ -45,10 +45,12 @@ class Dashboard extends CI_Controller {
 
               $data = array(
 
-              						'"nombre"' 		 => trim($this->input->post('nombre')),
+              						'"nombre"' 		   => trim($this->input->post('nombre')),
               						'"objetivos"' 	 => trim($this->input->post('objetivo')),
               						'"fecha_inicio"' => trim($this->input->post('fechaIn')),
-              						'"fecha_cierre"' => trim($this->input->post('fechaFn'))
+              						'"fecha_cierre"' => trim($this->input->post('fechaFn')),
+                          '"_create"'      => date("Y/m/d H:m:s"),
+                          '"_update"'      => date("Y/m/d H:m:s")
 
               					);
 
