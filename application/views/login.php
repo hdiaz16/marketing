@@ -194,6 +194,9 @@
 
     <!--  SCRIPTS  -->
     <!-- JQuery -->
+
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/login.js"></script>
+    
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
     
     <!-- Bootstrap tooltips -->
@@ -203,7 +206,7 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/mdb.min.js"></script>
 
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/login.js"></script>
+    
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>

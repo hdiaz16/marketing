@@ -27,7 +27,7 @@ class Login extends CI_Controller {
 		$contrasena = $this->input->post("contrasena");
 
 
-		$result  = $this->IniciarSesion_Model->iniciarSesion($usuario, md5($contrasena));
+		$result  = $this->IniciarSesion_Model->iniciarSesion($usuario, $contrasena);
 
 		$rol = $this->IniciarSesion_Model->rolUsuario($result->id);
 	
@@ -41,7 +41,7 @@ class Login extends CI_Controller {
 	             
 	           
 	           $sesion = array(
-	                     
+	                    'id'            =>  $result->id,
 	                    'nombres' 		=> 	$result->nombres,
 	                    'apellidos' 	=> 	$result->apellidos,
 	                    'correo' 		=>	$result->correo,
@@ -102,9 +102,9 @@ class Login extends CI_Controller {
            $data = array(
                      
                     '"nombres"' 		=> 	trim($this->input->post('usuario1')),
-                    '"contrasenia"' 	=>	md5(trim($this->input->post('contrasena1'))),
-                    '"fecha_create"'  	=>  date("Y/m/d H:m:s"),
-                    '"fecha_update"'  	=>  date("Y/m/d H:m:s"),
+                    '"contrasenia"' 	=>	trim($this->input->post('contrasena1')),
+                    '"_create"'  		=>  date("Y/m/d H:m:s"),
+                    '"_update"'  		=>  date("Y/m/d H:m:s"),
                     '"activo"'			=>  1
 
            );
