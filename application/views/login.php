@@ -11,10 +11,10 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet"/>
     <!-- Material Design Bootstrap -->
-    <link href="assets/css/mdb.min.css" rel="stylesheet"/>
-    <link href="assets/css/login.css" rel="stylesheet"/>
+    <link href="<?php echo base_url() ?>assets/css/mdb.min.css" rel="stylesheet"/>
+    <link href="<?php echo base_url() ?>assets/css/login.css" rel="stylesheet"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 
@@ -198,14 +198,14 @@
     <!--  SCRIPTS  -->
     <!-- JQuery -->
 
-    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-3.2.1.min.js"></script>
     
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="assets/js/mdb.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/mdb.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 
