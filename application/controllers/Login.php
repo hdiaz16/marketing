@@ -9,6 +9,8 @@ class Login extends CI_Controller {
     	parent::__construct();
         $this->load->model('IniciarSesion_Model');
         $this->load->model('Usuario_Model');
+        $this->load->model('Root_Model');
+        $this->load->model('Empresa_Model');
         $this->load->helper(['form', 'url']);
         date_default_timezone_set('America/Mexico_City');
     }
@@ -16,7 +18,9 @@ class Login extends CI_Controller {
 	
 	public function index()
 	{
-
+  if(/**/$this->session->userdata('perfil-actual')/**/)
+    redirect('inicio');
+  else
 		$this->load->view('login');
 
 	}
@@ -33,16 +37,10 @@ class Login extends CI_Controller {
       redirect('login');
     else{
       $queryPerfiles = $this->Usuario_Model->obtenerPerfiles($usuarioDB['id']);
-      
-      $root = array_filter($queryPerfiles, function($v, $k){
-        return $v['id'] == 1;
-      }, ARRAY_FILTER_USE_BOTH);
-
       try {
-        
+
+        $this->session->set_userdata('usuario', $usuarioDB);
         $this->session->set_userdata('perfiles', $queryPerfiles);
-        if(count($root) > 0)
-        $this->session->set_userdata('es-root', true);
         $this->session->set_userdata('perfil-actual', $queryPerfiles[0]);
         redirect('inicio');
       } catch (Exception $e) {
@@ -51,9 +49,12 @@ class Login extends CI_Controller {
 
     }
     
-    
    }
 
+    
+    public function test(){
+      echo json_encode($this->Empresa_Model->eliminarEmpresa(2));
+    }
 
 
 

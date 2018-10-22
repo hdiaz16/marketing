@@ -7,7 +7,7 @@ class Usuario_Model extends CI_Model {
   }
 
   public function verificarUsuario($correo, $contrasenia){
-    $this->db->select('id');
+    $this->db->select('*');
     $registrado = $this->db->get_where('usuario', ['correo' => $correo, 'contrasenia' => $contrasenia, '_erase' => NULL]);
     $registrado = $registrado->result_array();
 
@@ -22,32 +22,12 @@ class Usuario_Model extends CI_Model {
     $this->db->from('rol');
     $this->db->join('perfil', 'rol.id = perfil.rol_id');
     $this->db->where('perfil.usuario_id', $id);
+    $this->db->where('perfil._erase', NULL);
     $this->db->order_by('perfil._update', 'DESC');
 
     return $this->db->get()->result_array();
   }
 
-  public function registrarAdministrador($sysAdminID, $nombres = "John Doe", $correo, $contrasenia = "12345678"){
-    $data = ['nombres' => $nombres, 'correo' => $correo, 'contrasenia' => $contrasenia];
-    
-    try {
-      $this->db->insert('usuario', $data);
-    } catch (Exception $e) {
-      log_message('error', "registrar Administrador Usuario: ".$e);
-      return false;
-    }
-
-    $nuevoUsuarioID = $this->db->insert_id();
-    $fechaRegistro = date('Y-m-d H:i');
-    $data = ['usuario_id' => $nuevoUsuarioID, 'rol_id' => 2, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
-    
-    try {
-      $this->db->insert('perfil', $data);
-    } catch (Exception $e) {
-      log_message('error', 'registrar Administrador Perfil: '.$e);
-    }
-    
-  }
 
 
 }

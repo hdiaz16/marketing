@@ -110,7 +110,7 @@
 
                                         <!--Body-->
                                         <?php echo validation_errors(); ?>
-                                        <?php echo form_open('login/iniciarsesion'); ?>
+                                        <?php echo form_open('login/test'); ?>
                                         <div class="modal-body mb-1">
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-envelope prefix"></i>
