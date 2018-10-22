@@ -11,6 +11,8 @@ class Login extends CI_Controller {
         $this->load->model('Usuario_Model');
         $this->load->model('Root_Model');
         $this->load->model('Empresa_Model');
+        $this->load->model('Administrador_Model');
+        $this->load->model('Campania_Model');
         $this->load->helper(['form', 'url']);
         date_default_timezone_set('America/Mexico_City');
     }
@@ -53,7 +55,9 @@ class Login extends CI_Controller {
 
     
     public function test(){
-      echo json_encode($this->Empresa_Model->eliminarEmpresa(2));
+      $objetivos = ["dominar al mundo", "maximizar la publicidad online"];
+      $propositos = ["aumentar el engagement en fb"];
+      echo json_encode($this->Campania_Model->editarCampania(1, "La coca negroloca", $objetivos, $propositos, date('Y-m-d H:i'), date('Y-m-d H:i')));
     }
 
 
