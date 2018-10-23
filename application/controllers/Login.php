@@ -10,6 +10,7 @@ class Login extends CI_Controller {
         $this->load->model('IniciarSesion_Model');
         $this->load->model('Usuario_Model');
         $this->load->model('Root_Model');
+        $this->load->model('Red_Model');
         $this->load->model('Empresa_Model');
         $this->load->model('Administrador_Model');
         $this->load->model('Campania_Model');
@@ -57,7 +58,8 @@ class Login extends CI_Controller {
     public function test(){
       $objetivos = ["dominar al mundo", "maximizar la publicidad online"];
       $propositos = ["aumentar el engagement en fb"];
-      echo json_encode($this->Campania_Model->editarCampania(1, "La coca negroloca", $objetivos, $propositos, date('Y-m-d H:i'), date('Y-m-d H:i')));
+      $red = ['id' => 1, 'nombre'=> 'nodo padre 1.1', 'hijos' => []];
+      echo json_encode($this->Red_Model->editarRed(json_encode($red), 5));
     }
 
 

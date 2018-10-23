@@ -51,10 +51,18 @@ class Campania_Model extends CI_Model{
       log_message('error', "insertar campania registrarCampania:".$e);
       return false;
     }
-    $nuevaEmpresaID = $this->db->insert_id();
+    $nuevaCampaniaID = $this->db->insert_id();
+    $data = ['campania_id' => $nuevaCampaniaID, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
+    try {
+      $this->db->insert('red_semantica', $data);
+    } catch (Exception $e) {
+      log_message('error', "insertar red registrarCampania: ".$e);
+      return false;
+    }
     $this->db->select('*');
     $this->db->from('campania');
-    $this->db->where('id', $nuevaEmpresaID);
+    $this->db->join('red_semantica', 'campania.id = red_semantica.campania_id');
+    $this->db->where('campania.id', $nuevaCampaniaID);
 
     return $this->db->get()->result_array();
 
@@ -91,6 +99,15 @@ class Campania_Model extends CI_Model{
     } catch (Exception $e) {
       log_message('error', "update _erase eliminarCampania:".$e);
       return false;
+    }
+
+    try {
+      $this->db->where('campania_id', $campaniaID);
+      $this->db->update('red_semantica', $data);
+    } catch (Exception $e) {
+      log_message('error', "update _erase red eliminarCampania:".$e);
+      return false;
+      
     }
 
     $this->db->select('*');
