@@ -12,9 +12,9 @@
 
 
 
-    public function iniciarSesion($usuario,$contrasena)
+    public function iniciarSesion($correo,$contrasena)
     {
-        $querySQL = 'SELECT * FROM "usuario" WHERE "nombres" = \''.$usuario.'\' AND "contrasenia" = \''.$contrasena.'\'';
+        $querySQL = 'SELECT * FROM "usuario" WHERE "correo" = \''.$correo.'\' AND "contrasenia" = \''.$contrasena.'\'';
         return $this->db->query($querySQL)->row();
     }
 
@@ -30,20 +30,30 @@
 
     }
 
-    public function rolUsuario(){
+    public function addUsuario1($data1){
+
+
+      $this->db->insert('perfil',$data1);
+      return $this->db->insert_id();
+      
+
+    }
+
+    public function rolUsuario($id){
        
       $querySQL = 'SELECT p.*, r.*
 
 
       FROM "perfil" as p 
 
-      INNER JOIN "rol" as r ON p."id" = r."id"
+      INNER JOIN "rol" as r ON p."rol_id" = r."id"
 
-      WHERE "rol_id" in (1,2,3,4)';
+      WHERE "rol_id" in (1,2,3,4) and p."usuario_id" = \''.$id.'\'' ;
 
       return $this->db->query($querySQL)->row();
 
     }
+
 
 
 

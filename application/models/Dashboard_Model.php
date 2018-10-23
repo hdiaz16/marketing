@@ -40,10 +40,31 @@
             return $this->db->insert_id();
         }
 
+        public function addCMPerfil($data){
+            
+
+
+            $this->db->insert('perfil',$data);
+
+            
+
+
+            return $this->db->insert_id();
+        }
+
         public function selectCM()
         {
 
-            $querySQL = 'SELECT * FROM usuario';
+
+            $querySQL = 'SELECT p.*, u.*
+
+
+            FROM "perfil" as p 
+
+            left JOIN "usuario" as u ON p."id" = u."id"
+
+            WHERE "rol_id" = 2';
+
             return $this->db->query($querySQL)->result();
             
         }

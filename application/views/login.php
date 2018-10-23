@@ -110,21 +110,26 @@
 
                                         <!--Body-->
                                         <div class="modal-body mb-1">
+                                            
+
+
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-envelope prefix"></i>
-                                                <input type="text" id="usuario" class="form-control form-control-sm">
-                                                <label for="form2">Email</label>
+                                                <input type="text" id="correo" class="form-control form-control-sm">
+                                                <label for="form2">Correo</label>
                                             </div>
 
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-lock prefix"></i>
                                                 <input type="password" id="contrasena" class="form-control form-control-sm">
-                                                <label for="form3">Contraseña</label>
+                                                <label for="form3">Contrasena</label>
                                             </div>
+
                                             <div class="text-center mt-2">
                                                 <button class="btn btn-info" onclick="login();">Iniciar <i class="fa fa-sign-in ml-1"></i></button>
                                             </div>
                                         </div>
+
                                         <!--Footer-->
                                         <div class="modal-footer">
                                             <div class="options text-center text-md-right mt-1">
@@ -141,6 +146,21 @@
 
                                         <!--Body-->
                                         <div class="modal-body">
+
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-envelope prefix"></i>
+                                                <input type="text"  class="form-control form-control-sm nombre">
+                                                <label for="form2">Nombre</label>
+                                            </div>
+
+                                            <div class="md-form form-sm">
+                                                <i class="fa fa-lock prefix"></i>
+                                                <input type="text"  class="form-control form-control-sm apellido">
+                                                <label for="form3">Apellido</label>
+                                            </div>
+
+
+
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-envelope prefix"></i>
                                                 <input type="text" id="form14" class=" usuario1 form-control form-control-sm" >

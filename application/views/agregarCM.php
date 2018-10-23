@@ -36,7 +36,11 @@
                 <!--Grid row-->
                 <div class="row">
 
+                    <?php if($CM != ""){ ?>
+
                     <?php foreach ($CM as $row) { ?>
+
+
 
                                 <!--Grid column-->
                             <div class="col-xl-3 col-md-6 mb-4 borrar" id ="" >
@@ -71,7 +75,41 @@
                             <!--Grid column-->
 
                         
-                   <?php  } ?>
+                   <?php  }  ?>
+                    <?php  }else{  ?>
+
+               <div class="col-xl-3 col-md-6 mb-4 borrar" id ="" >
+
+                                <!--Panel-->
+                                <div class="card h-100" hidden="true">
+                                    <div class="card-header white-text success-color color" id="">
+
+                                        <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
+                                       
+                                       
+                                    </div>
+                                    
+
+                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
+                                    <p class="ml-3 mt-3 font-small dark-grey-text"></p>
+                                    <!--/.Card Data-->
+
+                                    <!--Card content-->
+                                    <div class="card-body">
+                                        
+                                        <!--Text-->
+                                        <p class="font-small grey-text">Fecha de Inicio: ></p>
+                                
+                                    </div>
+                                    <!--/.Card content-->
+
+                                </div>
+                                <!--/.Panel-->
+
+                            </div>
+                            <!--Grid column-->
+
+           <?php } ?>
 
                    
                    

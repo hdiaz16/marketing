@@ -2,10 +2,9 @@ function login()
  {
 
 
-    var usuario = $("#usuario").val();
-    var contrasena = $("#contrasena").val();
+    var correo      = $("#correo").val();
+    var contrasena  = $("#contrasena").val();
 
- 
 
 
     $.ajax({
@@ -15,8 +14,9 @@ function login()
       async: true,
       dataType: 'json',
       data: {
-        usuario: usuario,
+        correo: correo,
         contrasena: contrasena
+
       },
       success: function(data)
       {
@@ -58,13 +58,15 @@ function login()
 function registro()
  {
 
+    var nombre        = $(".nombre").val();
+    var apellido      = $(".apellido").val();
+    var correo1       = $("#correo").val();
+    var contrasena1   = $("#contrasena").val();
 
-    var usuario1 = $(".usuario1").val();
-    var contrasena1 = $(".cotrasena1").val();
+    alert(nombre);
+   
 
-    
-
-
+  
     $.ajax({
       type: 'POST',
       url:  "../Login/registro",
@@ -72,7 +74,10 @@ function registro()
       async: true,
       dataType: 'json',
       data: {
-        usuario1: usuario1,
+        
+        nombre:nombre,
+        apellido:apellido,
+        correo1: correo1,
         contrasena1: contrasena1
       },
       success: function(data)
@@ -80,7 +85,7 @@ function registro()
 
         console.log(data);
 
-        if(data != true){
+        if(data == false){
 
           $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al registrar el usuario.',type: 'red',buttons: {
                     Aceptar: function (e,data) {
