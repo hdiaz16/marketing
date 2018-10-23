@@ -16,6 +16,7 @@ function login()
       data: {
         correo: correo,
         contrasena: contrasena
+
       },
       success: function(data)
       {
@@ -39,8 +40,6 @@ function registro()
     var apellido      = $(".apellido").val();
     var correo1       = $("#correo").val();
     var contrasena1   = $("#contrasena").val();
-
-
    
 
   

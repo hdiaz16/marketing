@@ -131,6 +131,7 @@
                                                 <button type="submit" class="btn btn-info" >Iniciar <i class="fa fa-sign-in ml-1"></i></button>
                                             </div>
                                         </div>
+
                                         <!--Footer-->
                                         <div class="modal-footer">
                                             <div class="options text-center text-md-right mt-1">
