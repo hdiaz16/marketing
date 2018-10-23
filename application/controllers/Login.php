@@ -33,10 +33,10 @@ class Login extends CI_Controller {
 
 	 	public function iniciarSesion (){
 
-		$usuario 	= $this->input->post("correo");
+		$correo 	= $this->input->post("correo");
 		$contrasenia = $this->input->post("contrasenia");
 
-		$usuarioDB  = $this->Usuario_Model->verificarUsuario($usuario, $contrasenia);
+		$usuarioDB  = $this->Usuario_Model->verificarUsuario($correo, $contrasenia);
 
     if(!$usuarioDB)
       redirect('login');
@@ -108,7 +108,6 @@ class Login extends CI_Controller {
                     '"sys_admin_id"'  =>  1,
                     '"_create"'       =>  date("Y/m/d H:m:s"),
                     '"_update"'       =>  date("Y/m/d H:m:s"),
-                    
 
            );
 

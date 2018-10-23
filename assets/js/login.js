@@ -1,7 +1,6 @@
 function login()
  {
 
-
     var correo      = $("#correo").val();
     var contrasena  = $("#contrasena").val();
 
