@@ -87,23 +87,48 @@ class Login extends CI_Controller {
 		   
            $data = array(
                      
-                    '"nombres"' 		=> 	trim($this->input->post('usuario1')),
-                    '"contrasenia"' 	=>	trim($this->input->post('contrasena1')),
+
+                    '"nombres"' 		=> 	trim($this->input->post('nombre')),
+                    '"apellidos"' 	=>	trim($this->input->post('apellido')),
+                    '"correo"' 			=> 	trim($this->input->post('correo1')),
+                    '"contrasenia"' =>	trim($this->input->post('contrasena1')),
                     '"_create"'  		=>  date("Y/m/d H:m:s"),
                     '"_update"'  		=>  date("Y/m/d H:m:s"),
                     '"activo"'			=>  1
 
            );
 
-           $this->IniciarSesion_Model->addUsuario($data);
+           $dato=$this->IniciarSesion_Model->addUsuario($data);
+        
 
-        if($data == false)
+           $data1 = array(
+                     
+                    '"usuario_id"'    => $dato,
+                    '"rol_id"'        =>  1,
+                    '"sys_admin_id"'  =>  1,
+                    '"_create"'       =>  date("Y/m/d H:m:s"),
+                    '"_update"'       =>  date("Y/m/d H:m:s"),
+                    
+
+           );
+
+           $this->IniciarSesion_Model->addUsuario1($data1);
+
+        if($data !=  "")
         {
-           
-            echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar el usuario'));
 
-    	}else{
-          echo json_encode($data = array('error' => true, 'mensaje' =>'Registro completo.'));
+        	$data = array('error' => true, 'mensaje' =>'Registro completo.');
+            echo json_encode($data);
+
+           
+            
+
+    	}else
+    	{
+           
+
+           $data = array('error' => false, 'mensaje' =>'No se pudo registrar el usuario');
+            echo json_encode($data);
 
     	}
 
