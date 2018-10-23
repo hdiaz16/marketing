@@ -31,6 +31,22 @@
             wheelPropagation: true,
             minScrollbarLength: 20
         });
+
+        $('.datepicker').pickadate({
+
+            monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            weekdaysFull: ['Lunes', 'Martes', 'Miercoles','Jueves', 'Viernes','Sabado', 'Domingo'],
+            weekdaysShort: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
+            formatSubmit: 'yyyy-mm-dd'
+
+
+        });
+
+        $(document).ready(function () {
+            $('.mdb-select').material_select();
+        });
+
+
     </script>
 </body>
 

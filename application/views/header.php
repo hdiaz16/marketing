@@ -46,7 +46,7 @@
 
                    
 
-                    <?php if($this->session->userdata['rol'] == 1 || $this->session->userdata['rol'] == 2 || $this->session->userdata['rol'] == 3 || $this->session->userdata['rol'] == 4 ){ ?>
+                    <?php if($this->session->userdata['rol'] == 1 || $this->session->userdata['rol'] == 2 ){ ?>
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Administrador<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
@@ -62,13 +62,13 @@
                     <?php } ?>
 
 
-                    <?php if($this->session->userdata['rol'] == 2 || $this->session->userdata['rol'] == 3 || $this->session->userdata['rol'] == 4 ){  ?>
+                    <?php if($this->session->userdata['rol'] == 1 || $this->session->userdata['rol'] == 2 || $this->session->userdata['rol'] == 3 || $this->session->userdata['rol'] == 4 ){  ?>
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Community Manager<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Campanas/index"><i class="fa fa-th"></i>Agregar Campañas</a>  
                                     </li>
-                                    <li><a href="../dashboards/v-2.html" class="waves-effect">Agregar Usuarios</a>
+                                    <li><a href="<?php echo base_url();?>index.php/AgregarUsuarios/index" class="waves-effect">Agregar Usuarios</a>
                                     </li>
                                     <li><a href="../dashboards/v-2.html" class="waves-effect">Vista de Red Semantica</a>
                                     </li>
@@ -77,6 +77,9 @@
                                     </li>
 
                                     <li><a href="../dashboards/v-2.html" class="waves-effect">Publicaciones</a>
+                                    </li>
+
+                                    <li><a href="<?php echo base_url();?>index.php/AgregarTareas/index" class="waves-effect">Tareas</a>
                                     </li>
 
 
@@ -230,9 +233,10 @@
                             <!--Body-->
                             <div class="modal-body text-center mb-1">
 
-                                <h5 class="mt-1 mb-2">Maria Doe</h5>
+                                <h5 class="mt-1 mb-2"><?php echo $this->session->userdata['nombres'] ?></h5>
 
-                                <h5 class="mt-1 mb-2">Community Manager</h5>
+                                <h5 class="mt-1 mb-2"><?php echo $this->session->userdata['rol_nom'] ?></h5>
+                               
 
                                 
 
