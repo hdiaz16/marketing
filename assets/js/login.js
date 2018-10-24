@@ -1,17 +1,16 @@
 function login()
  {
 
-
     var correo      = $("#correo").val();
     var contrasena  = $("#contrasena").val();
 
-
-
     $.ajax({
+      method: 'POST',
       type: 'POST',
-      url:  "../Login/iniciarSesion",
+      url:  "index.php/Login/iniciarSesion",
       cache: false,
       async: true,
+      contentType: 'application/json',
       dataType: 'json',
       data: {
         correo: correo,
@@ -21,34 +20,12 @@ function login()
       success: function(data)
       {
 
-        console.log(data);
-
-        if(data  == false){
-
-          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al iniciar sesion.',type: 'red',buttons: {
-                    Aceptar: function (e,data) {
-
-                      setTimeout(function(){window.location.reload(1);},1000);
-                    } 
-                }});
-   
- 
-        }else{
-
-
-           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Gracias por iniciar sesion en el Sistema de Marketin Digital',type: 'green',buttons: {
-                    Aceptar: function (e,data) {
-
-                      window.location.href = "../Inicio/index/";
-                    } 
-                }});
-
-
-              
-
-        } 
+        console.log('success: ', data);
 
         
+      },
+      error: function(err){
+        console.log('error: ', err);
       }
     });
 

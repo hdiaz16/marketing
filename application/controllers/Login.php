@@ -8,14 +8,22 @@ class Login extends CI_Controller {
     {
     	parent::__construct();
         $this->load->model('IniciarSesion_Model');
-        $this->load->helper('form');
+        $this->load->model('Usuario_Model');
+        $this->load->model('Root_Model');
+        $this->load->model('Red_Model');
+        $this->load->model('Empresa_Model');
+        $this->load->model('Administrador_Model');
+        $this->load->model('Campania_Model');
+        $this->load->helper(['form', 'url']);
         date_default_timezone_set('America/Mexico_City');
     }
 
 	
 	public function index()
 	{
-
+  if(/**/$this->session->userdata('perfil-actual')/**/)
+    redirect('inicio');
+  else
 		$this->load->view('login');
 
 	}
@@ -24,136 +32,36 @@ class Login extends CI_Controller {
 	 	public function iniciarSesion (){
 
 		$correo 	= $this->input->post("correo");
-		$contrasena = $this->input->post("contrasena");
+		$contrasenia = $this->input->post("contrasenia");
 
+		$usuarioDB  = $this->Usuario_Model->verificarUsuario($correo, $contrasenia);
 
-		$result  = $this->IniciarSesion_Model->iniciarSesion($correo, $contrasena);
+    if(!$usuarioDB)
+      redirect('login');
+    else{
+      $queryPerfiles = $this->Usuario_Model->obtenerPerfiles($usuarioDB['id']);
+      try {
 
-		$rol = $this->IniciarSesion_Model->rolUsuario($result->id);
-	
+        $this->session->set_userdata('usuario', $usuarioDB);
+        $this->session->set_userdata('perfiles', $queryPerfiles);
+        $this->session->set_userdata('perfil-actual', $queryPerfiles[0]);
+        redirect('inicio');
+      } catch (Exception $e) {
+        echo json_encode(['place' =>'login/iniciarSesion', 'error' => $e]);
+      }
 
-      	if ($result != false) 
-        {
-
-
-
-			if($result->activo == 1){
-	             
-	           
-	           $sesion = array(
-	                    'id'            =>  $result->id,
-	                    'nombres' 		=> 	$result->nombres,
-	                    'apellidos' 	=> 	$result->apellidos,
-	                    'correo' 		=>	$result->correo,
-	                    'contrasena' 	=>	$result->contrasenia,
-	                    'rol'        	=>  $rol->rol_id,
-	                    'rol_nom'       =>  $rol->nombre,
-	                    'estatus'       =>  TRUE
-	           );
-
-	           $this->session->set_userdata($sesion);
-
-	           
-
-	          
-	           	if ($rol->rol_id != "") 
-            	{
-
-            		$result = array('error' => false, 'mensaje' => 'Bienvenido al Sistema de Marketing Digital');
-              		echo json_encode($result);
-
-
-
-
-
-            	}else{
-
-            		$result = array('error' => true, 'mensaje' => 'No existe el rol para el usuario');
-             		echo json_encode($result);
-            	}
-
-
-
-
-			}else{
-
-				$result = array('error' => true, 'mensaje' => 'El usuario se encuentra inhabilitado, verificar su estado con el administrador');
-            	echo json_encode($result);
-
-
-			}
-
-		}
-		else
-		{
-
-          $result = array('error' => true, 'mensaje' => 'El usuario o la Contraseña no es el correcto');
-          echo json_encode($result);
-
-		}
-
+    }
+    
    }
 
+    
+    public function test(){
+      $objetivos = ["dominar al mundo", "maximizar la publicidad online"];
+      $propositos = ["aumentar el engagement en fb"];
+      $red = ['id' => 1, 'nombre'=> 'nodo padre 1.1', 'hijos' => []];
+      echo json_encode($this->Red_Model->editarRed(json_encode($red), 5));
+    }
 
-
-
-   public function registro (){
-
-		   
-           $data = array(
-                     
-
-                    '"nombres"' 		=> 	trim($this->input->post('nombre')),
-                    '"apellidos"' 	=>	trim($this->input->post('apellido')),
-                    '"correo"' 			=> 	trim($this->input->post('correo1')),
-                    '"contrasenia"' =>	trim($this->input->post('contrasena1')),
-                    '"_create"'  		=>  date("Y/m/d H:m:s"),
-                    '"_update"'  		=>  date("Y/m/d H:m:s"),
-                    '"activo"'			=>  1
-
-           );
-
-           $dato=$this->IniciarSesion_Model->addUsuario($data);
-        
-
-           $data1 = array(
-                     
-                    '"usuario_id"'    => $dato,
-                    '"rol_id"'        =>  1,
-                    '"sys_admin_id"'  =>  1,
-                    '"_create"'       =>  date("Y/m/d H:m:s"),
-                    '"_update"'       =>  date("Y/m/d H:m:s"),
-                    
-
-           );
-
-           $this->IniciarSesion_Model->addUsuario1($data1);
-
-        if($data !=  "")
-        {
-
-        	$data = array('error' => true, 'mensaje' =>'Registro completo.');
-            echo json_encode($data);
-
-           
-            
-
-    	}else
-    	{
-           
-
-           $data = array('error' => false, 'mensaje' =>'No se pudo registrar el usuario');
-            echo json_encode($data);
-
-    	}
-
-		
-
-   }
-
-
-
-	
 
 
 

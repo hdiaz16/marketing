@@ -24,11 +24,7 @@ class Dashboard extends CI_Controller {
 
      }
      else{
-        
-        echo  "<script type='text/javascript'>alert('Por favor inice session primero.');window.location.href='".base_url('index.php/Login/index')."'</script>"; 
-
-
-
+        redirect('/login');
      }
         
 	}
@@ -44,7 +40,7 @@ class Dashboard extends CI_Controller {
  	{
 	  $this->session->sess_destroy();
 	 
-	  	header('Location: ../Login/index');
+	  redirect('/login');
 
  	}
 
