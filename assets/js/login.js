@@ -40,7 +40,7 @@ function registro()
     var correo1       = $("#correo").val();
     var contrasena1   = $("#contrasena").val();
 
-    alert(nombre);
+
    
 
   
