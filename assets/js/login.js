@@ -40,6 +40,7 @@ function registro()
     var apellido      = $(".apellido").val();
     var correo1       = $("#correo").val();
     var contrasena1   = $("#contrasena").val();
+    
    
 
   
