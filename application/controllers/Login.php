@@ -7,7 +7,6 @@ class Login extends CI_Controller {
   	function __construct()
     {
     	parent::__construct();
-        $this->load->model('IniciarSesion_Model');
         $this->load->model('Usuario_Model');
         $this->load->model('Root_Model');
         $this->load->model('Red_Model');
@@ -59,11 +58,24 @@ class Login extends CI_Controller {
       $objetivos = ["dominar al mundo", "maximizar la publicidad online"];
       $propositos = ["aumentar el engagement en fb"];
       $red = ['id' => 1, 'nombre'=> 'nodo padre 1.1', 'hijos' => []];
-      echo json_encode($this->Red_Model->editarRed(json_encode($red), 5));
+      echo json_encode($this->Red_Model->editarRed($red, 5));
     }
 
 
 
+    public function cambiarPerfil($rolID){
+
+      foreach ($this->session->userdata['perfiles'] as $key => $perfil) {
+        # code...
+        if($perfil['rol_id'] == $rolID){
+          $this->session->set_userdata('perfil-actual') = $perfil;
+          return true;
+        }
+      }
+
+      return false;
+    }
+    
    public function registro (){
 
 		   

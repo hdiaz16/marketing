@@ -41,9 +41,9 @@ class Campania_Model extends CI_Model{
   public function registrarCampania($communityManID, $nombre, $objetivos, $propositos, $fechaInicio, $fechaCierre){
 
     $fechaRegistro = date('Y-m-d H:i');
-    $objetivosString = json_encode($objetivos);
-    $propositosString = json_encode($propositos);
-    $data = ['community_manager_id' => $communityManID, 'nombre' => $nombre, 'objetivos' => $objetivosString, 'propositos' => $propositosString,'fecha_inicio' => $fechaInicio, 'fecha_cierre' => $fechaCierre, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
+    $objetivos = json_encode($objetivos);
+    $propositos = json_encode($propositos);
+    $data = ['community_manager_id' => $communityManID, 'nombre' => $nombre, 'objetivos' => $objetivos, 'propositos' => $propositos,'fecha_inicio' => $fechaInicio, 'fecha_cierre' => $fechaCierre, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
 
     try {
       $this->db->insert('campania', $data);
@@ -70,9 +70,9 @@ class Campania_Model extends CI_Model{
 
   public function editarCampania($campaniaID, $nombre, $objetivos, $propositos, $fechaInicio, $fechaCierre){
     $fechaEdicion = date('Y-m-d H:i');
-    $objetivosString = json_encode($objetivos);
-    $propositosString = json_encode($propositos);
-    $data = ['nombre' => $nombre, 'objetivos' => $objetivosString, 'propositos' => $propositosString,'fecha_inicio' => $fechaInicio, 'fecha_cierre' => $fechaCierre];
+    $objetivos = json_encode($objetivos);
+    $propositos = json_encode($propositos);
+    $data = ['nombre' => $nombre, 'objetivos' => $objetivos, 'propositos' => $propositos,'fecha_inicio' => $fechaInicio, 'fecha_cierre' => $fechaCierre];
 
     try {
       $this->db->where('id', $campaniaID);

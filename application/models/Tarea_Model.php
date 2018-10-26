@@ -25,6 +25,26 @@
 
     }
 
+    public function editarTarea($tareaID, $descripcion, $condicionesAceptacion, $requisitos){
+
+      $fechaEdicion = date('Y-m-d H:i');
+      $condicionesAceptacion = json_encode($condicionesAceptacion);
+      $requisitos = json_encode($requisitos);
+
+      $data = ['_update' => $fechaEdicion, 'descripcion' => $descripcion, 'requisitos' => $requisitos, 'condiciones_aceptacion' => $condicionesAceptacion];
+      try {
+        $this->db->where('id', $tareaID);
+        $this->db->update('tarea', $data);
+
+        $this->db->select('*');
+        $this->db->from('tarea');
+      } catch (Exception $e) {
+        log_message('error', "update editarTarea:".$e);
+        return false;
+      }
+
+    }
+
     
   }
 

@@ -23,6 +23,7 @@ class Red_Model extends CI_Model {
 
   public function editarRed($redJSON, $campaniaID){
     $fechaEdicion = date('Y-m-d H:i');
+    $redJSON = json_encode($redJSON);
     $data = ['red' => $redJSON, '_update' => $fechaEdicion];
     try {
       $this->db->where('campania_id', $campaniaID);
