@@ -13,6 +13,9 @@ class Login extends CI_Controller {
         $this->load->model('Empresa_Model');
         $this->load->model('Administrador_Model');
         $this->load->model('Campania_Model');
+        $this->load->model('Tarea_Model');
+        $this->load->model('Subtarea_Model');
+        $this->load->model('Publicacion_Model');
         $this->load->helper(['form', 'url']);
         date_default_timezone_set('America/Mexico_City');
     }
@@ -58,7 +61,10 @@ class Login extends CI_Controller {
       $objetivos = ["dominar al mundo", "maximizar la publicidad online"];
       $propositos = ["aumentar el engagement en fb"];
       $red = ['id' => 1, 'nombre'=> 'nodo padre 1.1', 'hijos' => []];
-      echo json_encode($this->Red_Model->editarRed($red, 5));
+      $condicionesAceptacion = ['condicion 3','minimo 100 likes', 'menor numero de comentarios negativos'];
+      $requisitos = ['imagen referente a una hamburguesa en el campo', 'requisito 2', 'requisito 3'];
+      $contenido = ['link' => "link@link2", 'titulo' => "1publicacion2", 'fotourl' => ["url1.com", "url2.org"], 'videourl' => "video.com", 'contenido' => "contenido omg", 'fechapublicacion' => "2018-10-30 17:30"];
+      echo json_encode($this->Publicacion_Model->getPublicaciones(13,1, true));
     }
 
 
@@ -68,7 +74,7 @@ class Login extends CI_Controller {
       foreach ($this->session->userdata['perfiles'] as $key => $perfil) {
         # code...
         if($perfil['rol_id'] == $rolID){
-          $this->session->set_userdata('perfil-actual') = $perfil;
+          $this->session->set_userdata('perfil-actual', $perfil);
           return true;
         }
       }
