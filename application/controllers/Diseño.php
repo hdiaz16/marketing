@@ -1,8 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
-
+class Diseño extends CI_Controller {
 
 	function __construct()
     {
@@ -12,35 +11,30 @@ class Dashboard extends CI_Controller {
         date_default_timezone_set('America/Mexico_City');
     }
 
-	
-	public function index()
-	{
-     
-     
 
-     	$this->load->view('header');
-		$this->load->view('dashboard');
+    public function index()
+    {
+    	
+      	$this->load->view('header');
+		$this->load->view('diseños');
 		$this->load->view('footer');
 
-     
-        
-	}
+
+    }
 
 
 
-  
-
-  
 
 
-	public function cerrarSesion()
- 	{
-	  $this->session->sess_destroy();
-	 
-	  redirect('/login');
 
- 	}
+
+
+
+
+
+
 
 }
+
 
 ?>

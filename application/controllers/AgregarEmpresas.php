@@ -31,7 +31,7 @@ class AgregarEmpresas extends CI_Controller {
            $data = array(
                      
                     '"razon_social"' 	=> 	trim($this->input->post('razon')),
-                    '"sys_admin_id"'    =>	trim($this->session->userdata['rol']),
+                    '"sys_admin_id"'    =>	trim($this->session->userdata['perfil-actual']['sys_admin_id']),
                     '"contacto"'       	=>	trim($this->input->post('contacto')),
                     '"_create"'  		=>  date("Y/m/d H:m:s"),
                     '"_update"'  		=>  date("Y/m/d H:m:s")

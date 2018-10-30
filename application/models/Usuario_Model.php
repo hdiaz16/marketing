@@ -18,7 +18,7 @@ class Usuario_Model extends CI_Model {
   }
 
   public function obtenerPerfiles($id){
-    $this->db->select('perfil.sys_admin_id, perfil.id, rol.id, rol.nombre');
+    $this->db->select('perfil.sys_admin_id, perfil.id as perfil_id, rol.id as rol_id, rol.nombre');
     $this->db->from('rol');
     $this->db->join('perfil', 'rol.id = perfil.rol_id');
     $this->db->where('perfil.usuario_id', $id);

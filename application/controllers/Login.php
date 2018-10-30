@@ -35,7 +35,7 @@ class Login extends CI_Controller {
 		$contrasenia = $this->input->post("contrasenia");
 
 		$usuarioDB  = $this->Usuario_Model->verificarUsuario($correo, $contrasenia);
-
+    echo json_encode($usuarioDB);
     if(!$usuarioDB)
       redirect('login');
     else{

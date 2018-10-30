@@ -38,6 +38,8 @@
                 <!--Grid row-->
                 <div class="row">
 
+                
+
                     <?php foreach ($campanas as $row) { ?>
 
                                 <!--Grid column-->
@@ -47,22 +49,22 @@
                                 <div class="card h-100">
                                     <div class="card-header white-text success-color color">
                                         <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
-                                       <?php echo $row->nombre?>
+                                       <?php echo $row['nombre']?>
                                     </div>
 
                                     <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold">Objetivo</h6>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text"> <?php echo $row->objetivos?></p>
+                                    <p class="ml-3 mt-1 font-small dark-grey-text"> <?php echo $row['objetivos']?></p>
 
                                     <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold">Proposito</h6>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text"> <?php echo $row->propositos?></p>
+                                    <p class="ml-3 mt-1 font-small dark-grey-text"> <?php echo $row['propositos']?></p>
                                     <!--/.Card Data-->
 
                                     <!--Card content-->
                                     <div class="card-body">
                                         
                                         <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Inicio: <?php echo $row->fecha_inicio?></p>
-                                        <p class="font-small grey-text">Fecha de Cierre: <?php echo $row->fecha_cierre?></p>
+                                        <p class="font-small grey-text">Fecha de Inicio: <?php echo $row['fecha_inicio']?></p>
+                                        <p class="font-small grey-text">Fecha de Cierre: <?php echo $row['fecha_cierre']?></p>
                                     </div>
                                     <!--/.Card content-->
 
