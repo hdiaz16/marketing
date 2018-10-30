@@ -18,9 +18,9 @@ class AgregarTareas extends CI_Controller {
 
     	
 
-    	$this->load->view('header');
+    	$this->load->view('core/header');
 		$this->load->view('agregarTareas');
-		$this->load->view('footer');
+		$this->load->view('core/footer');
     }
 
 }

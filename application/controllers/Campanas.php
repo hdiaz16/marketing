@@ -20,9 +20,9 @@ class Campanas extends CI_Controller {
 			$data['campanas'] = $this->Campania_Model->getCampanias($this->session->userdata['perfil-actual']['id']);
 
 
-			$this->load->view('header');
+			$this->load->view('core/header');
 			$this->load->view('campanas',$data);
-			$this->load->view('footer');
+			$this->load->view('core/footer');
 
 
 	}

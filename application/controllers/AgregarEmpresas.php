@@ -18,9 +18,9 @@ class AgregarEmpresas extends CI_Controller {
 
     	$data['Empresa'] = $this->Dashboard_Model->selectEmpresa();
 
-    	$this->load->view('header');
+    	$this->load->view('core/header');
 		$this->load->view('agregarEmpresas', $data);
-		$this->load->view('footer');
+		$this->load->view('core/footer');
     }
 
 

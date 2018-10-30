@@ -21,9 +21,9 @@ class AgregarCM extends CI_Controller {
 
 
 
-			$this->load->view('header');
+			$this->load->view('core/header');
 			$this->load->view('agregarCM',$data);
-			$this->load->view('footer');
+			$this->load->view('core/footer');
 
 	
 	}
