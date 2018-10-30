@@ -46,6 +46,58 @@ class Administrador_Model extends CI_Model{
 
   }
 
+   public function editarUsuario($perfilID, $rolID, $nombres, $apellidos, $correo, $contrasenia, $imagenURL){
+
+    $fechaEdicion = date('Y-m-d H:i');
+    $dataUsuario = ['apellidos' => $apellidos, 'correo' => $correo, 'contrasenia' => $contrasenia, 'imagenurl' => $imagenURL, 'nombres' => $nombres, '_update' => $fechaEdicion];
+    $dataPerfil = ['rol_id' => $rolID];
+
+    try {
+      $this->db->where('id', $perfilID)
+      ->update('perfil', $dataPerfil);
+
+      $this->db->select('usuario_id')
+      ->from('perfil')
+      ->where('id', $perfilID);
+
+      $usuarioID = $this->db->get()->result_array()[0]['usuario_id'];
+
+      $this->db->where('id', $usuarioID)
+      ->update('usuario', $dataUsuario);
+
+      $this->db->select('*')
+      ->from('usuario')
+      ->where('id', $usuarioID);
+
+      return $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "update editarUsuario: ".$e);
+      return false;
+    }
+
+  }
+
+  public function eliminarUsuario($perfilID){
+    $fechaEliminacion = date('Y-m-d H:i');
+    $data = ['_erase' => $fechaEliminacion, '_update' => $fechaEliminacion];
+
+    try {
+      $this->db->where('id', $perfilID)
+      ->update('perfil', $data);
+
+      $this->db->select('*')
+      ->from('perfil')
+      ->where('id', $perfilID);
+
+      return $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "update/delete eliminarUsuario: ".$e);
+      return false;
+      
+    }
+  }
+  
+
   
 }
 
