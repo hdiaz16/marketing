@@ -16,7 +16,7 @@
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
-            <button class="btn-floating btn-lg red" onclick="deleteCampanas();">
+            <button class="btn-floating btn-lg red" onclick="delCam();">
                 <i class="fa fa-minus"></i>
             </button>
                 
@@ -48,7 +48,8 @@
                                 <!--Panel-->
                                 <div class="card h-100">
                                     <div class="card-header white-text success-color color">
-                                        <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
+                                        <button   class="btn btn-sm  black float-right button " style="display: none;" onclick="delCampanas(<?php echo $row['id'] ?>);"><i class="fa fa-times " aria-hidden="true" 
+                                             > </i></button> 
                                        <?php echo $row['nombre']?>
                                     </div>
 
@@ -171,7 +172,7 @@
                                                 <div class="d-flex justify-content-between">
                                                     <div class="md-form">
                                                         <input  type="text"  class="form-control datepicker" id="fechaIn">
-                                                        <label for="date-picker-example">Inico</label>
+                                                        <label for="date-picker-example">Inicio</label>
                                                     </div>
                                                     <div class="md-form">
                                                         <input  type="text"  class="form-control datepicker" id="fechaFn">

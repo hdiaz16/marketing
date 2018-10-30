@@ -17,7 +17,7 @@ class Campanas extends CI_Controller {
 
 		
 
-			$data['campanas'] = $this->Campania_Model->getCampanias($this->session->userdata['perfil-actual']['id']);
+			$data['campanas'] = $this->Campania_Model->getCampanias($this->session->userdata['perfil-actual']['perfil_id'], false );
 
 
 			$this->load->view('core/header');
@@ -30,46 +30,52 @@ class Campanas extends CI_Controller {
 
 
 	public function addCampanas()
-    {
+  { 			
 
+      $data = $this->Campania_Model->registrarCampania(
+        $this->session->userdata['perfil-actual']['perfil_id'],
+        trim($this->input->post('nombre')),
+        trim($this->input->post('objetivo')), 
+        trim($this->input->post('proposito')),
+        trim($this->input->post('fechaIn')),
+        trim($this->input->post('fechaFn'))
+    );
 
-    	if($this->session->userdata['perfil-actual']['id'] != "")
-    	{
+      	if($data == false)
+	  	  {
+   
+      		echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar la Campaña'));
 
+  	     }else{
+  			   echo json_encode($data = array('error' => false, 'mensaje' =>'La Campaña se registro con exito.'));
 
-              $data = array(
-                      '"community_manager_id"'   => $this->session->userdata['perfil-actual']['id'],
-              			  '"nombre"' 		             => trim($this->input->post('nombre')),
-              			  '"objetivos"' 	           => trim($this->input->post('objetivo')),
-                      '"propositos"'             => trim($this->input->post('proposito')),
-              			  '"fecha_inicio"'           => trim($this->input->post('fechaIn')),
-              			  '"fecha_cierre"'           => trim($this->input->post('fechaFn')),
-                      '"_create"'                => date("Y/m/d H:m:s"),
-                      '"_update"'                => date("Y/m/d H:m:s")
-
-              					);
-
-              $this->Campania_Model->registrarCampania($data);
-
-              	if($data == false)
-        	  	{
-           
-              		echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar la Campaña'));
-
-    		  	}else{
-          			echo json_encode($data = array('error' => false, 'mensaje' =>'La Campaña se registro con exito.'));
-
-    			}
+	       }
 
      		
 
-     	}
-     	else{
-        
-        	echo  "<script type='text/javascript'>alert('Por favor inice session primero.');window.location.href='".base_url('index.php/Login/index')."'</script>";
-
-     	}
+     
     
+  }
+
+
+    public function deleteCampanias()
+    {
+
+      $id =  $this->input->post('id');
+
+      $data = $this->Campania_Model->eliminarCampania($id);
+
+      if($data){
+
+           echo json_encode($data = array('error' => false, 'mensaje' =>'Se elimino correctamente'));
+
+      }else{
+          echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo eliminar'));
+
+      }
+      
+
+
     }
 
 

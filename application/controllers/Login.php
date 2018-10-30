@@ -36,7 +36,6 @@ class Login extends CI_Controller {
 		$correo 	= $this->input->post("correo");
 		$contrasenia = $this->input->post("contrasenia");
 
-
 		$usuarioDB  = $this->Usuario_Model->verificarUsuario($correo, $contrasenia);
     echo json_encode($usuarioDB);
     if(!$usuarioDB)

@@ -59,7 +59,7 @@ function addCM()
 
 }
 
-function deleteCM (){
+function delCM (){
   
    
   $(".borrar").toggleClass("shake-little shake-constant");
@@ -69,6 +69,63 @@ function deleteCM (){
 
 
 }
+
+function delCM1() {
+
+  
+  var id   = $("#id").val();
+
+
+
+$.ajax({
+      type: 'POST',
+      url:  "../AgregarCM/deleteCM",
+      cache: false,
+      async: true,
+      dataType: 'json',
+      data: {
+       id:id
+
+      },
+      success: function(data)
+      {
+
+        console.log(data);
+
+        if(data == false){
+
+          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'No se elimino.',type: 'red',buttons: {
+                    Aceptar: function (e,data) {
+
+                      setTimeout(function(){window.location.reload(1);},1000);
+                    } 
+                }});
+   
+ 
+        }else{
+
+
+           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se elimino correctamente',type: 'green',buttons: {
+                    Aceptar: function (e,data) {
+
+                     
+                    } 
+                }});
+
+
+              
+
+        } 
+
+        
+      }
+    });
+
+
+
+}
+
+
 
 
 
