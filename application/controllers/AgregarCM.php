@@ -6,6 +6,7 @@ class AgregarCM extends CI_Controller {
 	function __construct()
     {
     	parent::__construct();
+        $this->load->model('Administrador_Model');
         $this->load->model('Dashboard_Model');
         $this->load->helper('form');
         date_default_timezone_set('America/Mexico_City');
@@ -40,8 +41,7 @@ class AgregarCM extends CI_Controller {
                     '"correo"'      =>	trim($this->input->post('correo')),
                     '"contrasenia"' =>	trim($this->input->post('contrasena')),
                     '"_create"'  		=>  date("Y/m/d H:m:s"),
-                    '"_update"'  		=>  date("Y/m/d H:m:s"),
-                    '"activo"'			=>  1
+                    '"_update"'  		=>  date("Y/m/d H:m:s")
 
            );
 
@@ -78,4 +78,29 @@ class AgregarCM extends CI_Controller {
     	 }
 
 	}
+
+
+
+  public function deleteCM()
+  {  
+
+      $id =  $this->input->post('id');
+
+      $data = $this->Administrador_Model->eliminarUsuario($id);
+
+      if($data){
+
+           echo json_encode($data = array('error' => false, 'mensaje' =>'Se elimino correctamente'));
+
+      }else{
+          echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo eliminar'));
+
+      }
+
+
+
+  }
+
+
+
 }

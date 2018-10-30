@@ -4,6 +4,7 @@ function addEmpresa()
 
     var razon     = $("#razon").val();
     var contacto  = $("#contacto").val();
+    var telefono  = $("#telefono").val();
     
 
 
@@ -15,7 +16,8 @@ function addEmpresa()
       dataType: 'json',
       data: {
         razon: razon,
-        contacto: contacto
+        contacto: contacto,
+        telefono:telefono
 
       },
       success: function(data)

@@ -151,6 +151,14 @@
                                                     </div>
                                                     <!-- Grid column -->
 
+                                                    <!-- Grid column -->
+                                                    <div class="col">
+                                                        <!-- Default input -->
+                                                        <label>Telefono</label>
+                                                        <input type="text" class="form-control" id="telefono">
+                                                    </div>
+                                                    <!-- Grid column -->
+
                                                     
                                                 </div>
                                                 <!-- Grid row -->

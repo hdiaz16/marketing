@@ -14,7 +14,7 @@
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
-            <button class="btn-floating btn-lg red " onclick="deleteCM();" >
+            <button class="btn-floating btn-lg red " onclick="delCM();" >
                 <i class="fa fa-minus"></i>
             </button>
                 
@@ -49,8 +49,8 @@
                                 <div class="card h-100">
                                     <div class="card-header white-text success-color color" id="">
 
-                                        <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
-                                       <?php echo $row->nombres." ".$row->apellidos ?>
+                                        <button   class="btn btn-sm  black float-right button" style="display: none;" id=" <?php echo $row->id ?> " onclick="delCM1();"><i class="fa fa-times " aria-hidden="true"  ></i></button> 
+                                       <?php echo $row->nombres." ".$row->apellidos?>
                                        
                                     </div>
                                     

@@ -37,7 +37,8 @@
             monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             weekdaysFull: ['Lunes', 'Martes', 'Miercoles','Jueves', 'Viernes','Sabado', 'Domingo'],
             weekdaysShort: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
-            formatSubmit: 'yyyy-mm-dd'
+            formatSubmit: 'yyyy-mm-dd',
+            format: 'yyyy-mm-dd'
 
 
         });
