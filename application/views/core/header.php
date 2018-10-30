@@ -43,11 +43,8 @@
             <li>
                 <ul class="collapsible collapsible-accordion">
 
-
-                   
-
-                    <?php if($this->session->userdata['perfil-actual']['rol_id'] == 1 || $this->session->userdata['perfil-actual']['rol_id'] == 2 ){ ?>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Administrador<i class="fa fa-angle-down rotate-icon"></i></a>
+                    
+                    <li //<?php echo $this->session->userdata['perfil-actual']['rol_id'] == 1 ? "hidden" : ""; ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Administrador<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="<?php echo base_url();?>index.php/AgregarCM/index" class="waves-effect">Agregar Community Managera</a>
@@ -59,45 +56,69 @@
                             </div>
                     </li>
 
-                    <?php } ?>
+                   
 
 
-                    <?php if($this->session->userdata['perfil-actual']['rol_id'] == 1 || $this->session->userdata['perfil-actual']['rol_id'] == 2 || $this->session->userdata['perfil-actual']['rol_id'] == 3 || $this->session->userdata['perfil-actual']['rol_id'] == 4 ){  ?>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Community Manager<i class="fa fa-angle-down rotate-icon"></i></a>
+                    
+                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 2 ? "" : "hidden" ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Community Manager<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Campanas/index"><i class="fa fa-th"></i>Agregar Campañas</a>  
+                                    <li>
+                                        <a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Campanas/index">
+                                            <i class="fa fa-th"></i>
+                                            Agregar Campañas
+                                        </a>  
                                     </li>
-                                    <li><a href="<?php echo base_url();?>index.php/AgregarUsuarios/index" class="waves-effect">Agregar Usuarios</a>
+
+                                    <li>
+                                        <a href="<?php echo base_url();?>index.php/AgregarUsuarios/index" class="waves-effect">
+                                            <i class="fa fa-users"></i>
+                                            Agregar Usuarios
+                                        </a>
                                     </li>
+
                                     <li><a href="../dashboards/v-2.html" class="waves-effect">Vista de Red Semantica</a>
                                     </li>
 
                                     <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Agenda/index"><i class="fa fa-book"></i> Agenda</a>
                                     </li>
 
-                                    <li><a href="../dashboards/v-2.html" class="waves-effect">Publicaciones</a>
+                                    <li>
+                                        <a href="../dashboards/v-2.html" class="waves-effect">
+                                            <i class="fa fa-share" aria-hidden="true"></i>
+                                            Publicaciones
+                                        </a>
                                     </li>
 
-                                    <li><a href="<?php echo base_url();?>index.php/AgregarTareas/index" class="waves-effect">Tareas</a>
+                                    <li>
+                                        <a href="<?php echo base_url();?>index.php/AgregarTareas/index" class="waves-effect">
+                                            <i class="fa fa-list" aria-hidden="true"></i>
+                                            Tareas
+                                        </a>
                                     </li>
 
 
                                     <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Dashboard/index"><i class="fa fa-tachometer"></i> Dashboard</a>
                                     </li>
+
+                                    <li>
+                                        <a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Chat/index">
+                                            <i class="fa fa-comments" aria-hidden="true"></i> 
+                                            Chat
+                                        </a>
+                                    </li>
                                     
                                 </ul>
                             </div>
                     </li>
-                <?php } ?>
+                
 
                    
 
-                   <?php if($this->session->userdata['perfil-actual']['rol_id'] == 3 || $this->session->userdata['perfil-actual']['rol_id'] == 4 ){ ?>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Generador de Contenido<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 3 ? "hidden" : "" ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Generador de Contenido<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="../dashboards/v-1.html" class="waves-effect">Crear Contenido</a>
+                                    <li><a href="<?php echo base_url();?>index.php/Contenido/index" class="waves-effect">Crear Contenido</a>
                                     </li>
                                     <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Agenda/index"><i class="fa fa-book"></i> Agenda</a>
                                     </li>
@@ -108,15 +129,15 @@
                                 </ul>
                             </div>
                     </li>
-                    <?php } ?>
+                
 
                   
                     
-                    <?php if($this->session->userdata['perfil-actual']['rol_id'] == 3 || $this->session->userdata['perfil-actual']['rol_id'] == 4 ){ ?>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Diseñador Grafico<i class="fa fa-angle-down rotate-icon"></i></a>
+                  
+                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 4 ? "hidden" : "" ?>><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Diseñador Grafico<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="../dashboards/v-1.html" class="waves-effect">Crear Diseños</a>
+                                    <li><a href="<?php echo base_url();?>index.php/Diseo/index" class="waves-effect">Crear Diseños</a>
                                     </li>
                                     <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Agenda/index"><i class="fa fa-book"></i> Agenda</a>
                                     </li>
@@ -127,11 +148,11 @@
                                 </ul>
                             </div>
                     </li>
-                    <?php  } ?>
+                
 
                      
-                     <?php if($this->session->userdata['perfil-actual']['rol_id'] == 5){ ?>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Cliente<i class="fa fa-angle-down rotate-icon"></i></a>
+                    
+                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 5  ? "hidden" : "" ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Cliente<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="../dashboards/v-1.html" class="waves-effect">Dashboard</a>
@@ -143,15 +164,7 @@
                                 </ul>
                             </div>
                     </li>
-                    <?php } ?>
-
-
-                     
-                    <?php if ($this->session->userdata['perfil-actual']['rol_id'] == 5){ ?>
-                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Chat/index"><i class="fa fa-comments"></i> Chat</a>
-                    </li>
-                    <?php } ?>
-                    
+                        
                 </ul>
             </li>
             <!--/. Side navigation links -->
@@ -174,7 +187,31 @@
             <!--Navbar links-->
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
 
-                <!-- Dropdown -->
+                <li class="nav-item dropdown notifications-nav">
+                    <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fa fa-user"></i>
+                        <span class="d-none d-md-inline-block">Perfiles</span>
+                    </a>
+                    
+
+                    <?php foreach ($this->session->userdata['perfiles'] as $row) {?>
+                       
+                    
+                        <div class="dropdown-menu dropdown-menu-right  " aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span ><?php echo $row['nombre'];?></span>
+                                <input type="hidden" id="rolID" value="<?php echo $row['rol_id'];?>" >
+                                <span class="float-right"></span>
+                            </a>
+                        </div>
+
+                    <?php  } ?>
+
+                </li>
+
+
                 <li class="nav-item dropdown notifications-nav">
                     <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -233,9 +270,20 @@
                             <!--Body-->
                             <div class="modal-body text-center mb-1">
 
-                                <h5 class="mt-1 mb-2"><?php echo $this->session->userdata['usuario']['nombres'] ?></h5>
+                                <h6 class="mt-1 mb-2 text-left">
+                                   <strong>Nombre: </strong> 
+                                   <?php echo $this->session->userdata['usuario']['nombres']?> 
+                                    <?php echo $this->session->userdata['usuario']['apellidos']?> 
+                                </h6>
 
-                                <h5 class="mt-1 mb-2"><?php echo $this->session->userdata['perfil-actual']['nombre'] ?></h5>
+                                <h6 class="mt-1 mb-2 text-left">
+                                     <strong>Correo: </strong> <?php echo $this->session->userdata['usuario']['correo']?> 
+                                </h6>
+
+                                <h6 class="mt-1 mb-2 text-left">
+                                    <strong>Perfil: </strong> 
+                                    <?php echo $this->session->userdata['perfil-actual']['nombre'] ?>     
+                                </h6>
                                
 
                                 
