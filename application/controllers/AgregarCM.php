@@ -15,7 +15,7 @@ class AgregarCM extends CI_Controller {
 	public function index()
 	{
 
-		if($this->session->estatus == TRUE){
+		
            
       $data['CM'] = $this->Dashboard_Model->selectCM();
 
@@ -25,10 +25,7 @@ class AgregarCM extends CI_Controller {
 			$this->load->view('agregarCM',$data);
 			$this->load->view('footer');
 
-		}else{
-
-			 echo  "<script type='text/javascript'>alert('Por favor inice session primero.');window.location.href='".base_url('index.php/Login/index')."'</script>";
-		}
+	
 	}
 
 

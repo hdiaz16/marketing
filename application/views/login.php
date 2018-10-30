@@ -110,7 +110,7 @@
 
                                         <!--Body-->
                                         <?php echo validation_errors(); ?>
-                                        <?php echo form_open('login/iniciarsesion'); ?>
+                                        <?php echo form_open('login/iniciarSesion'); ?>
                                         <div class="modal-body mb-1">
                                             
 
@@ -123,7 +123,7 @@
 
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-lock prefix"></i>
-                                                <input type="password" id="contrasena" name="contrasenia" class="form-control form-control-sm">
+                                                <input type="password" id="contrasenia" name="contrasenia" class="form-control form-control-sm">
                                                 <label for="form3">Contrasena</label>
                                             </div>
 
@@ -131,6 +131,7 @@
                                                 <button type="submit" class="btn btn-info" >Iniciar <i class="fa fa-sign-in ml-1"></i></button>
                                             </div>
                                         </div>
+                                    </form>
 
                                         <!--Footer-->
                                         <div class="modal-footer">

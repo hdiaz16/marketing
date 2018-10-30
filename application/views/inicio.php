@@ -6,7 +6,6 @@
 
             <?php echo $this->session->userdata['perfil-actual']['rol_id']; ?>
             <?php echo $this->session->userdata['perfil-actual']['nombre']; ?>
-            
 
 
         </section >
