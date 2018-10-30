@@ -34,7 +34,7 @@ CREATE TABLE empresa (
   razon_social text,
   logoURL text,
   sys_admin_id integer REFERENCES perfil ON DELETE CASCADE ON UPDATE CASCADE,
-  contacto text DEFAULT 'contacto@contacto.com',
+  contacto jsonb DEFAULT '{"nombre": "John Doe", "telefono": "000000000", "correo":"contacto@contacto.com"}',
   _create timestamp WITH TIME ZONE,
   _update timestamp WITH TIME ZONE,
   _erase timestamp WITH TIME ZONE
@@ -93,7 +93,7 @@ CREATE TABLE tarea(
   nodo_id integer,
   descripcion text,
   condiciones_aceptacion jsonb DEFAULT '[{"nombre": "", "estado": false},{"nombre": "conseguir # likes", "estado": false}]',
-  requisitos jsonb DEFAULT '["# impresiones en el primer dia", "imagen atractiva"]',
+  requisitos jsonb DEFAULT '[{"nombre": "", "estado": false},{"nombre": "conseguir # likes", "estado": false}]',
   _create timestamp WITH TIME ZONE,
   _update timestamp WITH TIME ZONE,
   _erase timestamp WITH TIME ZONE
@@ -119,6 +119,25 @@ CREATE TABLE publicacion(
   _create timestamp WITH TIME ZONE,
   _update timestamp WITH TIME ZONE,
   _erase timestamp WITH TIME ZONE
-  
+);
+
+CREATE TABLE comentariosTarea(
+  id serial PRIMARY KEY,
+  tarea_id integer REFERENCES tarea ON DELETE CASCADE ON UPDATE CASCADE,
+  escritor_id integer REFERENCES perfil ON DELETE CASCADE ON UPDATE CASCADE,
+  comentario text,
+  _create timestamp WITH TIME ZONE,
+  _update timestamp WITH TIME ZONE,
+  _erase timestamp WITH TIME ZONE
+);
+
+CREATE TABLE comentariosSubtarea(
+  id serial PRIMARY KEY,
+  tarea_id integer REFERENCES tarea ON DELETE CASCADE ON UPDATE CASCADE,
+  escritor_id integer REFERENCES perfil ON DELETE CASCADE ON UPDATE CASCADE,
+  comentario text,
+  _create timestamp WITH TIME ZONE,
+  _update timestamp WITH TIME ZONE,
+  _erase timestamp WITH TIME ZONE
 );
 
