@@ -37,52 +37,6 @@ class Login extends CI_Controller {
 		$contrasenia = $this->input->post("contrasenia");
 
 
-		$result  = $this->IniciarSesion_Model->iniciarSesion($correo, $contrasena);
-
-		$rol = $this->IniciarSesion_Model->rolUsuario($result->id);
-	
-
-      	if ($result != false) 
-        {
-
-
-
-			if($result->activo == 1){
-	             
-	           
-	           $sesion = array(
-	                    'id'            =>  $result->id,
-	                    'nombres' 		=> 	$result->nombres,
-	                    'apellidos' 	=> 	$result->apellidos,
-	                    'correo' 		=>	$result->correo,
-	                    'contrasena' 	=>	$result->contrasenia,
-	                    'rol'        	=>  $rol->rol_id,
-	                    'rol_nom'       =>  $rol->nombre,
-	                    'estatus'       =>  TRUE
-	           );
-
-	           $this->session->set_userdata($sesion);
-
-	           
-
-	          
-	           	if ($rol->rol_id != "") 
-            	{
-
-            		$result = array('error' => false, 'mensaje' => 'Bienvenido al Sistema de Marketing Digital');
-              		echo json_encode($result);
-
-
-
-
-
-            	}else{
-
-            		$result = array('error' => true, 'mensaje' => 'No existe el rol para el usuario');
-             		echo json_encode($result);
-            	}
->>>>>>> CM
-
 		$usuarioDB  = $this->Usuario_Model->verificarUsuario($correo, $contrasenia);
     echo json_encode($usuarioDB);
     if(!$usuarioDB)
@@ -111,7 +65,7 @@ class Login extends CI_Controller {
       $condicionesAceptacion = ['condicion 3','minimo 100 likes', 'menor numero de comentarios negativos'];
       $requisitos = ['imagen referente a una hamburguesa en el campo', 'requisito 2', 'requisito 3'];
       $contenido = ['link' => "link@link2", 'titulo' => "1publicacion2", 'fotourl' => ["url1.com", "url2.org"], 'videourl' => "video.com", 'contenido' => "contenido omg", 'fechapublicacion' => "2018-10-30 17:30"];
-      echo json_encode($this->Publicacion_Model->getPublicaciones(13,1, true));
+      echo json_encode($this->Administrador_Model->eliminarUsuario(13));
     }
 
 

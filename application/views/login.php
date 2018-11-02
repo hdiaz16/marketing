@@ -110,7 +110,7 @@
 
                                         <!--Body-->
                                         <?php echo validation_errors(); ?>
-                                        <?php echo form_open('login/iniciarSesion'); ?>
+                                        <?php echo form_open('login/iniciarsesion'); ?>
                                         <div class="modal-body mb-1">
                                             
 

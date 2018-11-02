@@ -7,6 +7,7 @@ class AgregarEmpresas extends CI_Controller {
     {
     	parent::__construct();
         $this->load->model('Dashboard_Model');
+        $this->load->model('Empresa_Model');
         $this->load->helper('form');
         date_default_timezone_set('America/Mexico_City');
     }
@@ -16,7 +17,7 @@ class AgregarEmpresas extends CI_Controller {
     public function index()
     {
 
-    	$data['Empresa'] = $this->Dashboard_Model->selectEmpresa();
+    	$data['Empresa'] = $this->Empresa_Model->getEmpresas($this->session->userdata['perfil-actual']['perfil_id']);
 
     	$this->load->view('core/header');
 		$this->load->view('agregarEmpresas', $data);

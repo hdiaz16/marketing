@@ -6,6 +6,34 @@ class Root_Model extends CI_Model {
     $this->load->database();
   }
 
+  public function getAdministradores($rootID, $all = TRUE){
+
+    $this->db->select('usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl, perfil._create, perfil._erase, perfil._update');
+    $this->db->from('usuario');
+    $this->db->join('perfil', 'usuario.id = perfil.usuario_id');
+    $this->db->where('perfil.sys_admin_id', $rootID);
+    $this->db->where('perfil.usuario_id !=', $rootID);
+    
+    if(is_null($all))
+      $this->db->where('perfil._erase', NULL);
+
+
+    return $this->db->get()->result_array();
+  }
+
+  public function getAdministrador($adminID, $eliminado = FALSE){
+    
+    $this->db->select('usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl');
+    $this->db->from('usuario');
+    $this->db->join('perfil', 'usuario.id = perfil.usuario_id');
+    $this->db->where('perfil.id', $adminID);
+    
+    if($eliminado)
+      $this->db->where('perfil._erase', NULL);
+
+    return $this->db->get()->result_array();
+  }
+
   public function registrarAdministrador($sysAdminID, $correo, $nombres = "John Doe", $contrasenia = "12345678"){
 
     $fechaRegistro = date('Y-m-d H:i');

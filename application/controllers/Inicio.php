@@ -9,7 +9,6 @@ class Inicio extends CI_Controller {
     if(!/**/$this->session->userdata('perfil-actual')/**/)
       redirect('login');
     else{
-
       $perfil = $this->session->userdata['perfil-actual'];
   		$this->load->view('core/header');
   		$this->load->view('inicio');

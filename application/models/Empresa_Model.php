@@ -8,20 +8,15 @@ class Empresa_Model extends CI_Model {
   
   public function getEmpresas($sysAdminID, $all = TRUE){
 
-    if($all){
-      $this->db->select('*');
-      $this->db->from('empresa');
-      $this->db->where('sys_admin_id', $sysAdminID);
-
-      return $this->db->get()->result_array();
-    }else{
-      $this->db->select('*');
-      $this->db->from('empresa');
-      $this->db->where('sys_admin_id', $sysAdminID);
+    $this->db->select('*');
+    $this->db->from('empresa');
+    $this->db->where('sys_admin_id', $sysAdminID);
+  
+    if(is_null($all))
       $this->db->where('_erase', NULL);
 
-      return $this->db->get()->result_array();
-    }
+
+    return $this->db->get()->result_array();
 
   }
 
