@@ -29,11 +29,16 @@
         <br>
 
 
-        <div class="md-form">
-		    <i class="fa fa-pencil prefix"></i>
-		    <textarea type="text" id="textareaPrefix" class="form-control md-textarea" rows="3"></textarea>
-		    <label for="textareaPrefix">Escriba el contenido de la publicación</label>
-		</div>
+         <div class="row">
+
+             <div class="col-6  offset-3">
+
+                <textarea name="" id="post_content"></textarea>
+            </div>
+
+         </div>
+
+        
  
  
     </main>

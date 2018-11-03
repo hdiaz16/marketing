@@ -3,7 +3,7 @@
 
 <!-- SCRIPTS -->
     <!-- JQuery -->
-    <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
+    
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
@@ -14,12 +14,17 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/header.js"></script>
     <!--Custom scripts-->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/vendor/datatables/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/vendor/tinymce/tinymce.min.js"></script>
+
     
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
 
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+
+    
 
     <script>
         // SideNav Initialization
@@ -46,6 +51,7 @@
         $(document).ready(function () {
             $('.mdb-select').material_select();
         });
+        tinymce.init({ selector:'#post_content', menubar: false, height : "294" });
 
 
     </script>

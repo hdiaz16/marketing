@@ -46,7 +46,7 @@
                                     <div class="card-header white-text success-color color" >
 
                                         <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
-                                       <?php echo $row->razon_social?>
+                                       <?php echo $row->razon_social ?>
                                        
                                     </div>
                                     

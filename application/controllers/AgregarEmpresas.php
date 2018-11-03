@@ -7,6 +7,8 @@ class AgregarEmpresas extends CI_Controller {
     {
     	parent::__construct();
         $this->load->model('Dashboard_Model');
+        $this->load->model('Empresa_Model');
+
         $this->load->helper('form');
         date_default_timezone_set('America/Mexico_City');
     }
@@ -52,7 +54,45 @@ class AgregarEmpresas extends CI_Controller {
 
 	}
 
+
+    public function deleteEmpresa()
+    {
+
+      $id =  $this->input->post('id');
+
+      $data = $this->Empresa_Model->eliminarEmpresa($id);
+
+      if($data){
+
+           echo json_encode($data = array('error' => false, 'mensaje' =>'Se elimino correctamente'));
+
+      }else{
+          echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo eliminar'));
+
+      }
+      
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
+
+
+   
 
 ?>    
