@@ -2,7 +2,7 @@
     <main>
 
         <section class="mt-2">
-            <h3 class="text-center"><strong>Comunnity Manager </strong></h3>
+            <h3 class="text-center"><strong>Agregar Usuarios </strong></h3>
 
             <section class="text-right">
 
@@ -49,7 +49,7 @@
                                 <div class="card h-100">
                                     <div class="card-header white-text success-color color" id="">
 
-                                        <button   class="btn btn-sm  black float-right button" style="display: none;" id=" <?php echo $row->id ?> " onclick="delCM1();"><i class="fa fa-times " aria-hidden="true"  ></i></button> 
+                                        <button   class="btn btn-sm  black float-right button" style="display: none;"  onclick="delCM1( <?php echo $row->id ?>);"><i class="fa fa-times " aria-hidden="true"  ></i></button> 
                                        <?php echo $row->nombres." ".$row->apellidos?>
                                        
                                     </div>

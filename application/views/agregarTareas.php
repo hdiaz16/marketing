@@ -36,7 +36,7 @@
                 <!--Grid row-->
                 <div class="row">
 
-                    <?php foreach ($Empresa as $row) { ?>
+                    <?php foreach ($tarea as $row) { ?>
 
                                 <!--Grid column-->
                             <div class="col-xl-3 col-md-6 mb-4 borrar">

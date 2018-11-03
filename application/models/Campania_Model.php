@@ -70,9 +70,15 @@ class Campania_Model extends CI_Model{
 
   public function editarCampania($campaniaID, $nombre, $objetivos, $propositos, $fechaInicio, $fechaCierre){
     $fechaEdicion = date('Y-m-d H:i');
-    $objetivos = json_encode($objetivos);
-    $propositos = json_encode($propositos);
-    $data = ['nombre' => $nombre, 'objetivos' => $objetivos, 'propositos' => $propositos,'fecha_inicio' => $fechaInicio, 'fecha_cierre' => $fechaCierre];
+    $objetivos    = json_encode($objetivos);
+    $propositos   = json_encode($propositos);
+    $data = [
+      'nombre'        => $nombre, 
+      'objetivos'     => $objetivos, 
+      'propositos'    => $propositos,
+      'fecha_inicio'  => $fechaInicio, 
+      'fecha_cierre'  => $fechaCierre
+    ];
 
     try {
       $this->db->where('id', $campaniaID);

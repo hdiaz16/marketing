@@ -1,3 +1,7 @@
+
+
+
+
 function addCampanas()
  {
 
@@ -79,12 +83,12 @@ function delCam (){
 
 
 
+
 function delCampanas(id) {
 
   
  id = id;
 
- alert(id);
 
 
 
@@ -135,6 +139,8 @@ function delCampanas(id) {
         });
 
 }
+
+
 
 
 

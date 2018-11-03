@@ -17,6 +17,12 @@
 
     <link rel="stylesheet" type="text/css" href="https://csshake.surge.sh/csshake.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+    <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
+
     <!-- Your custom styles (optional) -->
     <style>
 
@@ -86,7 +92,7 @@
                                         </a>
                                     </li>
 
-                                    <li><a href="../dashboards/v-2.html" class="waves-effect">Vista de Red Semantica</a>
+                                    <li><a href="<?php echo base_url();?>index.php/RedSemantica/index"  class="waves-effect">Vista de Red Semantica</a>
                                     </li>
 
                                     <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Agenda/index"><i class="fa fa-book"></i> Agenda</a>

@@ -53,7 +53,45 @@ class AgregarEmpresas extends CI_Controller {
 
 	}
 
+
+    public function deleteEmpresa()
+    {
+
+      $id =  $this->input->post('id');
+
+      $data = $this->Empresa_Model->eliminarEmpresa($id);
+
+      if($data){
+
+           echo json_encode($data = array('error' => false, 'mensaje' =>'Se elimino correctamente'));
+
+      }else{
+          echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo eliminar'));
+
+      }
+      
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
+
+
+   
 
 ?>    

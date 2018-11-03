@@ -79,6 +79,38 @@ class Campanas extends CI_Controller {
     }
 
 
+     public function editarCam()
+    {
+
+      
+
+      $data = $this->Campania_Model->editarCampania(
+        trim($this->input->post('idCamp')),
+        trim($this->input->post('nombre')),
+        trim($this->input->post('objetivo')), 
+        trim($this->input->post('proposito')),
+        trim($this->input->post('fechaIn')),
+        trim($this->input->post('fechaFn')));
+
+
+
+      if($data){
+
+           echo json_encode($data = array('error' => false, 'mensaje' =>'Se edito correctamente'));
+
+      }else{
+
+          echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo edito'));
+
+
+
+      }
+      
+
+
+    }
+
+
 
 
 

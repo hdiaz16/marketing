@@ -70,10 +70,10 @@ function delCM (){
 
 }
 
-function delCM1() {
+function delCM1(id) {
 
   
-  var id   = $("#id").val();
+  var id = id;
 
 
 
@@ -107,7 +107,7 @@ $.ajax({
 
            $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se elimino correctamente',type: 'green',buttons: {
                     Aceptar: function (e,data) {
-
+                         setTimeout(function(){window.location.reload(1);},1000);
                      
                     } 
                 }});
