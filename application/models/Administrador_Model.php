@@ -6,9 +6,9 @@ class Administrador_Model extends CI_Model{
     $this->load->database();
   }
 
-  public function registrarUsuario($adminID, $correo, $rolID, $nombres = "John Doe",$contrasenia = "12345678"){
+  public function registrarUsuario($adminID, $correo, $rolID, $nombres = "John Doe",$contrasenia = "12345678", $apellidos){
     $fechaRegistro = date('Y-m-d H:i');
-    $data = ['nombres' => $nombres, 'correo' => $correo, 'contrasenia' => $contrasenia, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
+    $data = ['nombres' => $nombres, 'correo' => $correo, 'contrasenia' => $contrasenia, '_create' => $fechaRegistro, '_update' => $fechaRegistro, 'apellidos' => $apellidos];
 
     try {
       $this->db->insert('usuario', $data);
@@ -45,6 +45,82 @@ class Administrador_Model extends CI_Model{
     return $this->db->get()->result_array();
 
   }
+
+
+  public function getUsuarios($userID, $all = TRUE){
+
+    
+    $this->db->select('usuario.id as usuario_id, perfil.id as perfil_id, rol.id as rol_id, rol.nombre as nombre_rol, usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl, perfil._create, perfil._erase, perfil._update');
+    $this->db->from('usuario');
+    $this->db->join('perfil', 'usuario.id = perfil.usuario_id');
+    $this->db->join('rol', 'perfil.rol_id = rol.id');
+    $this->db->where('perfil.sys_admin_id', $userID);
+    $this->db->where('perfil.usuario_id !=', $userID);
+    
+    if(is_null($all))
+      $this->db->where('perfil._erase', NULL);
+
+
+    return $this->db->get()->result_array();
+  }
+
+  
+
+  public function roles()
+  {
+    return $this->db->where('id !=', 1)->get('rol')->result_array();
+     
+  }
+
+  public function eliminarUsuario($perfilID){
+    $fechaEliminacion = date('Y-m-d H:i');
+    $data = ['_erase' => $fechaEliminacion, '_update' => $fechaEliminacion];
+
+    try {
+      $this->db->where('id', $perfilID)
+      ->update('perfil', $data);
+
+      $this->db->select('*')
+      ->from('perfil')
+      ->where('id', $perfilID);
+
+      return $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "update/delete eliminarUsuario: ".$e);
+      return false;
+      
+    }
+  }
+
+  public function asignarCampaniaEmpleado( $empleadoID, $campaniaID){
+
+    $fechaRegistro = date('Y-m-d H:i');
+    $data = ['campania_id' => $campaniaID, 'empleado_id' => $empleadoID, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
+
+    try {
+      $this->db->insert('campania_empleados', $data);
+
+      $this->db->select('*');
+      $this->db->from('campania_empleados');
+      $this->db->where('empleado_id', $empleadoID);
+
+      return $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "insert asignarCampaniaEmpleado: ".$e);
+      return false;
+      
+      
+    }
+  }
+
+
+
+
+
+  
+
+
+
 
   
 }

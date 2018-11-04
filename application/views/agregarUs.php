@@ -2,7 +2,7 @@
     <main>
 
         <section class="mt-2">
-            <h3 class="text-center"><strong>Agregar Usuarios </strong></h3>
+            <h3 class="text-center"><strong>Asignar Campaña a Usuario</strong></h3>
 
             <section class="text-right">
 
@@ -36,7 +36,7 @@
                 <!--Grid row-->
                 <div class="row">
 
-                    <?php foreach ($Empresa as $row) { ?>
+                    <?php foreach ($userCamania as $row) { ?>
 
                                 <!--Grid column-->
                             <div class="col-xl-3 col-md-6 mb-4 borrar">
@@ -46,23 +46,15 @@
                                     <div class="card-header white-text success-color color" >
 
                                         <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
-                                       <?php echo $row->razon_social ?>
+                                       <?php echo $row['nombre']?>
                                        
                                     </div>
                                     
 
                                     <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
-                                    <p class="ml-3 mt-3 font-small dark-grey-text"> <?php echo $row->contacto?></p>
+                                    <p class="ml-3 mt-3 font-small dark-grey-text"> </p>
                                     <!--/.Card Data-->
 
-                                    <!--Card content-->
-                                    <div class="card-body">
-                                        
-                                        <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo $row->_create?></p>
-                                
-                                    </div>
-                                    <!--/.Card content-->
 
                                 </div>
                                 <!--/.Panel-->
@@ -116,7 +108,7 @@
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs tabs-2 green " role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab"  role="tab"><i class="fa fa-user mr-1"></i> Agregar Usuario</a>
+                                        <a class="nav-link active" data-toggle="tab"  role="tab"><i class="fa fa-user mr-1"></i> Asignar Campaña a Usuario</a>
                                     </li>
                                     
                                 </ul>
@@ -136,74 +128,52 @@
                                                
                                                 <!-- Grid row -->
                                                 <div class="row">
-                                                    <!-- Grid column -->
-                                                     <div class="col-4 md-form">
-                                                        <!-- Default input -->
-                                                        <input  type="text"  class="form-control nom">
-                                                        <label for="form3" >Nombres</label>
-                                                       
-                                                    </div>
-                                                    <!-- Grid column -->
 
-                                                    <!-- Grid column -->
-                                                     <div class="col-4 md-form">
-                                                        <!-- Default input -->
-                                                        <input  type="text"  class="form-control ape">
-                                                        <label for="form3" >Apellidos</label>
-                                                       
-                                                    </div>
-                                                    <!-- Grid column -->
+                                                     <!--Grid column-->
+                                                    <div class="col-12">
+                                                        
 
-                                                    <!-- Grid column -->
-                                                    <div class="col-4 md-form">
-                                                        <!-- Default input -->
-                                                        <input  type="text"  class="form-control ape">
-                                                        <label for="form3" >Correo</label>
-                                                       
-                                                    </div>
-                                                    <!-- Grid column -->
+                                                        <!--Name-->
+                                                        <select class="mdb-select"  id="selUser">
+                                                            <option value="" disabled selected>Seleccionar Usuario</option>
+                                                             
 
-                                                     <!-- Grid column -->
-                                                    <div class="col-4 md-form">
-                                                        <!-- Default input -->
-                                                        <input  type="password"  class="form-control ape">
-                                                        <label for="form3" >Contraseña</label>
-                                                       
-                                                    </div>
-                                                    <!-- Grid column -->
 
-                                                    <!-- Grid column -->
-                                                    <div class="col-4 md-form">
-                                                         <!--Name-->
-                                                        <select class="mdb-select" multiple>
-                                                            <option value="" disabled selected>Basic select</option>
-                                                            <option value="1">USA</option>
-                                                            <option value="2">Germany</option>
-                                                            <option value="3">France</option>
-                                                            <option value="3">Poland</option>
-                                                            <option value="3">Japan</option>
+                                                            <?php foreach ($user as $row) {
+
+                                                                echo '<option id='.$row['perfil_id'].' value='.$row['perfil_id'].'>'.$row['nombres'].' '.$row['apellidos'].' -- '.$row['nombre_rol'].'</option>';
+                                                            } ?>
+                                                            
                                                         </select>
+                                                        <button  type="button" class="btn-save btn btn-primary btn-sm">Guardar</button>
 
-                                                       
                                                     </div>
-                                                    <!-- Grid column -->
+                                                    <!--Grid column-->
+
+                                                     <!--Grid column-->
+                                                    <div class="col-12">
+
+                                                        <!--Name-->
+                                                        <select class="mdb-select"  id="selCamp">
+                                                            <option value="" disabled selected>Seleccionar Campaña</option>
+                                                            <?php foreach ($campanas as $row) {
+
+                                                                echo '<option value='.$row['id'].'>'.$row['nombre'].'</option>';
+                                                            } ?>
+                                                            
+                                                        </select>
+                                                        <button  type="button" class="btn-save btn btn-primary btn-sm">Guardar</button>
+
+                                                    </div>
+                                                    <!--Grid column-->
+                                                    
+                                                    
+
+                                                    
 
                                                     
                                                 </div>
                                                 <!-- Grid row -->
-
-                                               
-                                                
-                                              
-
-                                                <div class="row">
-                                                   <!-- Grid column -->
-                                                   
-
-                                                    
-                                                </div>
-                                                <!-- Grid row -->
-
 
                                             </form>
 
@@ -228,4 +198,4 @@
                     </div>
                 </div>
                 <!--Modal: Login / Register Form Demo-->
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/Empresa.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/campania-usuario.js"></script>

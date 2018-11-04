@@ -6,13 +6,14 @@ function addCM()
     var apellido  = $("#apellido").val();
     var correo    = $("#correo").val();
     var contrasena    = $("#contrasena").val();
+    var rol        = $("#selRol").val();
 
+    console.log(rol);
     
-
 
     $.ajax({
       type: 'POST',
-      url:  "../AgregarCM/addCM",
+      url:  "../AgregarCM/registrarUsuario",
       cache: false,
       async: true,
       dataType: 'json',
@@ -20,7 +21,8 @@ function addCM()
         nombre: nombre,
         apellido: apellido,
         correo:correo,
-        contrasena:contrasena
+        contrasena:contrasena,
+        rol:rol
 
       },
       success: function(data)
@@ -43,7 +45,7 @@ function addCM()
 
            $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Registro con exito',type: 'green',buttons: {
                     Aceptar: function (e,data) {
-
+                      setTimeout(function(){window.location.reload(1);},1000);
                      
                     } 
                 }});

@@ -51,6 +51,7 @@
         $(document).ready(function () {
             $('.mdb-select').material_select();
         });
+        
         tinymce.init({ selector:'#post_content', menubar: false, height : "294" });
 
 

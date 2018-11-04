@@ -16,11 +16,11 @@ class AgregarCM extends CI_Controller {
 	public function index()
 	{
 
-		
+		 
            
-      $data['CM'] = $this->Dashboard_Model->selectCM();
+      $data['CM'] = $this->Administrador_Model->getUsuarios($this->session->userdata('perfil-actual')['perfil_id'] );
 
-
+      $data['rol'] = $this->Administrador_Model->roles();
 
 			$this->load->view('core/header');
 			$this->load->view('agregarCM',$data);
@@ -30,36 +30,22 @@ class AgregarCM extends CI_Controller {
 	}
 
 
-	public function addCM()
+	public function registrarUsuario()
 	{
 		
 		   
-           $data = array(
-                     
-                    '"nombres"' 		=> 	trim($this->input->post('nombre')),
-                    '"apellidos"'   =>	trim($this->input->post('apellido')),
-                    '"correo"'      =>	trim($this->input->post('correo')),
-                    '"contrasenia"' =>	trim($this->input->post('contrasena')),
-                    '"_create"'  		=>  date("Y/m/d H:m:s"),
-                    '"_update"'  		=>  date("Y/m/d H:m:s")
 
-           );
+      $data = $this->Administrador_Model->registrarUsuario(
+        trim($this->session->userdata('perfil-actual')['perfil_id']),
+        trim($this->input->post('correo')),
+        $this->input->post('rol'),
+        trim($this->input->post('nombre')),
+        trim($this->input->post('contrasena')),
+        trim($this->input->post('apellido'))
 
-           $dato = $this->Dashboard_Model->addCM($data);
+      );
 
 
-           $data1 = array(
-                     
-                    '"usuario_id"'    => $dato ,
-                    '"rol_id"'        =>  2,
-                    '"sys_admin_id"'  =>  1,
-                    '"_create"'       =>  date("Y/m/d H:m:s"),
-                    '"_update"'       =>  date("Y/m/d H:m:s"),
-                    
-
-           );
-
-           $this->Dashboard_Model->addCMPerfil($data1);
 
 
 
