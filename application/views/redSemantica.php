@@ -134,13 +134,13 @@
 	var info = document.getElementById('info');
     // create an array with nodes
     var nodes = [
-        {id: 1, label: 'Padre 1',color: '#f10000',title: info,  shape: 'circle' },
+        {id: 1, label: 'Padre 1',color: '#ADCCC7',title: info,  shape: 'circle' },
 
-        {id: 2, label: 'Hijo 1',color: '#00c90f', title: info,shape: 'circle'},
+        {id: 2, label: 'Hijo 1',color: '#144C52', title: info,shape: 'circle'},
 
-        {id: 3, label: 'Nieto 1',color: '#ffff0f', title: info,shape: 'circle'},
+        {id: 3, label: 'Nieto 1',color: '#d34c26', title: info,shape: 'circle'},
 
-        {id: 4, label: 'Nieto 2',color: '#ffff0f',title: info,shape: 'circle'},
+        {id: 4, label: 'Nieto 2',color: '#d34c26',title: info,shape: 'circle'},
 
 
 

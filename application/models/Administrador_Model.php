@@ -6,9 +6,9 @@ class Administrador_Model extends CI_Model{
     $this->load->database();
   }
 
-  public function registrarUsuario($adminID, $correo, $rolID, $nombres = "John Doe",$contrasenia = "12345678"){
+  public function registrarUsuario($adminID, $correo, $rolID, $nombres = "John Doe",$contrasenia = "12345678", $apellidos){
     $fechaRegistro = date('Y-m-d H:i');
-    $data = ['nombres' => $nombres, 'correo' => $correo, 'contrasenia' => $contrasenia, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
+    $data = ['nombres' => $nombres, 'correo' => $correo, 'contrasenia' => $contrasenia, '_create' => $fechaRegistro, '_update' => $fechaRegistro, 'apellidos' => $apellidos];
 
     try {
       $this->db->insert('usuario', $data);
@@ -46,6 +46,7 @@ class Administrador_Model extends CI_Model{
 
   }
 
+<<<<<<< 1663e40ac4e9f2c58aa5fed81360355f07920962
    public function editarUsuario($perfilID, $rolID, $nombres, $apellidos, $correo, $contrasenia, $imagenURL){
 
     $fechaEdicion = date('Y-m-d H:i');
@@ -75,6 +76,32 @@ class Administrador_Model extends CI_Model{
       return false;
     }
 
+=======
+
+  public function getUsuarios($userID, $all = TRUE){
+
+    
+    $this->db->select('usuario.id as usuario_id, perfil.id as perfil_id, rol.id as rol_id, rol.nombre as nombre_rol, usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl, perfil._create, perfil._erase, perfil._update');
+    $this->db->from('usuario');
+    $this->db->join('perfil', 'usuario.id = perfil.usuario_id');
+    $this->db->join('rol', 'perfil.rol_id = rol.id');
+    $this->db->where('perfil.sys_admin_id', $userID);
+    $this->db->where('perfil.usuario_id !=', $userID);
+    
+    if(is_null($all))
+      $this->db->where('perfil._erase', NULL);
+
+
+    return $this->db->get()->result_array();
+  }
+
+  
+
+  public function roles()
+  {
+    return $this->db->where('id !=', 1)->get('rol')->result_array();
+     
+>>>>>>> vistas CM
   }
 
   public function eliminarUsuario($perfilID){
@@ -92,11 +119,11 @@ class Administrador_Model extends CI_Model{
       return $this->db->get()->result_array();
     } catch (Exception $e) {
       log_message('error', "update/delete eliminarUsuario: ".$e);
-      return false;
+      return false;      
     }
   }
 
-  public function asignarCampaniaEmpleado($campaniaID, $empleadoID){
+  public function asignarCampaniaEmpleado( $empleadoID, $campaniaID){
 
     $fechaRegistro = date('Y-m-d H:i');
     $data = ['campania_id' => $campaniaID, 'empleado_id' => $empleadoID, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
@@ -117,6 +144,7 @@ class Administrador_Model extends CI_Model{
     }
   }
 
+<<<<<<< 1663e40ac4e9f2c58aa5fed81360355f07920962
   public function getEmpleados($communityManagerID, $all = NULL){
 
     $this->db->select('usuario.nombres, usuario.apellidos, campania.nombre');
@@ -142,6 +170,17 @@ class Administrador_Model extends CI_Model{
   }
   
 
+=======
+
+
+
+
+  
+
+
+
+
+>>>>>>> vistas CM
   
 }
 

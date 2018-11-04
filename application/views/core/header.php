@@ -64,7 +64,7 @@
                     <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 2 ? "" : "hidden"; ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Administrador<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="<?php echo base_url();?>index.php/AgregarCM/index" class="waves-effect">Agregar Community Managers</a>
+                                    <li><a href="<?php echo base_url();?>index.php/AgregarCM/index" class="waves-effect">Agregar Usuarios a Campañas</a>
                                     </li>
 
                                 </ul>

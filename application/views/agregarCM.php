@@ -35,35 +35,34 @@
 
                 <!--Grid row-->
                 <div class="row">
-
-                    <?php if($CM != ""){ ?>
+     
 
                     <?php foreach ($CM as $row) { ?>
-
-
+                        <?php if ($row['_erase'] == null) { ?>
 
                                 <!--Grid column-->
-                            <div class="col-xl-3 col-md-6 mb-4 borrar" id ="" >
+                            <div class="col-xl-3 col-md-6 mb-4 borrar">
 
                                 <!--Panel-->
                                 <div class="card h-100">
-                                    <div class="card-header white-text success-color color" id="">
+                                    <div class="card-header white-text success-color color" >
 
-                                        <button   class="btn btn-sm  black float-right button" style="display: none;"  onclick="delCM1( <?php echo $row->id ?>);"><i class="fa fa-times " aria-hidden="true"  ></i></button> 
-                                       <?php echo $row->nombres." ".$row->apellidos?>
+                                        <button onclick="delCM1( <?php echo $row['perfil_id']; ?> )"   class="btn btn-sm  black float-right button" style="display: none;"  > <i class="fa fa-times " aria-hidden="true"  ></i></button>
+
+                                       <?php echo $row['nombres']." ".$row['apellidos']?>
                                        
                                     </div>
                                     
 
                                     <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
-                                    <p class="ml-3 mt-3 font-small dark-grey-text"> <?php echo $row->correo?></p>
+                                    <p class="ml-3 mt-3 font-small dark-grey-text"> <?php echo $row['correo']?></p>
                                     <!--/.Card Data-->
 
                                     <!--Card content-->
                                     <div class="card-body">
                                         
                                         <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Inicio: <?php echo $row->_create?></p>
+                                        <p class="font-small grey-text">Fecha de Inicio: <?php echo $row['_create']?></p>
                                 
                                     </div>
                                     <!--/.Card content-->
@@ -76,46 +75,8 @@
 
                         
                    <?php  }  ?>
-                    <?php  }else{  ?>
-
-               <div class="col-xl-3 col-md-6 mb-4 borrar" id ="" >
-
-                                <!--Panel-->
-                                <div class="card h-100" hidden="true">
-                                    <div class="card-header white-text success-color color" id="">
-
-                                        <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
-                                       
-                                       
-                                    </div>
-                                    
-
-                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
-                                    <p class="ml-3 mt-3 font-small dark-grey-text"></p>
-                                    <!--/.Card Data-->
-
-                                    <!--Card content-->
-                                    <div class="card-body">
-                                        
-                                        <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Inicio: ></p>
-                                
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Panel-->
-
-                            </div>
-                            <!--Grid column-->
-
-           <?php } ?>
-
-                   
-                   
-
-                   
-   
+                   <?php  }  ?>
+                    
                 </div>
                 <!--Grid row-->
 
@@ -154,7 +115,7 @@
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs tabs-2 green " role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab"  role="tab"><i class="fa fa-user mr-1"></i> Agregar Comunnity Manager</a>
+                                        <a class="nav-link active" data-toggle="tab"  role="tab"><i class="fa fa-user mr-1"></i> Agregar Usuarios</a>
                                     </li>
                                     
                                 </ul>
@@ -174,18 +135,19 @@
                                                 <!-- Grid row -->
                                                 <div class="row">
                                                     <!-- Grid column -->
-                                                    <div class="col">
-                                                        <!-- Default input -->
-                                                        <label>Nombre</label>
-                                                        <input type="text" class="form-control" id="nombre">
+
+                                                    <div class="md-form col-6">
+                                                         <label for="form1" class="">Nombre</label>
+                                                        <input type="text" id="nombre" class="form-control">
                                                     </div>
                                                     <!-- Grid column -->
 
                                                     <!-- Grid column -->
-                                                    <div class="col">
-                                                        <!-- Default input -->
-                                                        <label>Apellido</label>
-                                                        <input type="text" class="form-control" id="apellido">
+                                                    
+
+                                                    <div class="md-form col-6">
+                                                         <label for="form1" class="">Apellido</label>
+                                                        <input type="text" id="apellido" class="form-control">
                                                     </div>
                                                     <!-- Grid column -->
 
@@ -196,24 +158,46 @@
 
                                                 <div class="row">
                                                    <!-- Grid column -->
-                                                    <div class="col-md-6">
-                                                        <!-- Default input -->
-                                                        <label>Correo</label>
-                                                        <input type="email" class="form-control" id="correo">
+                                                    <div class="md-form col-6">
+                                                         <label for="form1" class="">Correo</label>
+                                                        <input type="email" id="correo" class="form-control">
                                                     </div>
                                                     <!-- Grid column -->
 
                                                     <!-- Grid column -->
-                                                    <div class="col-md-6">
-                                                        <!-- Default input -->
-                                                        <label>Contraseña</label>
-                                                        <input type="password" class="form-control" id="contrasena">
+                                                    <div class="md-form col-6">
+                                                         <label for="form1" class="">Contraseña</label>
+                                                        <input type="password" id="contrasena" class="form-control">
                                                     </div>
                                                     <!-- Grid column -->
-
-                                                    
+ 
                                                 </div>
                                                 <!-- Grid row -->
+                                                  
+                                                  <br>
+                     
+                                                <div class="row">
+
+
+                                                    <!--Grid column-->
+                                                    <div class="col-12">
+
+                                                        <!--Name-->
+                                                        <select class="mdb-select"  id="selRol">
+                                                            <option value="" disabled selected>Seleccionar Rol</option>
+                                                            <?php foreach ($rol as $row) {
+
+                                                                echo '<option value='.$row['id'].'>'.$row['nombre'].'</option>';
+                                                            } ?>
+                                                            
+                                                        </select>
+                                                        <button  type="button" class="btn-save btn btn-primary btn-sm">Guardar</button>
+
+                                                    </div>
+                                                    <!--Grid column-->
+                                                    
+
+                                                </div>
 
 
                                             </form>
