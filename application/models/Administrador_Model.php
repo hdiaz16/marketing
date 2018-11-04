@@ -93,6 +93,26 @@ class Administrador_Model extends CI_Model{
     } catch (Exception $e) {
       log_message('error', "update/delete eliminarUsuario: ".$e);
       return false;
+    }
+  }
+
+  public function asignarCampaniaEmpleado($campaniaID, $empleadoID){
+
+    $fechaRegistro = date('Y-m-d H:i');
+    $data = ['campania_id' => $campaniaID, 'empleado_id' => $empleadoID, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
+
+    try {
+      $this->db->insert('campania_empleados', $data);
+
+      $this->db->select('*');
+      $this->db->from('campania_empleados');
+      $this->db->where('empleado_id', $empleadoID);
+
+      return $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "insert asignarCampaniaEmpleado: ".$e);
+      return false;
+      
       
     }
   }

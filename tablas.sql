@@ -71,6 +71,15 @@ CREATE TABLE campania (
   _erase timestamp WITH TIME ZONE
 );
 
+CREATE TABLE campania_empleados(
+  campania_id integer REFERENCES campania ON DELETE CASCADE ON UPDATE CASCADE,
+  empleado_id integer REFERENCES perfil ON DELETE CASCADE ON UPDATE CASCADE,
+  _visible boolean DEFAULT true,
+  _create timestamp WITH TIME ZONE,
+  _update timestamp WITH TIME ZONE,
+  _erase timestamp WITH TIME ZONE
+);
+
 --entidad red semantica
 CREATE TABLE red_semantica(
   id serial PRIMARY KEY,
