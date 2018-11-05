@@ -113,6 +113,30 @@ class Administrador_Model extends CI_Model{
     }
   }
 
+  public function getEmpleados($communityManagerID, $all = NULL){
+
+    $this->db->select('usuario.nombres, usuario.apellidos, campania.nombre');
+    $this->db->from('usuario');
+    $this->db->join('perfil', "usuario.id = perfil.usuario_id");
+    $this->db->join('campania_empleados', "campania_empleados.empleado_id = perfil.id");
+    $this->db->join('campania', "campania_empleados.campania_id = campania.id");
+    $this->db->where('campania.community_manager_id', $communityManagerID);
+
+    if(!is_null($all)){
+      $this->db->where('perfil._erase', NULL);
+    }
+
+    try {
+      $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "get getEmpleados: ".$e);
+      return false;
+      
+    }
+
+
+  }
+
 
 
 

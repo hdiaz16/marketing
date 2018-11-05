@@ -18,7 +18,7 @@ class AgregarUsuarios extends CI_Controller {
 
         $data['campanas'] = $this->Campania_Model->getCampanias($this->session->userdata('perfil-actual')['perfil_id'] );
 
-        $data['user'] = $this->Administrador_Model->getUsuarios($this->session->userdata('perfil-actual')['perfil_id'] );
+        $data['user'] = $this->Administrador_Model->getUsuarios($this->session->userdata('perfil-actual')['sys_admin_id'] );
 
         $data['userCamania'] = $this->Administrador_Model->getEmpleados($this->session->userdata('perfil-actual')['perfil_id'] );
     	

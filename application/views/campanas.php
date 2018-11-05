@@ -38,8 +38,6 @@
                 <!--Grid row-->
                 <div class="row">
 
-                
-
                     <?php foreach ($campanas as $row) { ?>
 
                         <?php if ($row['_erase'] == null) {?>
@@ -197,7 +195,7 @@
 
                                         <div class="modal-footer">
                                                 
-                                                <button class="btn-floating btn-lg success-color" onclick="editarCamp(<?php echo $row['id'] ?>);">
+                                                <button class="btn-floating btn-lg success-color" onclick="addCampanas()">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                         </div>

@@ -35,8 +35,15 @@
 
                 <!--Grid row-->
                 <div class="row">
+                    
+
+            <?php echo json_encode($userCamania) ?>
 
                     <?php foreach ($userCamania as $row) { ?>
+
+
+                        <?php if ($row['_erase'] == null) {?>
+
 
                                 <!--Grid column-->
                             <div class="col-xl-3 col-md-6 mb-4 borrar">
@@ -52,7 +59,8 @@
                                     
 
                                     <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
-                                    <p class="ml-3 mt-3 font-small dark-grey-text"> </p>
+
+                                    <p class="ml-3 mt-3 font-small dark-grey-text"><?php echo $row['nombres'] ?> <?php echo $row['apellidos']?> </p>
                                     <!--/.Card Data-->
 
 
@@ -63,6 +71,7 @@
                             <!--Grid column-->
 
                         
+                   <?php  } ?>
                    <?php  } ?>
 
                    

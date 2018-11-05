@@ -50,7 +50,7 @@
                 <ul class="collapsible collapsible-accordion">
 
                     
-                    <li //<?php echo $this->session->userdata['perfil-actual']['rol_id'] == 1 ? "hidden" : ""; ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Administrador<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li //<?php echo $this->session->userdata['perfil-actual']['rol_id'] == 2 ? "" : "hidden"; ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Administrador<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="<?php echo base_url();?>index.php/AgregarCM/index" class="waves-effect">Agregar Usuarios a Campañas</a>
@@ -64,7 +64,7 @@
 
 
                     
-                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 2 ? "" : "hidden" ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Community Manager<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 3 ? "" : "hidden" ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Community Manager<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li>
@@ -119,7 +119,7 @@
 
                    
 
-                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 3 ? "hidden" : "" ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Generador de Contenido<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 4 ? "" : "hidden" ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i> Generador de Contenido<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="<?php echo base_url();?>index.php/Contenido/index" class="waves-effect">Crear Contenido</a>
@@ -138,7 +138,7 @@
                   
                     
                   
-                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 4 ? "hidden" : "" ?>><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Diseñador Grafico<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 5 ? "" : "hidden" ?>><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Diseñador Grafico<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="<?php echo base_url();?>index.php/Diseo/index" class="waves-effect">Crear Diseños</a>
@@ -156,7 +156,7 @@
 
                      
                     
-                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 5  ? "hidden" : "" ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Cliente<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li <?php echo $this->session->userdata['perfil-actual']['rol_id'] == 6  ? "" : "hidden" ?> ><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-tachometer"></i>Cliente<i class="fa fa-angle-down rotate-icon"></i></a>
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="../dashboards/v-1.html" class="waves-effect">Dashboard</a>
@@ -192,26 +192,31 @@
             <ul class="nav navbar-nav nav-flex-icons ml-auto">
 
                 <li class="nav-item dropdown notifications-nav">
+
                     <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <i class="fa fa-user"></i>
                         <span class="d-none d-md-inline-block">Perfiles</span>
                     </a>
-                    
+                     
 
-                    <?php foreach ($this->session->userdata['perfiles'] as $row) {?>
+
+
                        
                     
                         <div class="dropdown-menu dropdown-menu-right  " aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">
+                        <?php foreach ($this->session->userdata['perfiles'] as $row) {?>
+
+                            <a class="dropdown-item" href="">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span ><?php echo $row['nombre'];?></span>
                                 <input type="hidden" id="rolID" value="<?php echo $row['rol_id'];?>" >
                                 <span class="float-right"></span>
                             </a>
-                        </div>
 
                     <?php  } ?>
+                        </div>
+
 
                 </li>
 
