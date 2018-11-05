@@ -96,10 +96,7 @@
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#panel17" role="tab"><i class="fa fa-user mr-1"></i> Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#panel18" role="tab"><i class="fa fa-user-plus mr-1"></i> Registrarse</a>
+                                        <a class="nav-link active" data-toggle="tab" href="#panel17" role="tab"><i class="fa fa-user mr-1"></i> Ingresar</a>
                                     </li>
                                 </ul>
 
@@ -124,11 +121,11 @@
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-lock prefix"></i>
                                                 <input type="password" id="contrasenia" name="contrasenia" class="form-control form-control-sm">
-                                                <label for="form3">Contrasena</label>
+                                                <label for="form3">Contraseña</label>
                                             </div>
 
                                             <div class="text-center mt-2">
-                                                <button type="submit" class="btn btn-info" >Iniciar <i class="fa fa-sign-in ml-1"></i></button>
+                                                <button type="submit" class="btn btn-info" >Ingresar <i class="fa fa-sign-in ml-1"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -144,54 +141,6 @@
                                     </div>
                                     <!--/.Panel 7-->
 
-                                    <!--Panel 18-->
-                                    <div class="tab-pane fade" id="panel18" role="tabpanel">
-
-                                        <!--Body-->
-                                        <div class="modal-body">
-
-                                            <div class="md-form form-sm">
-                                                <i class="fa fa-envelope prefix"></i>
-                                                <input type="text"  class="form-control form-control-sm nombre">
-                                                <label for="form2">Nombre</label>
-                                            </div>
-
-                                            <div class="md-form form-sm">
-                                                <i class="fa fa-lock prefix"></i>
-                                                <input type="text"  class="form-control form-control-sm apellido">
-                                                <label for="form3">Apellido</label>
-                                            </div>
-
-
-
-                                            <div class="md-form form-sm">
-                                                <i class="fa fa-envelope prefix"></i>
-                                                <input type="text" id="form14" class=" usuario1 form-control form-control-sm" >
-                                                <label for="form14">Email</label>
-                                            </div>
-
-                                            <div class="md-form form-sm">
-                                                <i class="fa fa-lock prefix"></i>
-                                                <input type="password" id="form5" class=" cotrasena1 form-control form-control-sm  " id="cotrasena1">
-                                                <label for="form5">Contraseña</label>
-                                            </div>
-
-                                            
-
-                                            <div class="text-center form-sm mt-2">
-                                                <button class="btn btn-info" onclick="registro();">Registrarse <i class="fa fa-sign-in ml-1" ></i></button>
-                                            </div>
-
-                                        </div>
-                                        <!--Footer-->
-                                        <div class="modal-footer">
-                                            <div class="options text-right">
-                                                <p class="pt-1">Ya tienes cuenta ? <a href="#"  class="blue-text">Login</a></p>
-                                            </div>
-                                            <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
-                                        </div>
-                                    </div>
-                                    <!--/.Panel 8-->
                                 </div>
 
                             </div>

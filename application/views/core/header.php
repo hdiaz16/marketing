@@ -248,7 +248,7 @@
                
                 <li class="nav-item dropdown">
                     <a class="nav-link " data-toggle="modal" data-target="#modalLoginAvatarDemo">
-                        <i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Profile</span>
+                        <i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Perfil</span>
                     </a>
                     
                    
