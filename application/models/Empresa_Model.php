@@ -8,9 +8,11 @@ class Empresa_Model extends CI_Model {
   
   public function getEmpresas($sysAdminID, $all = TRUE){
 
-    $this->db->select('*');
+    $this->db->select('empresa.*, usuario.nombres');
     $this->db->from('empresa');
     $this->db->join('empresa_admin', 'empresa.id = empresa_admin.empresa_id');
+    $this->db->join('perfil', 'perfil.id = empresa_admin.admin_id');
+    $this->db->join('usuario', 'perfil.usuario_id = usuario.id');
     $this->db->where('empresa.sys_admin_id', $sysAdminID);
   
     if(is_null($all))
@@ -24,10 +26,11 @@ class Empresa_Model extends CI_Model {
   public function getEmpresasNoAsignadas($rootID, $all = TRUE){
 
     try {
-      $query = $this->db->query('SELECT *
+      $query = $this->db->query('SELECT * 
         FROM empresa 
-        WHERE sys_admin_id = ?
-        AND id NOT IN (
+        WHERE sys_admin_id = ? 
+        AND _erase IS NULL
+        AND empresa.id NOT IN (
           SELECT empresa_id FROM empresa_admin
           WHERE empresa_id IS NOT NULL
         )', [$rootID]);
@@ -61,6 +64,7 @@ class Empresa_Model extends CI_Model {
   public function registrarEmpresa($sysAdminID, $razonSocial, $contacto){
 
     $fechaRegistro = date('Y-m-d H:i');
+    $contacto = json_encode($contacto);
     $data = ['razon_social' => $razonSocial, 'sys_admin_id' => $sysAdminID, 'contacto' => $contacto, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
 
     try {
@@ -81,6 +85,7 @@ class Empresa_Model extends CI_Model {
   public function editarEmpresa($empresaID, $razonSocial, $contacto, $logoURL = "logo-gen.png"){
 
     $fechaEdicion = date('Y-m-d H:i');
+    $contacto = json_encode($contacto);
     $data = ['razon_social' => $razonSocial, 'contacto' => $contacto, 'logourl' => $logoURL, '_update' => $fechaEdicion];
 
     try {

@@ -1,12 +1,18 @@
 function addEmpresa()
 {
 
-
-    var razon     = $("#razon").val();
-    var contacto  = $("#contacto").val();
-    var telefono  = $("#telefono").val();
+    var adminID = $("#id-admin-crear").val();
+    var razonSocial = $("#razon").val();
+    var nombre = $("#nombre").val();
+    var telefono = $("#telefono").val();
+    var correo = $("#correo").val();
     
-
+    var contacto = {
+      'nombre': nombre,
+      'telefono': telefono,
+      'correo': correo
+    };
+    console.log(adminID, razonSocial, nombre, telefono, correo, contacto);
 
     $.ajax({
       type: 'POST',
@@ -15,17 +21,16 @@ function addEmpresa()
       async: true,
       dataType: 'json',
       data: {
-        razon: razon,
-        contacto: contacto,
-        telefono:telefono
-
+        adminID: adminID,
+        razonSocial: razonSocial,
+        contacto: contacto
       },
       success: function(data)
       {
 
-        
+        console.log(data);        
 
-        if(data == false){
+        if(data.error){
 
           $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al registrar la Empresa.',type: 'red',buttons: {
                     Aceptar: function (e,data) {
@@ -38,7 +43,7 @@ function addEmpresa()
         }else{
 
 
-           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Registro con exito',type: 'green',buttons: {
+           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Registro con éxito',type: 'green',buttons: {
                     Aceptar: function (e,data) {
                          setTimeout(function(){window.location.reload(1);},1000);
                       
@@ -55,92 +60,201 @@ function addEmpresa()
     });
 
 }
+//addempresa
+
+function asignarAdminEmpresa(){
+  var $adminID = $('select[name=administradores]')[0].selectedOptions[0].value;
+  var $empresaID = $('select[name=empresas]')[0].selectedOptions[0].value;
+  $.ajax({
+    type: 'POST',
+    url:  "../AgregarAdmin/asignarAdminEmpresa",
+    cache: false,
+    async: true,
+    dataType: 'json',
+    data: {
+      adminID: $adminID,
+      empresaID: $empresaID
+    },
+    success: function(data)
+    {
+
+      console.log(data);
+
+      if(data.error){
+
+        $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al asignar administrador.',type: 'red',buttons: {
+                  Aceptar: function (e,data) {
+
+                    setTimeout(function(){window.location.reload(1);},1000);
+                  } 
+              }});
+ 
+
+      }else{
 
 
-function deleteEm(){
-  
+         $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Asignación con éxito',type: 'green',buttons: {
+                  Aceptar: function (e,data) {
 
-  $(".borrar").toggle("shake-little shake-constant");
-  $(".color").toggle("danger-color");
-  $(".button").toggle();
+                    setTimeout(function(){window.location.reload(1);},1000);
+                   
+                  } 
+              }});
 
-
-}
-
-
-
-
-
-function delEmpresa1 (id) {
-
-  
-  var id = id;
-
-    $.ajax({
-          type: 'POST',
-          url:  "../AgregarEmpresas/deleteEmpresa",
-          cache: false,
-          async: true,
-          dataType: 'json',
-          data: {
-           id:id
-
-          },
-          success: function(data)
-          {
-
-            if(data == false){
-
-              $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'No se elimino.',type: 'red',buttons: {
-                        Aceptar: function (e,data) {
-
-                          setTimeout(function(){window.location.reload(1);},1000);
-                        } 
-                    }});
-       
-     
-            }else{
-
-
-               $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se elimino correctamente',type: 'green',buttons: {
-                        Aceptar: function (e,data) {
-                             setTimeout(function(){window.location.reload(1);},1000);
-                         
-                        } 
-                    }});
-
-
-                  
-
-            } 
 
             
-          }
-        });
 
+      } 
+
+      
+    }
+  });
+  //AJAX
 }
+//asignarEmpresaADMin
 
+//editarAdmins
+function editarEmpresas(){
+  $(".editar").toggleClass("shake-little shake-constant");
+  $(".color").toggleClass("warning-color");
+  $(".button-edit").toggle();
+}
+//editarEmpresas
 
-
-function editarEmp() {
+function editEmpresa($id, $razonSocial, $nombre, $telefono, $correo){
+  //console.log($id, $nombres, $apellidos, $correo);
   
-}
+  $("#empresa-id").val($id);
+  $("#nombres-editar").val($nombre);
+  $("#razon-social-editar").val($razonSocial);
+  $("#telefono-editar").val($telefono);
+  $("#correo-editar").val($correo);
 
-
-
-function editar(){
-  
-
-  $(".borrar1").toggle("shake-little shake-constant");
-  $(".color").toggle("warning-color");
-  $(".button1").toggle();
-
+  $('#modal-editar').modal();
 
 }
+//editEmpresa
+
+function editarEmpresa(){
+
+  var empresaID = $("#empresa-id").val();
+  var nombre = $("#nombres-editar").val();
+  var razonSocial = $("#razon-social-editar").val();
+  var telefono = $("#telefono-editar").val();
+  var correo = $("#correo-editar").val();
+
+  var contacto = {
+    nombre: nombre,
+    telefono: telefono,
+    correo: correo
+  };
+
+  console.log(empresaID, nombre, razonSocial, correo, telefono, contacto);
+
+  $.ajax({
+      type: 'POST',
+      url:  "../empresa/editar",
+      cache: false,
+      async: true,
+      dataType: 'json',
+      data: {
+        empresaID: empresaID,
+        contacto: contacto,
+        razonSocial: razonSocial
+      },
+      success: function(data)
+      {
+
+        console.log(data);
+
+        if(data.error){
+
+          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al editar administrador.',type: 'red',buttons: {
+                    Aceptar: function (e,data) {
+
+                      setTimeout(function(){window.location.reload(1);},1000);
+                    } 
+                }});
+   
+ 
+        }else{
 
 
+           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Administrador editado con éxito',type: 'green',buttons: {
+                    Aceptar: function (e,data) {
+                      setTimeout(function(){window.location.reload(1);},1000);
+
+                     
+                    } 
+                }});
 
 
+              
+
+        } 
+
+        
+      }
+    });
+    //AJAX
+
+}
+//editarEmpresa
 
 
+function deleteEmpresas (){
+  $(".borrar").toggleClass("shake-little shake-constant");
+  $(".color").toggleClass("danger-color");
+  $(".button").toggle();
+}
+//deleteEmpresas
 
+function deleteEmpresa($empresaID){
+
+  $.ajax({
+    type: 'POST',
+    url:  "../empresa/borrar",
+    cache: false,
+    async: true,
+    dataType: 'json',
+    data: {
+      empresaID: $empresaID
+    },
+    success: function(data)
+    {
+
+      console.log(data);
+
+      if(data.error){
+
+        $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al borrar empresa.',type: 'red',buttons: {
+                  Aceptar: function (e,data) {
+
+                    setTimeout(function(){window.location.reload(1);},1000);
+                  } 
+              }});
+ 
+
+      }else{
+
+
+         $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Borrado con éxito',type: 'green',buttons: {
+                  Aceptar: function (e,data) {
+
+                    setTimeout(function(){window.location.reload(1);},1000);
+                   
+                  } 
+              }});
+
+
+            
+
+      } 
+
+      
+    }
+  });
+  //AJAX
+
+}
+//deleteEmpresa

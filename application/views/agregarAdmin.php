@@ -42,7 +42,7 @@
                     <?php foreach ($adminsNoAsignados as $row) { ?>
 
                                 <!--Grid column-->
-                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-3 col-md-6 mb-4 borrar editar">
+                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-4 col-md-6 mb-4 borrar editar">
 
                                 <!--Panel-->
                                 <div class="card h-100">
@@ -105,7 +105,7 @@
                     <?php foreach ($admins as $row) { ?>
 
                                 <!--Grid column-->
-                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-3 col-md-6 mb-4 borrar editar">
+                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-4 col-md-6 mb-4 borrar editar">
 
                                 <!--Panel-->
                                 <div class="card h-100">
@@ -485,7 +485,3 @@
                 </div>
                 <!--Modal asignar-->
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/admin.js"></script>
-<script>
-  
-
-</script>
