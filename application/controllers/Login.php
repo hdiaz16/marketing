@@ -73,13 +73,12 @@ class Login extends CI_Controller {
 
       foreach ($this->session->userdata['perfiles'] as $key => $perfil) {
         # code...
+        
         if($perfil['rol_id'] == $rolID){
           $this->session->set_userdata('perfil-actual', $perfil);
-          return true;
         }
       }
-
-      return false;
+        redirect('inicio');
     }
     
    public function registro (){
