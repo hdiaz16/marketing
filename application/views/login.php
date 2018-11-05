@@ -62,9 +62,9 @@
                     <div class="row flex-center pt-5 mt-3">
                         <div class="col-md-12 col-lg-6 text-center text-md-left margins">
                             <div class="white-text">
-                                <h1 class="h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">¿Que es Marketing Digital? </h1>
+                                <h1 class="h1-responsive font-bold wow fadeInLeft" data-wow-delay="0.3s">LA PLATAFORMA DEL AÑO</h1>
                                 <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
-                                <h6 class="wow fadeInLeft" data-wow-delay="0.3s">El marketing digital es la aplicación de las estrategias de comercialización llevadas a cabo en los medios digitales. 
+                                <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Elige a tus jugadores, asigna los roles y ¡comienza a hacer <i>Marketing Digital</i>! 
                                 </h6>
                                 <br>
                                 
@@ -96,7 +96,7 @@
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#panel17" role="tab"><i class="fa fa-user mr-1"></i> Ingresar</a>
+                                        <a class="nav-link active" data-toggle="tab" href="#panel17" role="tab"><i class="fa fa-user mr-1"></i> Inicio de sesión</a>
                                     </li>
                                 </ul>
 

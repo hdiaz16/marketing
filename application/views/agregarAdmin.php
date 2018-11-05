@@ -14,7 +14,7 @@
                 <i class="fa fa-plus"></i>
               </button>
 
-            <button class="btn-floating btn-lg warning-color">
+            <button class="btn-floating btn-lg warning-color" data-toggle="modal" data-target="#modal-editar">
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
@@ -207,6 +207,105 @@
                     </div>
                 </div>
                 <!--Modal: Login / Register Form Demo-->
+        <!--modal editar -->
+                <div class="modal fade" id="modal-editar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog cascading-modal" role="document">
+                        <!--Content-->
+                        <div class="modal-content">
+
+                            <!--Modal cascading tabs-->
+                            <div class="modal-c-tabs">
+
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs tabs-2 green " role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab"  role="tab"><i class="fa fa-user mr-1"></i> Editar Administrador</a>
+                                    </li>
+                                    
+                                </ul>
+
+                                
+
+                                <!-- Tab panels -->
+                                <div class="tab-content">
+                                    <!--Panel 17-->
+                                    <div class="tab-pane fade in show active" id="panel17" role="tabpanel">
+
+                                        <!--Body-->
+                                        <div class="modal-body mb-1">
+                                            <!-- Default form grid -->
+                                            <form>
+
+                                                <!-- Grid row -->
+                                                <div class="row">
+                                                    <!-- Grid column -->
+                                                    <div class="col">
+                                                        <!-- Default input -->
+                                                        <label>Nombres</label>
+                                                        <input type="text" class="form-control" id="nombres" name="nombres">
+                                                    </div>
+                                                    <!-- Grid column -->
+
+                                                    <!-- Grid column -->
+                                                    <div class="col">
+                                                        <!-- Default input -->
+                                                        <label>Correo</label>
+                                                        <input type="email" class="form-control" id="correo" name="correo">
+                                                    </div>
+                                                    <!-- Grid column -->
+
+                                                    
+                                                </div>
+                                                <!-- Grid row -->
+                                                <br>
+                                                <!-- Grid row -->
+                                                <div class="row">
+                                                    <!-- Grid column -->
+                                                    <div class="col-6">
+                                                        <!-- Default input -->
+                                                        <label>Contraseña</label>
+                                                        <input type="text" class="form-control" id="contrasenia" name="contrasenia">
+                                                    </div>
+                                                    <!-- Grid column -->
+
+
+                                                    
+                                                </div>
+                                                <!-- Grid row -->
+                                                <br>
+
+                                                <div class="row">
+                                                   <!-- Grid column -->
+                                                   
+
+                                                    
+                                                </div>
+                                                <!-- Grid row -->
+
+
+                                            </form>
+
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                                
+                                                <button class="btn-floating btn-lg success-color" onclick="addAdmin(<?php echo $this->session->userdata['perfil-actual']['perfil_id'] ?>);">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                        </div>
+        
+                                    </div>
+                                    <!--/.Panel 7-->
+   
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+                <!--modal editar -->
         <!--Modal: Login / Register Form Demo-->
                 <div class="modal fade" id="modal-asignar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog cascading-modal" role="document">

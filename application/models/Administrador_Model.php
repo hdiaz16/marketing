@@ -131,7 +131,7 @@ class Administrador_Model extends CI_Model{
     }
 
     try {
-      $this->db->get()->result_array();
+      return $this->db->get()->result_array();
     } catch (Exception $e) {
       log_message('error', "get getEmpleados: ".$e);
       return false;

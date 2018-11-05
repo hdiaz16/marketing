@@ -159,6 +159,12 @@ function asignarAdminEmpresa(){
   //AJAX
 }
 
+function editAdmins(){
+  $(".editar").toggleClass("shake-little shake-constant");
+  $(".color").toggleClass("warning-color");
+  $(".button").toggle();
+}
+
 /*function addEmpresa()
  {
 
