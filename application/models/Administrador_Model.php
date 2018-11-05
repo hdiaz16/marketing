@@ -46,8 +46,7 @@ class Administrador_Model extends CI_Model{
 
   }
 
-<<<<<<< 1663e40ac4e9f2c58aa5fed81360355f07920962
-   public function editarUsuario($perfilID, $rolID, $nombres, $apellidos, $correo, $contrasenia, $imagenURL){
+  public function editarUsuario($perfilID, $rolID, $nombres, $apellidos, $correo, $contrasenia, $imagenURL){
 
     $fechaEdicion = date('Y-m-d H:i');
     $dataUsuario = ['apellidos' => $apellidos, 'correo' => $correo, 'contrasenia' => $contrasenia, 'imagenurl' => $imagenURL, 'nombres' => $nombres, '_update' => $fechaEdicion];
@@ -76,7 +75,7 @@ class Administrador_Model extends CI_Model{
       return false;
     }
 
-=======
+  }
 
   public function getUsuarios($userID, $all = TRUE){
 
@@ -100,8 +99,6 @@ class Administrador_Model extends CI_Model{
   public function roles()
   {
     return $this->db->where('id !=', 1)->get('rol')->result_array();
-     
->>>>>>> vistas CM
   }
 
   public function eliminarUsuario($perfilID){
@@ -144,7 +141,6 @@ class Administrador_Model extends CI_Model{
     }
   }
 
-<<<<<<< 1663e40ac4e9f2c58aa5fed81360355f07920962
   public function getEmpleados($communityManagerID, $all = NULL){
 
     $this->db->select('usuario.nombres, usuario.apellidos, campania.nombre');
@@ -152,7 +148,8 @@ class Administrador_Model extends CI_Model{
     $this->db->join('perfil', "usuario.id = perfil.usuario_id");
     $this->db->join('campania_empleados', "campania_empleados.empleado_id = perfil.id");
     $this->db->join('campania', "campania_empleados.campania_id = campania.id");
-    $this->db->where('campania.community_manage_id', $communityManagerID);
+    $this->db->where('campania.community_manager_id', $communityManagerID);
+
 
     if(!is_null($all)){
       $this->db->where('perfil._erase', NULL);
@@ -169,19 +166,5 @@ class Administrador_Model extends CI_Model{
 
   }
   
-
-=======
-
-
-
-
-  
-
-
-
-
->>>>>>> vistas CM
-  
-}
 
 ?>
