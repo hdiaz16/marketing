@@ -43,7 +43,7 @@ VALUES
 
 INSERT INTO empresa_admin (admin_id, empresa_id, _create, _update)
 VALUES
-(2, 1, now(), now()),
+(2, 3, now(), now()),
 (3, 2, now(), now());
 
 

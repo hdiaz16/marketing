@@ -8,8 +8,6 @@
         </section >
 
         <br>
- 
- 
 		<?php if($this->session->userdata['perfil-actual']['rol_id'] == 1) {?>
  		<section id="resumen-root">
  			<div class="container">

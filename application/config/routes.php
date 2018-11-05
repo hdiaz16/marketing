@@ -51,7 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'login';
 $route['login/iniciarsesion']['post'] = 'Login/iniciarSesion';
-$route['usuario/cambiarperfil/(:num)']	 = 'Login/cambiarPerfil/$1';
+$route['usuario/cambiarperfil/(:num)'] = 'Login/cambiarPerfil/$1';
+$route['usuario/editar'] = 'AgregarAdmin/editAdmin';
 $route['dashboard'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -16,6 +16,8 @@ class AgregarAdmin extends CI_Controller {
 
     public function index()
     {
+      $data['adminsNoAsignados'] = $this->Root_Model->getAdministradoresNoAsignados($this->session->userdata['perfil-actual']['perfil_id'], NULL);
+      $data['empresasNoAsignadas'] = $this->Empresa_Model->getEmpresasNoAsignadas($this->session->userdata['perfil-actual']['perfil_id'], NULL);
       $data['admins'] = $this->Root_Model->getAdministradores($this->session->userdata['perfil-actual']['perfil_id'], NULL);
     	$data['empresas'] = $this->Empresa_Model->getEmpresas($this->session->userdata['perfil-actual']['perfil_id'], NULL);
       $this->load->view('core/header');
@@ -42,6 +44,18 @@ class AgregarAdmin extends CI_Controller {
 	}
 
   public function editAdmin(){
+    $adminID = $this->input->post('usuarioID');
+    $nombres = $this->input->post('nombres');
+    $apellidos = $this->input->post('apellidos');
+    $correo = $this->input->post('correo');
+    $contrasenia = $this->input->post('contrasenia');
+    
+    $adminEditado = $this->Root_Model->editarAdministrador($adminID, $nombres, $correo, $contrasenia, $apellidos);
+    
+    if($adminEditado)
+      echo json_encode(['error' => false, 'mensaje' => 'edición completa']);
+    else
+      echo json_encode(['error' => true, 'mensaje' => 'falla al editar administrador']);
 
   }
 

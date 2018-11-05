@@ -10,14 +10,33 @@ class Empresa_Model extends CI_Model {
 
     $this->db->select('*');
     $this->db->from('empresa');
-    $this->db->where('sys_admin_id', $sysAdminID);
+    $this->db->join('empresa_admin', 'empresa.id = empresa_admin.empresa_id');
+    $this->db->where('empresa.sys_admin_id', $sysAdminID);
   
     if(is_null($all))
-      $this->db->where('_erase', NULL);
+      $this->db->where('empresa._erase', NULL);
 
 
     return $this->db->get()->result_array();
 
+  }
+
+  public function getEmpresasNoAsignadas($rootID, $all = TRUE){
+
+    try {
+      $query = $this->db->query('SELECT *
+        FROM empresa 
+        WHERE sys_admin_id = ?
+        AND id NOT IN (
+          SELECT empresa_id FROM empresa_admin
+          WHERE empresa_id IS NOT NULL
+        )', [$rootID]);
+      return $query->result_array(); 
+    } catch (Exception $e) {
+      log_message('error', "select getAdministradoresNoAsignados".$e);
+      return false;
+    }
+   
   }
 
   public function getEmpresa($empresaID, $eliminada = FALSE){

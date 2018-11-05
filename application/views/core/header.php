@@ -218,10 +218,10 @@
                         <div class="dropdown-menu dropdown-menu-right  " aria-labelledby="navbarDropdownMenuLink">
                         <?php foreach ($this->session->userdata['perfiles'] as $row) {?>
 
-                            <a class="dropdown-item" href="">
+                            <a href="<?php echo base_url(); ?>index.php/usuario/cambiarperfil/<?php echo $row['rol_id'] ?>" class="dropdown-item" href="">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span ><?php echo $row['nombre'];?></span>
-                                <input type="hidden" id="rolID" value="<?php echo $row['rol_id'];?>" >
+                                <input type="hidden" id="rol<?php echo $row['rol_id']; ?>" value="<?php echo $row['rol_id'];?>">
                                 <span class="float-right"></span>
                             </a>
 
@@ -321,3 +321,51 @@
                     </div>
                 </div>
                 <!--Modal Form Login with Avatar Demo-->
+<script>
+    function cambiarPerfil($perfilID){
+
+      $.ajax({
+        type: 'POST',
+        url:  "../usuario/cambiarperfil",
+        cache: false,
+        async: true,
+        dataType: 'json',
+        data: {
+          perfilID: $perfilID
+        },
+        success: function(data)
+        {
+
+          console.log(data);
+
+          if(!data.cambio){
+
+            $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al borrar administrador.',type: 'red',buttons: {
+                      Aceptar: function (e,data) {
+
+                        setTimeout(function(){window.location.reload(1);},1000);
+                      } 
+                  }});
+     
+
+          }else{
+
+
+             $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Borrado con éxito',type: 'green',buttons: {
+                      Aceptar: function (e,data) {
+
+                       
+                      } 
+                  }});
+
+
+                
+
+          } 
+
+          
+        }
+      });
+      //AJAX
+    }
+</script>

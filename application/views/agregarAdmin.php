@@ -14,7 +14,7 @@
                 <i class="fa fa-plus"></i>
               </button>
 
-            <button class="btn-floating btn-lg warning-color" data-toggle="modal" data-target="#modal-editar">
+            <button onclick="editarAdmins()" class="btn-floating btn-lg warning-color">
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
@@ -39,31 +39,104 @@
                 <!--Grid row-->
                 <div class="row">
 
-                    <?php foreach ($admins as $row) { ?>
+                    <?php foreach ($adminsNoAsignados as $row) { ?>
 
                                 <!--Grid column-->
-                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-3 col-md-6 mb-4 borrar">
+                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-3 col-md-6 mb-4 borrar editar">
 
                                 <!--Panel-->
                                 <div class="card h-100">
                                     <div class="card-header white-text success-color color" >
 
-                                        <button onclick="deleteAdmin(<?php echo $row['perfil_id'] ?>)" class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
+                                        <button onclick="deleteAdmin(<?php echo $row['perfil_id'] ?>)" class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button>
+                                        
+                                            
+                                        <button onclick="editAdmin(
+                                            <?php echo isset($row['usuario_id']) ? $row['usuario_id'] : 0; ?>,
+                                            <?php echo isset($row['nombres']) ? "'".$row['nombres']."'" : "''"; ?>,
+                                            <?php echo isset($row['apellidos']) ? "'".$row['apellidos']."'" : "''"; ?>,
+                                            <?php echo isset($row['correo']) ? "'".$row['correo']."'" : "''"; ?>
+                                        )" class="btn btn-sm  black float-right button-edit" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button> 
                                        <?php echo $row['nombres']?>
                                        
                                     </div>
                                     
-
-                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
-                                    <p class="ml-3 mt-3 font-small dark-grey-text"> <?php echo $row['correo'] ?></p>
+                                    <div class="ml-3 mt-1">
+                                        <p><span class="font-weight-bold">Apellidos: </span><i><?php echo $row['apellidos'] ?></i></p>
+                                        <p><span class="font-weight-bold">Correo: </span><i><?php echo $row['correo'] ?></i></p>
+                                    </div>
                                     <!--/.Card Data-->
 
                                     <!--Card content-->
                                     <div class="card-body">
                                         
                                         <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo $row['_create']?></p>
-                                        <p class="font-small grey-text">Última actualización: <?php echo $row['_update']?></p>
+                                        <p class="font-small grey-text">Fecha de Registro: <?php echo explode(" ", $row['_create'])[0]?></p>
+                                        <p class="font-small grey-text">Última actualización: <?php echo explode(" ", $row['_update'])[0]?></p>
+                                
+                                    </div>
+                                    <!--/.Card content-->
+
+                                </div>
+                                <!--/.Panel-->
+
+                            </div>
+                            <!--Grid column-->
+
+                        
+                   <?php  } ?>
+
+                   
+                   
+
+                   
+   
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Cards color-->
+            <!--Section: Cards color-->
+            <section class="mt-2">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <?php foreach ($admins as $row) { ?>
+
+                                <!--Grid column-->
+                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-3 col-md-6 mb-4 borrar editar">
+
+                                <!--Panel-->
+                                <div class="card h-100">
+                                    <div class="card-header white-text blue-color color" >
+
+                                        <button onclick="deleteAdmin(<?php echo $row['perfil_id'] ?>)" class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
+                                        <button onclick="editAdmin(
+                                            <?php echo isset($row['perfil_id']) ? $row['perfil_id'] : 0; ?>,
+                                            <?php echo isset($row['nombres']) ? "'".$row['nombres']."'" : "''"; ?>,
+                                            <?php echo isset($row['apellidos']) ? "'".$row['apellidos']."'" : "''"; ?>,
+                                            <?php echo isset($row['correo']) ? "'".$row['correo']."'" : "''"; ?>
+                                        )" class="btn btn-sm  black float-right button-edit" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button> 
+                                       <i class="font-weight-bold"><?php echo $row['nombres']?></i>
+                                       <sup><?php echo $row['empresa_nombre']?></sup>
+                                       
+                                    </div>
+                                    
+
+                                    
+                                    <div class="ml-3 mt-1">
+                                        <p><span class="font-weight-bold">Apellidos: </span><i><?php echo $row['apellidos'] ?></i></p>
+                                        <p><span class="font-weight-bold">Correo: </span><i><?php echo $row['correo'] ?></i></p>
+                                    </div>
+                                    <!--/.Card Data-->
+
+                                    <!--Card content-->
+                                    <div class="card-body">
+                                        
+                                        <!--Text-->
+                                        <p class="font-small grey-text">Fecha de Registro: <?php echo explode(" ",$row['_create'])[0]?></p>
+                                        <p class="font-small grey-text">Última actualización: <?php echo explode(" ", $row['_update'])[0]?></p>
                                 
                                     </div>
                                     <!--/.Card content-->
@@ -130,7 +203,7 @@
                                 <!-- Tab panels -->
                                 <div class="tab-content">
                                     <!--Panel 17-->
-                                    <div class="tab-pane fade in show active" id="panel17" role="tabpanel">
+                                    <div class="tab-pane fade in show active" id="panel20" role="tabpanel">
 
                                         <!--Body-->
                                         <div class="modal-body mb-1">
@@ -235,25 +308,25 @@
                                         <div class="modal-body mb-1">
                                             <!-- Default form grid -->
                                             <form>
-
+                                                <input id="usuario-id" type="hidden" value="">
                                                 <!-- Grid row -->
                                                 <div class="row">
                                                     <!-- Grid column -->
                                                     <div class="col">
                                                         <!-- Default input -->
                                                         <label>Nombres</label>
-                                                        <input type="text" class="form-control" id="nombres" name="nombres">
+                                                        <input type="text" class="form-control" id="nombres-editar" name="nombres-editar">
                                                     </div>
                                                     <!-- Grid column -->
-
                                                     <!-- Grid column -->
                                                     <div class="col">
                                                         <!-- Default input -->
-                                                        <label>Correo</label>
-                                                        <input type="email" class="form-control" id="correo" name="correo">
+                                                        <label>Apellidos</label>
+                                                        <input type="text" class="form-control" id="apellidos-editar" name="apellidos-editar">
                                                     </div>
                                                     <!-- Grid column -->
 
+                                                    
                                                     
                                                 </div>
                                                 <!-- Grid row -->
@@ -261,10 +334,18 @@
                                                 <!-- Grid row -->
                                                 <div class="row">
                                                     <!-- Grid column -->
+                                                    <div class="col">
+                                                        <!-- Default input -->
+                                                        <label>Correo</label>
+                                                        <input type="email" class="form-control" id="correo-editar" name="correo-editar">
+                                                    </div>
+                                                    <!-- Grid column -->
+
+                                                    <!-- Grid column -->
                                                     <div class="col-6">
                                                         <!-- Default input -->
                                                         <label>Contraseña</label>
-                                                        <input type="text" class="form-control" id="contrasenia" name="contrasenia">
+                                                        <input type="text" class="form-control" id="contrasenia-editar" name="contrasenia-editar">
                                                     </div>
                                                     <!-- Grid column -->
 
@@ -290,7 +371,7 @@
 
                                         <div class="modal-footer">
                                                 
-                                                <button class="btn-floating btn-lg success-color" onclick="addAdmin(<?php echo $this->session->userdata['perfil-actual']['perfil_id'] ?>);">
+                                                <button class="btn-floating btn-lg success-color" onclick="editarAdmin()">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                         </div>
@@ -306,7 +387,7 @@
                     </div>
                 </div>
                 <!--modal editar -->
-        <!--Modal: Login / Register Form Demo-->
+        <!--Modal asignar-->
                 <div class="modal fade" id="modal-asignar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog cascading-modal" role="document">
                         <!--Content-->
@@ -328,7 +409,7 @@
                                 <!-- Tab panels -->
                                 <div class="tab-content">
                                     <!--Panel 17-->
-                                    <div class="tab-pane fade in show active" id="panel17" role="tabpanel">
+                                    <div class="tab-pane fade in show active" id="panel19" role="tabpanel">
 
                                         <!--Body-->
                                         <div class="modal-body mb-1">
@@ -342,8 +423,8 @@
                                                         <!-- Default input -->
                                                         <select class="mdb-select md-form" name="administradores" id="administradores" name="administradores">
                                                           <option value="" disabled selected>Elige administrador</option>
-                                                          <?php foreach ($admins as $row) { ?>
-                                                            <option value=" <?php echo  $row['perfil_id']?> "><?php echo $row['perfil_id']." ".$row['nombres'] ?></option>
+                                                          <?php foreach ($adminsNoAsignados as $row) { ?>
+                                                            <option value="<?php echo  $row['perfil_id']?>"><?php echo $row['perfil_id']." ".$row['nombres'] ?></option>
                                                           <?php } ?>
                                                         </select>
                                                         <label for="administradores">Administrador</label>
@@ -355,8 +436,8 @@
                                                         <!-- Default input -->
                                                         <select class="mdb-select md-form" name="empresas" id="empresas" name="empresas">
                                                           <option value="" disabled selected>Elige empresa</option>
-                                                          <?php foreach ($empresas as $row) { ?>
-                                                            <option value=" <?php echo  $row['id']?> "><?php echo $row['id']." ".$row['razon_social'] ?></option>
+                                                          <?php foreach ($empresasNoAsignadas as $row) { ?>
+                                                            <option value="<?php echo  $row['id']?>"><?php echo $row['id']." ".$row['razon_social'] ?></option>
                                                           <?php } ?>
                                                         </select>
                                                         <label>Empresa</label>
@@ -402,7 +483,7 @@
                         <!--/.Content-->
                     </div>
                 </div>
-                <!--Modal: Login / Register Form Demo-->
+                <!--Modal asignar-->
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/admin.js"></script>
 <script>
   
