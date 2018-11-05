@@ -1,17 +1,10 @@
 <!--Main layout-->
     <main>
 
-<<<<<<< 44911c379aac152ecae6ba4b96b71aaaf0c7a7bd
+
         <section id="bienvenida" class="mt-2 text-center">
             <h1>Bienvenido al sistema <strong><?php echo $this->session->userdata['usuario']['nombres']." ".$this->session->userdata['usuario']['apellidos'] ?></strong></h1>
-=======
-        <section class="mt-2 text-center">
-            <h1><strong>BIENVENIDO AL SISTEMA DE MARKETIN DIGITAL</strong></h1>
 
-            
-
-
->>>>>>> vistas CM
         </section >
 
         <br>
