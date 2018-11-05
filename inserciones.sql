@@ -67,18 +67,25 @@ VALUES
 (1, '{"id": 1, "nombre": "exámenes de la visión", "hijos":[{"id": 2, "nombre": "prevencion"}, {"id": 3, "nombre": "tratamientos", "hijos":[]}]}', now(), now()),
 (2, '{"id": 1, "nombre": "Desparasitación", "hijos":[{"id": 2, "nombre": "prevencion"}, {"id": 3, "nombre": "tratamientos", "hijos":[]}]}', now(), now());
 
+INSERT INTO campania_empleados (campania_id, empleado_id, _visible)
+VALUES
+(1, 5, true),
+(1, 6, true),
+(2, 7, true),
+(2, 8, true);
+
 INSERT INTO tarea (estado_tarea_id, red_id, nodo_id, descripcion, condiciones_aceptacion, requisitos, _create, _update)
 VALUES
-(1, 3, 2, 'publicitar examenes de retina', '[{"condicion": "condicion 1", "aceptada": false}, {"condicion": "condicion 2", "aceptada": true}]', '[{"requisito": "requisito 1", "aceptado": false}, {"requisito": "requisito 2", "aceptado": true}]', now(), now()),
-(1, 4, 3, 'resaltar la importancia de higiene de mascotas', '[{"condicion": "condicion 1", "aceptada": false}, {"condicion": "condicion 2", "aceptada": true}]', '[{"requisito": "requisito 1", "aceptado": false}, {"requisito": "requisito 2", "aceptado": true}]', now(), now());
+(1, 1, 2, 'publicitar examenes de retina', '[{"condicion": "condicion 1", "aceptada": false}, {"condicion": "condicion 2", "aceptada": true}]', '[{"requisito": "requisito 1", "aceptado": false}, {"requisito": "requisito 2", "aceptado": true}]', now(), now()),
+(1, 2, 3, 'resaltar la importancia de higiene de mascotas', '[{"condicion": "condicion 1", "aceptada": false}, {"condicion": "condicion 2", "aceptada": true}]', '[{"requisito": "requisito 1", "aceptado": false}, {"requisito": "requisito 2", "aceptado": true}]', now(), now());
 
 INSERT INTO publicacion (tarea_id, _create, _update)
 VALUES
-(3, now(), now()),
-(4, now(), now());
+(1, now(), now()),
+(2, now(), now());
 
 INSERT INTO subtarea (tarea_id, empleado_id, estado_tarea_id, descripcion, entrega, _create, _update)
 VALUES
-(3, 7, 1, 'consigue una imagen de ojos con perdida absoluto de vista', '2018-11-30', now(), now()),
-(4, 5, 1, 'consigue una imagen de perros antes y despues de desparacitar', '2018-11-30', now(), now());
+(1, 7, 1, 'consigue una imagen de ojos con perdida absoluto de vista', '2018-11-30', now(), now()),
+(1, 5, 1, 'consigue una imagen de perros antes y despues de desparacitar', '2018-11-30', now(), now());
 

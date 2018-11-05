@@ -1,3 +1,4 @@
+CREATE EXTENSION chkpass;
 --CATALOGOS 
 
 --catalogo usuario
