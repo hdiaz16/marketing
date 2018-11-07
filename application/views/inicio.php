@@ -68,9 +68,28 @@
  			</div>
  		</section>
  		<?php } ?>
+
+ 		<?php if($this->session->userdata['perfil-actual']['rol_id'] == 2) {?>
+ 			<section id="resumen-admin">
+ 				<div class="container">
+
+ 					<div class="row">
+ 						<div class="col-3 offset-9">
+ 							<a class="btn btn-lg btn-info">Credenciales</a>
+ 						</div>
+ 					</div>
+ 					
+ 				</div>
+ 			</section>
+ 		<?php } ?>
     </main>
     <!--Main layout-->
 
+<script>
+	function subirCredenciales(){
+
+	}
+</script>
 
            
 

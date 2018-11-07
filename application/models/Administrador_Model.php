@@ -6,7 +6,20 @@ class Administrador_Model extends CI_Model{
     $this->load->database();
   }
 
-  public function registrarUsuario($adminID, $correo, $rolID, $nombres = "John Doe",$contrasenia = "12345678", $apellidos){
+  public function subirCredenciales($adminID, $empresaID, $usuarioFB, $contraseniaFB){
+    $data = ['usuario_fb' => $usuarioFB, 'contrasenia_fb' => $contraseniaFB];
+    $this->db->where('empresa_id', $empresaID);
+    $this->db->where('admin_id', $adminID);
+    try {
+      $this->db->update('empresa_admin', $data);
+      return true;
+    } catch (Exception $e) {
+      log_message('error', 'insert usuario registrarUsuario'.$e);
+      return false;
+    }
+  }
+
+  public function registrarUsuario($adminID, $correo, $rolID, $nombres = "John Doe",$contrasenia = "12345678"){
     $fechaRegistro = date('Y-m-d H:i');
     $data = ['nombres' => $nombres, 'correo' => $correo, 'contrasenia' => $contrasenia, '_create' => $fechaRegistro, '_update' => $fechaRegistro, 'apellidos' => $apellidos];
 
