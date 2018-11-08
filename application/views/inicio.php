@@ -3,9 +3,8 @@
 
 
         <section id="bienvenida" class="mt-2 text-center">
-            <h1>Bienvenido al sistema <strong><?php echo $this->session->userdata['usuario']['nombres']." ".$this->session->userdata['usuario']['apellidos'] ?></strong></h1>
 
-        </section >
+            <h1>Bienvenido al Sistema de Marketing Digital <strong><br><?php echo $this->session->userdata['usuario']['nombres']." ".$this->session->userdata['usuario']['apellidos'] ?></strong></h1>
 
         <br>
  

@@ -6,7 +6,7 @@ class Header extends CI_Controller {
 	function __construct()
     {
     	parent::__construct();
-        $this->load->model('IniciarSesion_Model');
+        $this->load->model('Usuario_Model');
         $this->load->helper('form');
         date_default_timezone_set('America/Mexico_City');
     }
@@ -18,6 +18,13 @@ class Header extends CI_Controller {
 
 
 		$this->load->view('header');
+		
+	}
+
+
+	public function cambiarRol()
+	{
+		
 		
 	}
 }

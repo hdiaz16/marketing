@@ -37,13 +37,8 @@
                 <div class="row">
                     
 
-            <?php echo json_encode($userCamania) ?>
 
                     <?php foreach ($userCamania as $row) { ?>
-
-
-                        <?php if ($row['_erase'] == null) {?>
-
 
                                 <!--Grid column-->
                             <div class="col-xl-3 col-md-6 mb-4 borrar">
@@ -53,15 +48,17 @@
                                     <div class="card-header white-text success-color color" >
 
                                         <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
-                                       <?php echo $row['nombre']?>
+                                       <?php echo $row['campania_nombre']?>
                                        
                                     </div>
                                     
 
-                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
+                                    <h6 class="ml-4 mt-3 dark-grey-text font-weight-bold">Usuario</h6>
 
-                                    <p class="ml-3 mt-3 font-small dark-grey-text"><?php echo $row['nombres'] ?> <?php echo $row['apellidos']?> </p>
+                                    <p class="ml-4 mt-1 font-small dark-grey-text"><?php echo $row['nombres'] ?> <?php echo $row['apellidos']?> </p>
                                     <!--/.Card Data-->
+                                    <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold">Rol</h6>
+                                     <p class="ml-4 mt-1 font-small dark-grey-text"><?php echo $row['rol_nombre'] ?>  </p>
 
 
                                 </div>
@@ -72,12 +69,7 @@
 
                         
                    <?php  } ?>
-                   <?php  } ?>
-
-                   
-                   
-
-                   
+                  
    
                 </div>
                 <!--Grid row-->

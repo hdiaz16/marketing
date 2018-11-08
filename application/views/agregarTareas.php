@@ -100,7 +100,7 @@
 
  <!--Modal: Login / Register Form-->
                 <div class="modal fade" id="modalLRFormDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog cascading-modal" role="document">
+                    <div class="modal-dialog cascading-modal modal-lg" role="document">
                         <!--Content-->
                         <div class="modal-content">
 
@@ -128,8 +128,8 @@
                                                     <!-- Grid column -->
                                                      <div class="col-6 md-form">
                                                         <!-- Default input -->
-                                                        <input  type="text"  class="form-control nom">
-                                                        <label for="form3" >Nombre de la tarea</label>
+                                                        <input  type="text"  class="form-control " id="nom">
+                                                        <label for="form3" >Descripcion de la tarea</label>
                                                        
                                                     </div>
                                                     <!-- Grid column -->
@@ -144,10 +144,37 @@
 
                                                     <!-- Grid column -->
                                                     <div class="md-form col-6">
-                                                        <textarea type="text" id="objetivo" class="form-control md-textarea" rows="3"></textarea>
-                                                        <label for="textareaBasic">Descripcion de la tarea</label>
+                                                        <input  type="text"  class="form-control " id="req">
+                                                        <label for="form3">Requisitos de la tarea</label>
+                                                        <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="agregarRequisitos();">Agregar</button>
+                                                    </div>
+
+                                                    <!-- Grid column -->
+
+                                                    <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                        <textarea type="text" id="textReq" class="md-textarea form-control" rows="3"></textarea>
+                                                        <label for="form10">Requisitos Agregados</label>
                                                     </div>
                                                     <!-- Grid column -->
+
+                                                     <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                        <input  type="text"  class="form-control text" id="cond">
+                                                        <label for="form3">Condiciones de Aceptacion</label>
+                                                        <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="agregarCondiciones();">Agregar</button>
+                                                    </div>
+
+                                                    <!-- Grid column -->
+
+                                                    <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                        <textarea type="text" id="textCond" class="md-textarea form-control" rows="3"></textarea>
+                                                        <label for="form10">Condiciones Agregados</label>
+                                                    </div>
+                                                    <!-- Grid column -->
+
+
                                                     
                                                 </div>
                                                 <!-- Grid row -->
@@ -173,7 +200,7 @@
                                                      <div class="col-6 md-form">
                                                         <!-- Default input -->
                                                         <input  type="text"  class="form-control nom">
-                                                        <label for="form3" >Nombre de la tarea</label>
+                                                        <label for="form3" >Descripcion de la tarea</label>
                                                        
                                                     </div>
                                                     <!-- Grid column -->
@@ -188,8 +215,8 @@
 
                                                     <!-- Grid column -->
                                                     <div class="md-form col-6">
-                                                        <textarea type="text" id="objetivo" class="form-control md-textarea" rows="3"></textarea>
-                                                        <label for="textareaBasic">Descripcion de la tarea</label>
+                                                        <label for="text">Requisitos</label>
+                                                       <input  type="text"  class="form-control " id="fechaIn">
                                                     </div>
                                                     <!-- Grid column -->
                                                     
@@ -215,4 +242,4 @@
                     </div>
                 </div>
                 <!--Modal: Login / Register Form-->
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/Tareas.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/agregarTarea.js"></script>

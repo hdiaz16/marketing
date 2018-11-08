@@ -165,6 +165,8 @@ class Administrador_Model extends CI_Model{
     }
   }
 
+
 }
+
 
 ?>
