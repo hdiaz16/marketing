@@ -121,7 +121,7 @@
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-lock prefix"></i>
                                                 <input type="password" id="contrasenia" name="contrasenia" class="form-control form-control-sm">
-                                                <label for="form3">Contraseña</label>
+                                                <label for="form3">Contrasena</label>
                                             </div>
 
                                             <div class="text-center mt-2">

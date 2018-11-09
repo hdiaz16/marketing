@@ -41,8 +41,8 @@ class Login extends CI_Controller {
     if(!$usuarioDB)
       redirect('login');
     else{
-      $queryPerfiles = $this->Usuario_Model->obtenerPerfiles($usuarioDB['id']);
       try {
+        $queryPerfiles = $this->Usuario_Model->obtenerPerfiles($usuarioDB['id']);
 
         $this->session->set_userdata('usuario', $usuarioDB);
         $this->session->set_userdata('perfiles', $queryPerfiles);

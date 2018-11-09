@@ -1,3 +1,4 @@
+
 CREATE EXTENSION chkpass;
 --CATALOGOS 
 
@@ -14,6 +15,7 @@ CREATE TABLE usuario (
   _erase timestamp WITH TIME ZONE
 );
 --catalogo rol
+
 CREATE TABLE rol (
   id serial PRIMARY KEY,
   nombre text
@@ -44,6 +46,9 @@ CREATE TABLE empresa (
 CREATE TABLE empresa_admin(
   admin_id integer REFERENCES perfil ON DELETE CASCADE ON UPDATE CASCADE,
   empresa_id integer REFERENCES empresa ON DELETE CASCADE ON UPDATE CASCADE,
+  usuario_fb varchar(50) DEFAULT 'user@user.com',
+  contrasenia_fb chkpass,
+  credenciales_fb jsonb,
   _create timestamp WITH TIME ZONE,
   _update timestamp WITH TIME ZONE,
   _erase timestamp WITH TIME ZONE

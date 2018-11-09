@@ -36,7 +36,7 @@ function addAdmin($sysAdminID){
 
          $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Registro con éxito',type: 'green',buttons: {
                   Aceptar: function (e,data) {
-
+                    setTimeout(function(){window.location.reload(1);},1000);
                    
                   } 
               }});
@@ -110,9 +110,8 @@ function deleteAdmin($adminID){
 //deleteADmin
 
 function asignarAdminEmpresa(){
-  var $adminID = $('select[name=administradores]')[0].options.selectedIndex;
-  var $empresaID = $('select[name=empresas]')[0].options.selectedIndex;
-  
+  var $adminID = $('select[name=administradores]')[0].selectedOptions[0].value;
+  var $empresaID = $('select[name=empresas]')[0].selectedOptions[0].value;
   $.ajax({
     type: 'POST',
     url:  "../AgregarAdmin/asignarAdminEmpresa",
@@ -143,7 +142,7 @@ function asignarAdminEmpresa(){
 
          $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Asignación con éxito',type: 'green',buttons: {
                   Aceptar: function (e,data) {
-
+                    setTimeout(function(){window.location.reload(1);},1000);
                    
                   } 
               }});
@@ -165,34 +164,48 @@ function editAdmins(){
   $(".button").toggle();
 }
 
-/*function addEmpresa()
- {
+function editAdmin($id, $nombres, $apellidos, $correo){
+  //console.log($id, $nombres, $apellidos, $correo);
+  
+  $("#usuario-id").val($id);
+  $("#nombres-editar").val($nombres);
+  $("#apellidos-editar").val($apellidos);
+  $("#correo-editar").val($correo);
 
+  $('#modal-editar').modal();
 
-    var razon     = $("#razon").val();
-    var contacto  = $("#contacto").val();
-    
+}
+//editAdmin
 
+function editarAdmin(){
+  var usuarioID = $("#usuario-id").val();
+  var nombres = $("#nombres-editar").val();
+  var apellidos = $("#apellidos-editar").val();
+  var correo = $("#correo-editar").val();
+  var contrasenia = $("#contrasenia-editar").val();
+  console.log(usuarioID, nombres, apellidos, correo, contrasenia);
 
-    $.ajax({
+  $.ajax({
       type: 'POST',
-      url:  "../AgregarEmpresas/addEmpresa",
+      url:  "../usuario/editar",
       cache: false,
       async: true,
       dataType: 'json',
       data: {
-        razon: razon,
-        contacto: contacto
-
+        usuarioID: usuarioID,
+        nombres: nombres,
+        apellidos: apellidos,
+        correo: correo,
+        contrasenia: contrasenia
       },
       success: function(data)
       {
 
         console.log(data);
 
-        if(data == false){
+        if(data.error){
 
-          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al registrar la Empresa.',type: 'red',buttons: {
+          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al editar administrador.',type: 'red',buttons: {
                     Aceptar: function (e,data) {
 
                       setTimeout(function(){window.location.reload(1);},1000);
@@ -202,10 +215,9 @@ function editAdmins(){
  
         }else{
 
-
-           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Registro con exito',type: 'green',buttons: {
+           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Administrador editado con éxito',type: 'green',buttons: {
                     Aceptar: function (e,data) {
-
+                      setTimeout(function(){window.location.reload(1);},1000);
                      
                     } 
                 }});
@@ -218,26 +230,16 @@ function editAdmins(){
         
       }
     });
-
 }
+//editar admin
 
-function deleteEmpresa (){
-  
-
-
-
-
-  $(".borrar").toggleClass("shake-little shake-constant");
-  $(".color").toggleClass("danger-color");
-  $(".button").toggle();
-
-  
+/*
 
 
 
-}
+
+
 */
-
 
 
 
