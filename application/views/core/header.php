@@ -218,7 +218,7 @@
                         <div class="dropdown-menu dropdown-menu-right  " aria-labelledby="navbarDropdownMenuLink">
                         <?php foreach ($this->session->userdata['perfiles'] as $row) {?>
 
-                            <a class="dropdown-item" href="http://localhost/marketing/index.php/Header/cambiarRol/">
+                            <a class="dropdown-item" href="http://localhost/marketing/index.php/usuario/cambiarperfil/<?php echo $row['rol_id'] ?>">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span ><?php echo $row['nombre'];?></span>
                                 <input type="hidden" id="rolID" value="<?php echo $row['rol_id'];?>" >

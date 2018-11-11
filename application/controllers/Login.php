@@ -75,11 +75,9 @@ class Login extends CI_Controller {
         # code...
         if($perfil['rol_id'] == $rolID){
           $this->session->set_userdata('perfil-actual', $perfil);
-          return true;
         }
       }
-
-      return false;
+      redirect('inicio');
     }
     
    public function registro (){

@@ -5,9 +5,14 @@
         <section id="bienvenida" class="mt-2 text-center">
 
             <h1>Bienvenido al Sistema de Marketing Digital <strong><br><?php echo $this->session->userdata['usuario']['nombres']." ".$this->session->userdata['usuario']['apellidos'] ?></strong></h1>
-
+            
         <br>
  
+		<?php if($this->session->userdata['perfil-actual']['rol_id'] == 1) {?>
+			<section id="resumen-administrador">
+				<button onclick=""></button>
+			</section>
+ 		<?php } ?>
  
 		<?php if($this->session->userdata['perfil-actual']['rol_id'] == 1) {?>
  		<section id="resumen-root">
@@ -69,9 +74,14 @@
  			</div>
  		</section>
  		<?php } ?>
+
+
     </main>
     <!--Main layout-->
 
+<script>
+	
+</script>
 
            
 
