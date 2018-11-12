@@ -69,6 +69,9 @@
  			</div>
  		</section>
  		<?php } ?>
+		<?php if($this->session->userdata['perfil-actual']['rol_id'] == 2) {?>
+			<button onclick='loginFB()'>Login Facebook</button>
+ 		<?php } ?>
     </main>
     <!--Main layout-->
 

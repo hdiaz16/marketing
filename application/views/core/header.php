@@ -23,6 +23,7 @@
 
     <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
 
+    <script src="<?php echo base_url();?>assets/js/facebook.js"></script>
     <!-- Your custom styles (optional) -->
     <style>
 
@@ -30,6 +31,28 @@
 </head>
 
 <body class="fixed-sn mdb-skin" >
+    <script>
+        var scopes = 'manage_pages, publish_pages, pages_show_list';
+        
+        window.fbAsyncInit = function() {
+            FB.init({
+            appId      : '165528921020709',
+            cookie     : true,  // enable cookies to allow the server to access
+            xfbml      : true,  // parse social plugins on this page
+            version    : 'v3.1' // use graph api version 2.8
+            });
+        };
+
+        // Load the SDK asynchronously
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/es_LA/sdk.js'
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
 
      <!--Main Navigation-->
     <header>
