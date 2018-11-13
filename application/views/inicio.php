@@ -10,7 +10,6 @@
  
 		<?php if($this->session->userdata['perfil-actual']['rol_id'] == 1) {?>
 			<section id="resumen-administrador">
-				<button onclick=""></button>
 			</section>
  		<?php } ?>
  

@@ -38,9 +38,7 @@
 
                 <!--Grid row-->
                 <div class="row">
-
                     <?php foreach ($adminsNoAsignados as $row) { ?>
-
                                 <!--Grid column-->
                             <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-4 col-md-6 mb-4 borrar editar">
 
@@ -101,9 +99,8 @@
 
                 <!--Grid row-->
                 <div class="row">
-
                     <?php foreach ($admins as $row) { ?>
-
+                            
                                 <!--Grid column-->
                             <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-4 col-md-6 mb-4 borrar editar">
 

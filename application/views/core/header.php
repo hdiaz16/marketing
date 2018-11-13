@@ -207,7 +207,7 @@
                     <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <i class="fa fa-user"></i>
-                        <span class="d-none d-md-inline-block">Perfiles</span>
+                        <span class="d-none d-md-inline-block"><?php echo $this->session->userdata['perfil-actual']['nombre']; ?></span>
                     </a>
                      
 

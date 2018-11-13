@@ -6,19 +6,41 @@ class Root_Model extends CI_Model {
     $this->load->database();
   }
 
-  public function getAdministradores($rootID, $all = TRUE){
+  public function getAdministradores($rootID, $eliminado = TRUE){
 
-    $this->db->select('usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl, perfil._create, perfil._erase, perfil._update');
+    $this->db->select('usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl, perfil._create, perfil._erase, perfil._update, empresa.razon_social as empresa_nombre');
     $this->db->from('usuario');
     $this->db->join('perfil', 'usuario.id = perfil.usuario_id');
+    $this->db->join('empresa_admin', 'perfil.id = empresa_admin.admin_id');
+    $this->db->join('empresa', 'empresa_admin.empresa_id = empresa.id');
     $this->db->where('perfil.sys_admin_id', $rootID);
     $this->db->where('perfil.usuario_id !=', $rootID);
     
-    if(is_null($all))
+    if(is_null($eliminado))
       $this->db->where('perfil._erase', NULL);
 
 
     return $this->db->get()->result_array();
+  }
+
+  public function getAdministradoresNoAsignados($rootID, $eliminado = TRUE){
+
+    $consulta = 'SELECT usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl, perfil._create, perfil._erase, perfil._update
+      FROM usuario join perfil on usuario.id = perfil.usuario_id
+      WHERE perfil.sys_admin_id = ?
+      AND perfil.id NOT IN 
+      (SELECT admin_id FROM empresa_admin)';
+
+    if (is_null($eliminado))
+      $consulta .= ' AND perfil._erase IS NULL';
+    try {
+      return $this->db->query($consulta, [$rootID])->result_array();
+      #return $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "get select Administrador Usuario: ".$e);
+      return false;
+    }
+
   }
 
   public function getAdministrador($adminID, $eliminado = FALSE){
