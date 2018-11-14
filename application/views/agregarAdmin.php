@@ -44,9 +44,9 @@
 
                                 <!--Panel-->
                                 <div class="card h-100">
-                                    <div class="card-header white-text success-color color" >
+                                    <div class="card-header white-text success-color color borrar editar" >
 
-                                        <button onclick="deleteAdmin(<?php echo $row['perfil_id'] ?>)" class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button>
+                                        <button onclick="deleteAdmin(<?php echo $row['perfil_id'] ?>)" class="btn btn-sm float-right button black" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button>
                                         
                                             
                                         <button onclick="editAdmin(
@@ -54,7 +54,7 @@
                                             <?php echo isset($row['nombres']) ? "'".$row['nombres']."'" : "''"; ?>,
                                             <?php echo isset($row['apellidos']) ? "'".$row['apellidos']."'" : "''"; ?>,
                                             <?php echo isset($row['correo']) ? "'".$row['correo']."'" : "''"; ?>
-                                        )" class="btn btn-sm  black float-right button-edit" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button>
+                                        )" class="btn btn-sm  black float-right button-editar" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button>
                                        <?php echo $row['nombres']?>
                                        
                                     </div>

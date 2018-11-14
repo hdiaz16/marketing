@@ -158,10 +158,11 @@ function asignarAdminEmpresa(){
   //AJAX
 }
 
-function editAdmins(){
+function editarAdmins(){
+  console.log($(".editar"));
   $(".editar").toggleClass("shake-little shake-constant");
   $(".color").toggleClass("warning-color");
-  $(".button").toggle();
+  $(".button-editar").toggle();
 }
 
 function editAdmin($id, $nombres, $apellidos, $correo){
