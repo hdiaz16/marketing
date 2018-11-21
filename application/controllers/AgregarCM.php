@@ -15,78 +15,63 @@ class AgregarCM extends CI_Controller {
 	
 	public function index()
 	{
+        $data['CM'] = $this->Administrador_Model->getUsuarios($this->session->userdata('perfil-actual')['perfil_id'] );
 
-		 
-           
-      $data['CM'] = $this->Administrador_Model->getUsuarios($this->session->userdata('perfil-actual')['perfil_id'] );
+        $data['rol'] = $this->Administrador_Model->roles();
 
-      $data['rol'] = $this->Administrador_Model->roles();
-
-			$this->load->view('core/header');
-			$this->load->view('agregarCM',$data);
-			$this->load->view('core/footer');
-
-	
+        $this->load->view('core/header');
+        $this->load->view('agregarCM',$data);
+        $this->load->view('core/footer');
 	}
 
 
 	public function registrarUsuario()
 	{
-		
-		   
-
-      $data = $this->Administrador_Model->registrarUsuario(
-        trim($this->session->userdata('perfil-actual')['perfil_id']),
-        trim($this->input->post('correo')),
-        $this->input->post('rol'),
-        trim($this->input->post('nombre')),
-        trim($this->input->post('contrasena')),
-        trim($this->input->post('apellido'))
-
-      );
-
-
-
-
-
+        $data = $this->Administrador_Model->registrarUsuario(
+            trim($this->session->userdata('perfil-actual')['perfil_id']),
+            trim($this->input->post('correo')),
+            $this->input->post('rol'),
+            trim($this->input->post('nombre')),
+            trim($this->input->post('contrasena')),
+            trim($this->input->post('apellido'))
+        );
 
         if($data == false)
         {
-           
             echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar el Community Manager'));
-
-    	  }
+        }
         else
         {
-
           echo json_encode($data = array('error' => true, 'mensaje' =>'Registro completo.'));
-
-    	 }
-
+        }
 	}
 
+    public function deleteCM()
+    {
+        $id =  $this->input->post('id');
+        $data = $this->Administrador_Model->eliminarUsuario($id);
 
+        if($data){
+            echo json_encode($data = array('error' => false, 'mensaje' =>'Se elimino correctamente'));
+        }else{
+            echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo eliminar'));
+        }
+    }
 
-  public function deleteCM()
-  {  
+    public function editCM() {
+        $data = $this->Administrador_Model->editarUsuario(
+            trim($this->input->post('id')),
+            trim($this->input->post('rol')),
+            trim($this->input->post('nombre')),
+            trim($this->input->post('apellido')),
+            trim($this->input->post('correo')),
+            trim($this->input->post('contrasena'))
+        );
 
-      $id =  $this->input->post('id');
-
-      $data = $this->Administrador_Model->eliminarUsuario($id);
-
-      if($data){
-
-           echo json_encode($data = array('error' => false, 'mensaje' =>'Se elimino correctamente'));
-
-      }else{
-          echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo eliminar'));
-
-      }
-
-
-
-  }
-
-
-
+        if($data){
+            echo json_encode($data = array('error' => false, 'mensaje' =>'Se edito correctamente'));
+        }else{
+            echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo editar'));
+        }
+    }
 }

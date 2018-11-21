@@ -46,7 +46,7 @@ class Administrador_Model extends CI_Model{
 
   }
 
-  public function editarUsuario($perfilID, $rolID, $nombres, $apellidos, $correo, $contrasenia, $imagenURL){
+  public function editarUsuario($perfilID, $rolID, $nombres, $apellidos, $correo, $contrasenia, $imagenURL=""){
 
     $fechaEdicion = date('Y-m-d H:i');
     $dataUsuario = ['apellidos' => $apellidos, 'correo' => $correo, 'contrasenia' => $contrasenia, 'imagenurl' => $imagenURL, 'nombres' => $nombres, '_update' => $fechaEdicion];
