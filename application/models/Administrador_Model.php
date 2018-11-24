@@ -46,6 +46,7 @@ class Administrador_Model extends CI_Model{
 
   }
 
+
   public function editarUsuario($perfilID, $rolID, $nombres, $apellidos, $correo, $contrasenia, $imagenURL=""){
 
     $fechaEdicion = date('Y-m-d H:i');
@@ -77,6 +78,7 @@ class Administrador_Model extends CI_Model{
 
   }
 
+
   public function getUsuarios($userID, $all = TRUE){
 
     
@@ -93,6 +95,28 @@ class Administrador_Model extends CI_Model{
 
     return $this->db->get()->result_array();
   }
+
+  public function eliminarUsuario($perfilID){
+    $fechaEliminacion = date('Y-m-d H:i');
+    $data = ['_erase' => $fechaEliminacion, '_update' => $fechaEliminacion];
+
+    try {
+      $this->db->where('id', $perfilID)
+      ->update('perfil', $data);
+
+      $this->db->select('*')
+      ->from('perfil')
+      ->where('id', $perfilID);
+
+      return $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "update/delete eliminarUsuario: ".$e);
+      return false;
+      
+    }
+  }
+  
+
 
   
 
