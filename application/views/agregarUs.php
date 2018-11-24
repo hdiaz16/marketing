@@ -93,10 +93,7 @@
     <!--Main layout-->
 
 
-           
-
-
-
+        
         <!--Modal: Login / Register Form Demo-->
                 <div class="modal fade" id="modalLRFormDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog cascading-modal modal-lg" role="document">
@@ -113,8 +110,6 @@
                                     </li>
                                     
                                 </ul>
-
-                                
 
                                 <!-- Tab panels -->
                                 <div class="tab-content">
@@ -167,11 +162,6 @@
 
                                                     </div>
                                                     <!--Grid column-->
-                                                    
-                                                    
-
-                                                    
-
                                                     
                                                 </div>
                                                 <!-- Grid row -->

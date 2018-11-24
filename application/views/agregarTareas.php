@@ -112,9 +112,6 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i> Agregar Tarea</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fa fa-user-plus mr-1"></i> Agregar Subtarea</a>
-                                    </li>
                                 </ul>
 
                                 <!-- Tab panels -->
@@ -125,10 +122,22 @@
                                         <!--Body-->
                                         <div class="modal-body mb-1">
                                             <div class="row">
+                                                <!-- Grid column -->
+                                                     <select class="mdb-select"  id="selRol">
+                                                            <option value="" disabled selected>Seleccionar Nodo</option>
+                                                            <?php foreach ($rol as $row) {
+
+                                                                echo '<option value='.$row['id'].'>'.$row['nombre'].'</option>';
+                                                            } ?> 
+                                                    </select>
+                                                    <!-- Grid column -->
+                                                
+                                            </div>
+                                            <div class="row">
                                                     <!-- Grid column -->
                                                      <div class="col-6 md-form">
                                                         <!-- Default input -->
-                                                        <input  type="text"  class="form-control " id="nom">
+                                                        <input  type="text"  class="form-control " id="desc" name="desc">
                                                         <label for="form3" >Descripcion de la tarea</label>
                                                        
                                                     </div>
@@ -136,7 +145,7 @@
 
 
                                                     <div class="md-form col-6">
-                                                        <input  type="text"  class="form-control datepicker" id="fechaIn">
+                                                        <input  type="text"  class="form-control datepicker" id="fechaIn" name="fechaIn">
                                                         <label for="date-picker-example">Fecha de entrega</label>
                                                     </div>
                                                     
@@ -189,51 +198,6 @@
 
                                     </div>
                                     <!--/.Panel 7-->
-
-                                    <!--Panel 8-->
-
-                                    <div class="tab-pane fade" id="panel8" role="tabpanel">
-
-                                        <div class="modal-body mb-1">
-                                            <div class="row">
-                                                    <!-- Grid column -->
-                                                     <div class="col-6 md-form">
-                                                        <!-- Default input -->
-                                                        <input  type="text"  class="form-control nom">
-                                                        <label for="form3" >Descripcion de la tarea</label>
-                                                       
-                                                    </div>
-                                                    <!-- Grid column -->
-
-
-                                                    <div class="md-form col-6">
-                                                        <input  type="text"  class="form-control datepicker" id="fechaIn">
-                                                        <label for="date-picker-example">Fecha de entrega</label>
-                                                    </div>
-                                                    
-                                             
-
-                                                    <!-- Grid column -->
-                                                    <div class="md-form col-6">
-                                                        <label for="text">Requisitos</label>
-                                                       <input  type="text"  class="form-control " id="fechaIn">
-                                                    </div>
-                                                    <!-- Grid column -->
-                                                    
-                                                </div>
-                                                <!-- Grid row -->
-                                            
-                                        </div>
-                                        <!--Footer-->
-
-                                        <div class="modal-footer">
-                                            <button class="btn-floating btn-lg success-color" onclick="addUsuarios();">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                        </div>
-                                       
-                                    </div>
-                                    <!--/.Panel 8-->
                                 </div>
 
                             </div>
