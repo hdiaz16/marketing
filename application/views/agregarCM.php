@@ -220,6 +220,115 @@
                                     <div class="md-form col-6">
                                         <label for="form1" class="">Contraseña</label>
                                         <input type="password" id="contrasena_update" class="form-control">
+
+                            <!--Modal cascading tabs-->
+                            <div class="modal-c-tabs">
+
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs tabs-2 green " role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab"  role="tab"><i class="fa fa-user mr-1"></i> Agregar Usuarios</a>
+                                    </li>
+                                    
+                                </ul>
+
+                                
+
+                                <!-- Tab panels -->
+                                <div class="tab-content">
+                                    <!--Panel 17-->
+                                    <div class="tab-pane fade in show active" id="panel17" role="tabpanel">
+
+                                        <!--Body-->
+                                        <div class="modal-body mb-1">
+                                            <!-- Default form grid -->
+                                            <form>
+
+                                                <!-- Grid row -->
+                                                <div class="row">
+                                                    <!-- Grid column -->
+
+                                                    <div class="md-form col-6">
+                                                         <label for="form1" class="">Nombre</label>
+                                                        <input type="text" id="nombre" class="form-control">
+                                                    </div>
+                                                    <!-- Grid column -->
+
+                                                    <!-- Grid column -->
+                                                    
+
+                                                    <div class="md-form col-6">
+                                                         <label for="form1" class="">Apellido</label>
+                                                        <input type="text" id="apellido" class="form-control">
+                                                    </div>
+                                                    <!-- Grid column -->
+
+                                                    
+                                                </div>
+                                                <!-- Grid row -->
+                                                <br>
+
+                                                <div class="row">
+                                                   <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                         <label for="form1" class="">Correo</label>
+                                                        <input type="email" id="correo" class="form-control">
+                                                    </div>
+                                                    <!-- Grid column -->
+
+                                                    <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                         <label for="form1" class="">Contraseña</label>
+                                                        <input type="password" id="contrasena" class="form-control">
+                                                    </div>
+                                                    <!-- Grid column -->
+ 
+                                                </div>
+                                                <!-- Grid row -->
+                                                  
+                                                  <br>
+                     
+                                                <div class="row">
+
+
+                                                    <!--Grid column-->
+                                                    <div class="col-12">
+
+                                                        <!--Name-->
+                                                        <select class="mdb-select"  id="selRol">
+                                                            <option value="" disabled selected>Seleccionar Rol</option>
+                                                            <?php foreach ($rol as $row) {
+
+                                                                if ($row['id'] != 2) {
+                                                                    echo '<option value='.$row['id'].'>'.$row['nombre'].'</option>';
+                                                                }
+
+                                                                
+                                                            } ?>
+                                                            
+                                                        </select>
+                                                        <button  type="button" class="btn-save btn btn-primary btn-sm">Guardar</button>
+
+                                                    </div>
+                                                    <!--Grid column-->
+                                                    
+
+                                                </div>
+
+
+                                            </form>
+
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                                
+                                                <button class="btn-floating btn-lg success-color" onclick="addCM();">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                        </div>
+        
+>>>>>>> Stashed changes
                                     </div>
                                     <!-- Grid column -->
                                 </div>
