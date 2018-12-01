@@ -39,10 +39,10 @@
                     <?php foreach ($tarea as $row) { ?>
 
                                 <!--Grid column-->
-                            <div class="col-xl-3 col-md-6 mb-4 borrar">
+                            <div class="col-xl-3 col-md-6 mb-4 borrar d-flex">
 
                                 <!--Panel-->
-                                <div class="card h-100">
+                                <div class="card h-300 d-flex">
 
                                     <?php switch ($row['estado_tarea_id']) {
                                         case '1':
@@ -70,7 +70,7 @@
                                         <p class="font-small text-right"><?php echo $row['nombre_estado']?></p>
                                     </div>
 
-                                    <h6 class="ml-4 mt-3 dark-grey-text font-weight-bold">Condiciones</h6>
+                                    <h6 class="ml-4 mt-3 dark-grey-text font-weight-bold d-flex">Condiciones</h6>
                                     <p class="ml-4 mt-3 font-small dark-grey-text"> 
                                         <?php 
                                         $condiciones = (json_decode($row['condiciones_aceptacion'], true));
