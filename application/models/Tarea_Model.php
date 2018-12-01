@@ -50,9 +50,9 @@
 
     public function registrarTarea($redID, $nodoID, $descripcion, $condicionesAceptacion, $requisitos, $fecha){
       $fechaRegistro = date('Y-m-d H:i');
-      $condicionesAceptacion = json_encode($condicionesAceptacion);
-      $requisitos = json_encode($requisitos);
-      $data = ['red_id' => $redID, 'nodo_id' => $nodoID,'estado_tarea_id' => 1, '_create' => $fechaRegistro, '_update' => $fechaRegistro, 'condiciones_aceptacion' => $condicionesAceptacion, 'requisitos' => $requisitos, 'fecha_entrega' =>$fecha];
+      $condicionesAceptacion = $condicionesAceptacion;
+      $requisitos = $requisitos;
+      $data = ['red_id' => $redID, 'nodo_id' => $nodoID,'estado_tarea_id' => 1, '_create' => $fechaRegistro, '_update' => $fechaRegistro, 'condiciones_aceptacion' => $condicionesAceptacion, 'requisitos' => $requisitos, 'fecha_entrega' =>$fecha, 'descripcion' => $descripcion];
 
       try {
         $this->db->insert('tarea', $data);
