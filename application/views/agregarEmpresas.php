@@ -43,8 +43,8 @@
 
                     
 
-                    <?php foreach ($Empresa as $row) { ?>
-                        <?php if ($row->_erase == null) { ?>
+                    <?php foreach ($empresas as $row) { ?>
+                        <?php if ($row['_erase'] == null) { ?>
 
                                 <!--Grid column-->
                             <div class="col-xl-3 col-md-6 mb-4 borrar">
@@ -54,14 +54,14 @@
                                     <div class="card-header white-text success-color color" >
 
 
-                                        <button  onclick="delEmpresa1(<?php echo $row->id?>);" class="btn btn-sm  black float-right button" style="display: none;" >
+                                        <button  onclick="delEmpresa1(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button" style="display: none;" >
                                             <i class="fa fa-times " aria-hidden="true" ></i>
                                         </button> 
 
-                                        <button  onclick="editarEmp(<?php echo $row->id?>);" class="btn btn-sm  black float-right button1" style="display: none;" >
+                                        <button  onclick="editarEmp(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button1" style="display: none;" >
                                             <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target="#modalLRFormDemo1" ></i>
                                         </button> 
-                                       <?php echo $row->razon_social?>
+                                       <?php echo $row['razon_social']?>
                                     </div>
                                     
 
@@ -76,7 +76,8 @@
                                     <div class="card-body">
                                         
                                         <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo $row['_create']?></p>
+                                        <?php setlocale(LC_TIME, "es_ES"); ?>
+                                        <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
                                 
                                     </div>
                                     <!--/.Card content-->
@@ -160,7 +161,7 @@
                                                         <!-- Default input -->
                                                         <select class="mdb-select md-form" name="empresas" id="empresas" name="empresas">
                                                           <option value="" disabled selected>Elige empresa</option>
-                                                          <?php foreach ($empresas as $row) { ?>
+                                                          <?php foreach ($empresasNoAsignadas as $row) { ?>
                                                             <option value=" <?php echo  $row['id']?> "><?php echo $row['id']." ".$row['razon_social'] ?></option>
                                                           <?php } ?>
                                                         </select>
@@ -173,7 +174,7 @@
                                                         <!-- Default input -->
                                                         <select class="mdb-select md-form" name="administradores" id="administradores" name="administradores">
                                                           <option value="" disabled selected>Elige administrador</option>
-                                                          <?php foreach ($admins as $row) { ?>
+                                                          <?php foreach ($adminsNoAsignados as $row) { ?>
                                                             <option value=" <?php echo  $row['perfil_id']?> "><?php echo $row['perfil_id']." ".$row['nombres'] ?></option>
                                                           <?php } ?>
                                                         </select>
@@ -245,35 +246,71 @@
                                     <div class="tab-pane fade in show active" id="panel17" role="tabpanel">
 
                                         <!--Body-->
-                                        <div class="modal-body mb-1">
+                                        <div class="modal-body mb-1" style="height: 80%">
                                             <!-- Default form grid -->
                                             <form>
 
                                                 <!-- Grid row -->
                                                 <div class="row">
                                                     <!-- Grid column -->
-                                                    <div class="col">
+                                                    <div class="col-12">
                                                         <!-- Default input -->
-                                                        <label>Razon Social</label>
-                                                        <input type="text" class="form-control" id="razon">
+                                                        <div class="md-form mt-1">
+                                                            <input type="text" class="form-control" id="razon" name="razon">
+                                                            <label for="razon-agregar">Razón Social</label>
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
 
                                                     <!-- Grid column -->
-                                                    <div class="col">
+                                                    <div class="col-12">
                                                         <!-- Default input -->
-                                                        <label>Contacto</label>
-                                                        <input type="text" class="form-control" id="contacto">
+                                                        <label class="font-weight-bold">Contacto</label>
+                                                        <div class="row">
+
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="md-form mt-1">
+                                                                    <input type="text" class="form-control" id="nombre-agregar" name="nombre-agregar">
+                                                                    <label for="nombre-agregar">Nombre</label>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="md-form mt-1">
+                                                                    <input type="text" class="form-control" id="telefono-agregar" name="telefono-agregar">
+                                                                    <label for="telefono-agregar">Teléfono</label>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="md-form mt-3">
+                                                                    <input type="text" class="form-control" id="correo-asignar" name="correo-asignar">
+                                                                    <label for="correo-asignar">Correo electrónico</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12 col-md-6 mt-4">
+                                                                <span class="font-weight-bold">Horario de disponibilidad</span>
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <div class="md-form mt-1">
+                                                                          <input type="text" id="hora-inicio-agregar" name="hora-inicio-agregar" class="form-control time-picker">
+                                                                          <label for="hora-inicio-agregar">De</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="md-form mt-1">
+                                                                          <input type="text" id="hora-fin-agregar" name="hora-fin-agregar" class="form-control time-picker">
+                                                                          <label for="hora-fin-agregar">A</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
 
-                                                    <!-- Grid column -->
-                                                    <div class="col">
-                                                        <!-- Default input -->
-                                                        <label>Telefono</label>
-                                                        <input type="text" class="form-control" id="telefono">
-                                                    </div>
-                                                    <!-- Grid column -->
 
                                                     
                                                 </div>

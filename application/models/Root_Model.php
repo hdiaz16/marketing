@@ -14,6 +14,7 @@ class Root_Model extends CI_Model {
     $this->db->join('empresa_admin', 'perfil.id = empresa_admin.admin_id');
     $this->db->join('empresa', 'empresa_admin.empresa_id = empresa.id');
     $this->db->where('perfil.sys_admin_id', $rootID);
+    $this->db->where('perfil.rol_id', 2);
     $this->db->where('perfil.usuario_id !=', $rootID);
     
     if(is_null($eliminado))
@@ -28,6 +29,7 @@ class Root_Model extends CI_Model {
     $consulta = 'SELECT usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl, perfil._create, perfil._erase, perfil._update
       FROM usuario join perfil on usuario.id = perfil.usuario_id
       WHERE perfil.sys_admin_id = ?
+      AND perfil.rol_id = 2
       AND perfil.id NOT IN 
       (SELECT admin_id FROM empresa_admin)';
 
@@ -37,7 +39,7 @@ class Root_Model extends CI_Model {
       return $this->db->query($consulta, [$rootID])->result_array();
       #return $this->db->get()->result_array();
     } catch (Exception $e) {
-      log_message('error', "get select Administrador Usuario: ".$e);
+      log_message('error', "get select Administradores no asignados: ".$e);
       return false;
     }
 

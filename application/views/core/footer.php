@@ -23,6 +23,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/dataTables.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/Empresa.js"></script>
 
     
 
@@ -37,21 +38,25 @@
             minScrollbarLength: 20
         });
 
-        $('.datepicker').pickadate({
-
-            monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-            weekdaysFull: ['Lunes', 'Martes', 'Miercoles','Jueves', 'Viernes','Sabado', 'Domingo'],
-            weekdaysShort: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
-            formatSubmit: 'yyyy-mm-dd',
-            format: 'yyyy-mm-dd'
-
-
-        });
 
         $(document).ready(function () {
             $('.mdb-select').material_select();
+            $('.datepicker').pickadate({
+
+                monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                weekdaysFull: ['Lunes', 'Martes', 'Miercoles','Jueves', 'Viernes','Sabado', 'Domingo'],
+                weekdaysShort: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
+                formatSubmit: 'yyyy-mm-dd',
+                format: 'yyyy-mm-dd'
+
+
+            });
+            $('.time-picker').pickatime({
+                twelvehour: true,
+            }); 
         });
         
+
         tinymce.init({ selector:'#post_content', menubar: false, height : "294" });
 
 

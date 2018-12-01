@@ -5,19 +5,12 @@ class Red_Model extends CI_Model {
   function __construct(){
     $this->load->database();
   }
-  public function getRed($campaniaID, $eliminada = FALSE){
+  public function getRed($campaniaID){
 
-    if($eliminada){
-      $this->db->select('*');
-      $this->db->from('red_semantica');
-      $this->db->where('campania_id', $campaniaID);
-    }else{
-      $this->db->select('*');
-      $this->db->from('red_semantica');
-      $this->db->where('campania_id', $campaniaID);
-      $this->db->where('_erase', NULL);
-    }
-
+    $this->db->select('*');
+    $this->db->from('red_semantica');
+    $this->db->where('campania_id', $campaniaID);
+  
     return $this->db->get()->result_array();
   } 
 

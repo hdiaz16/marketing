@@ -11,7 +11,7 @@
 	
 
 	<section class="mt-2">
-            <h3 class="text-center"><strong>Red Semantica</strong></h3>
+            <h3 class="text-center"><strong>Red Semántica</strong></h3>
 
             <section class="text-right">
 
@@ -36,25 +36,32 @@
 
 </main>
 
-<section class="col-6 offset-2">
-	
-	<div id="mynetwork"></div>
-
+<section id="campania-list">
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <select onchange="mostrarRed(this)" class="mdb-select" name="campania-red" id="campania-red">
+                    <option value="0" selected="">Elija la campaña</option>
+                    <?php foreach ($campanias as $key => $campania) { ?>
+                        <option value="<?php echo $campania['id'] ?>"><?php echo $campania['nombre'] ?></option>
+                    <?php } ?>
+                </select>
+                <label for="campania-red">Campaña:</label>
+            </div>
+        </div>
+    </div>
 </section>
 
-<div hidden>
+<section id="red">
+	<div class="container">
+     <div class="row">
+            <div class="col-12 col-lg-6"> 
+	           <div id="mynetwork"></div>
+            </div>
+        </div>   
+    </div>
 
-	<ul id="info" class="list-unstyled" >
- 	 <li>
- 	 	
- 	 </li>
- 	
-
- 	</ul>
-	
-</div>
-
-
+</section>
 
 
 <!--Modal: Login / Register Form-->
@@ -83,26 +90,21 @@
                                         <div class="modal-body mb-1">
                                             <div class="row">
                                                     <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                        
+                                                        <label for="textareaBasic">Nodo: <span id="nodo-nombre-modal"></span></label>
+                                                    </div>
+                                                    <!-- Grid column -->
+                                                    
+                                                    <!-- Grid column -->
                                                      <div class="col-6 md-form">
                                                         <!-- Default input -->
-                                                        <input  type="text"  class="form-control nom">
-                                                        <label for="form3" >Nombre del Nodo</label>
+                                                        <input  type="text"  class="form-control nom" id="nodo-nombre-input" name="nodo-nombre-input">
+                                                        <label for="nodo-nombre-input" >Nombre del Nodo</label>
                                                        
                                                     </div>
                                                     <!-- Grid column -->
 
-                                                    <!-- Grid column -->
-                                                    <div class="md-form col-6">
-                                                        
-                                                        <label for="textareaBasic">Seleccionar Tipo de Nodo </label>
-                                                        <select class="custom-select" id="inputGroupSelect01">
-														    <option selected>Choose...</option>
-														    <option value="1">One</option>
-														    <option value="2">Two</option>
-														    <option value="3">Three</option>
-														</select>
-                                                    </div>
-                                                    <!-- Grid column -->
                                                     
                                                 </div>
                                                 <!-- Grid row -->
@@ -110,9 +112,9 @@
                                         </div>
                                         <!--Footer-->
                                         <div class="modal-footer">
-                                            <button class="btn-floating btn-lg success-color" onclick="addUsuarios();">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
+                                            <button class="btn-floating btn-lg success-color" onclick="agregarNodo();">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
                                         </div>
 
                                     </div>
@@ -131,54 +133,110 @@
 
 <script type="text/javascript">
 
-	var info = document.getElementById('info');
-    // create an array with nodes
-    var nodes = [
-        {id: 1, label: 'Padre 1',color: '#ADCCC7',title: info,  shape: 'circle' },
+    var contenedor, nodos, aristas, data;
+    var red = {}, network = {};
+    var nodoSeleccionadoId = '';
+    var ultimoNodoId = 0;
 
-        {id: 2, label: 'Hijo 1',color: '#144C52', title: info,shape: 'circle'},
-
-        {id: 3, label: 'Nieto 1',color: '#d34c26', title: info,shape: 'circle'},
-
-        {id: 4, label: 'Nieto 2',color: '#d34c26',title: info,shape: 'circle'},
-
-
-
-        
-
-        
-    ];
-
-    var nodes1 = {
-             id: '1', nombre: 'PADRE',title: info, hijos: [{ 
-
-                 id: '2', nombre: 'HIJO',title: info, hijos: [{ 
-
-                 	id: '3', nombre: 'NIETO', title: info
-                 }]
-
-             }] 
-             
-        };
-
-    // create an array with edges
-    var edges = [
-        {from: 1, to: 2},
-        {from: 2, to: 3},
-        {from: 2, to: 4}
-    ];
-
-    // create a network
-    var container = document.getElementById('mynetwork');
-
-    var data = {
-        nodes: nodes,
-        edges: edges
+    var options = {
+      edges:{
+        arrows: 'to',
+        color: 'red',
+        scaling:{
+          label: true,
+        },
+        shadow: true,
+        smooth: true,
+      }
     };
 
-    
+    function clickNodo(values, id, selected, hovering){
+        nodoSeleccionadoId = id;
+        var nombreNodo;
+        
+        nodos.find(
+            nodo => {
+                if(nodo.id == nodoSeleccionadoId) {
+                    nombreNodo = nodo.label;
+                }
+            });
 
-    var network = new vis.Network(container, data, {});
+        document.getElementById('nodo-nombre-modal').innerHTML = nombreNodo;
+    }
+
+    function agregarNodo(){
+        contenedor = document.getElementById('mynetwork');
+        var nodo = {};
+        if(nodoSeleccionadoId){
+            nodo = {id: ultimoNodoId+1, label: $('#nodo-nombre-input').val(), color: '#ff45A1', shape: 'box', chosen: {node: clickNodo}};
+            
+            data.nodes.push(nodo);
+            data.edges.push({from: nodoSeleccionadoId, to: nodo.id});
+            network = new vis.Network(contenedor, data, options);
+        }
+    }
+
+
+    function mostrarRed($select){
+        contenedor = document.getElementById('mynetwork');
+        nodos = [];
+        aristas = [];
+        data = [];
+        //console.log(contenedor);
+        fetch('../red/'+$select.value)
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(jsonResponse){
+                //console.log(JSON.parse(jsonResponse[0].red));
+                red = JSON.parse(jsonResponse[0].red);
+                getAristasYNodos(red);
+                console.log(ultimoNodoId);
+
+                data = {nodes: nodos, edges: aristas};
+                //console.log(contenedor);
+                network = new vis.Network(contenedor, data, options);
+                //console.log(contenedor);
+            });
+    }
+
+    function getAristasYNodos($red){
+        var nodoPadre = {id: $red.id, label: $red.nombre, color: '#ADCCC7', chosen: {node: clickNodo}};
+        //console.log(nodoPadre);
+        nodos.push(nodoPadre);
+        //console.log(nodos);
+        if($red.hijos.length > 0){
+            //console.log($red.hijos.length);
+            getNodos($red.hijos, $red.id);
+        }else{
+            ultimoNodoId = nodoPadre.id;
+        }
+    }
+
+    function getNodos($array, $padreID){
+
+        $array.forEach(function($hijo, $index){
+            //console.log($hijo, $index);
+            var nodo = {};
+            if($hijo.hasOwnProperty('hijos') && $hijo.hijos.length > 0){
+                //if($hijo.hasOwnProperty('activado') && $hijo.activado){
+                    nodo = {id: $hijo.id, label: $hijo.nombre, color: '#ff45A1', shape: 'box', chosen: {node: clickNodo}};
+                    getNodos($hijo.hijos, $hijo.id);
+                //}
+            }else{
+                nodo = {id: $hijo.id, label: $hijo.nombre, color: '#00ffa1', chosen: {node: clickNodo}};
+            }
+            
+            ultimoNodoId = nodo.id > ultimoNodoId ? nodo.id : ultimoNodoId; 
+            
+            nodos.push(nodo);
+            aristas.push({from: $padreID, to: $hijo.id});
+        });
+    }
+
+
+    // create a network
+
 </script>
 
 

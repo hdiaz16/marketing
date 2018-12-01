@@ -1,11 +1,17 @@
+
 function addEmpresa()
 {
 
 
-    var razon     = $("#razon").val();
-    var contacto  = $("#contacto").val();
-    var telefono  = $("#telefono").val();
+    var razon     = $("#razon-agregar").val();
+    var nombre  = $("#nombre-agregar").val();
+    var telefono  = $("#telefono-agregar").val();
+    var correo  = $("#correo-agregrar").val();
+    var horaInicio  = $("#hora-inicio-agregar").val();
+    var horaFin  = $("#hora-fin-agregar").val();
     
+    console.log(razon, nombre, telefono, correo, horaFin, horaInicio);
+    return;
 
 
     $.ajax({

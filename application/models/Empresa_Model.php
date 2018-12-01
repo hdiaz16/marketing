@@ -6,36 +6,50 @@ class Empresa_Model extends CI_Model {
     $this->load->database();
   }
   
-  public function getEmpresas($sysAdminID, $all = TRUE){
+  public function getEmpresas($sysAdminID, $all = true){
 
     $this->db->select('*');
     $this->db->from('empresa');
+    $this->db->join('empresa_admin', 'empresa.id = empresa_admin.empresa_id');
     $this->db->where('sys_admin_id', $sysAdminID);
   
     if(is_null($all))
-      $this->db->where('_erase', NULL);
+      $this->db->where('empresa._erase', NULL);
 
 
     return $this->db->get()->result_array();
 
   }
 
-  public function getEmpresa($empresaID, $eliminada = FALSE){
+  public function getEmpresasNoAsignadas($rootID, $eliminadas = true){
 
-    if($eliminada){
+    $consulta = 'SELECT * FROM empresa WHERE empresa.sys_admin_id = ?
+      AND id NOT IN 
+      (SELECT empresa_id FROM empresa_admin)';
+
+    if (is_null($eliminadas))
+      $consulta .= ' AND empresa._erase IS NULL';
+    try {
+      return $this->db->query($consulta, [$rootID])->result_array();
+      #return $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "get select empresas no asignadas: ".$e);
+      return false;
+    }
+
+  }
+
+  public function getEmpresa($empresaID, $eliminada = true){
+
       $this->db->select('*');
       $this->db->from('empresa');
       $this->db->where('id', $empresaID);
+    
+      if(is_null($eliminada))
+        $this->db->where('_erase', NULL);
 
-      return $this->db->get()->result_array();
-    }else{
-      $this->db->select('*');
-      $this->db->from('empresa');
-      $this->db->where('id', $empresaID);
-      $this->db->where('_erase', NULL);
 
       return $this->db->get()->result_array();      
-    }
 
   }
 

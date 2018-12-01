@@ -8,16 +8,12 @@ class Campania_Model extends CI_Model{
 
   public function getCampanias($communityManID, $all = TRUE){
 
-    if($all){
       $this->db->select('*');
       $this->db->from('campania');
       $this->db->where('community_manager_id', $communityManID);
-    }else{
-      $this->db->select('*');
-      $this->db->from('campania');
-      $this->db->where('community_manager_id', $communityManID);
+    if(is_null($all))
       $this->db->where('_erase', NULL);
-    }
+    
 
     return $this->db->get()->result_array();
   }

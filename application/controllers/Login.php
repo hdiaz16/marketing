@@ -23,6 +23,7 @@ class Login extends CI_Controller {
 	
 	public function index()
 	{
+    setlocale(LC_TIME, "es_ES");
   if(/**/$this->session->userdata('perfil-actual')/**/)
     redirect('inicio');
   else

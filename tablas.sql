@@ -90,7 +90,7 @@ CREATE TABLE campania_empleados(
 CREATE TABLE red_semantica(
   id serial PRIMARY KEY,
   campania_id integer REFERENCES campania ON DELETE CASCADE ON UPDATE CASCADE,
-  red jsonb DEFAULT '{"nombre": "nodo padre", "id": 1, "kpis": {"kpis_acumulados": {"likes": 0}}, "hijos": [{"nombre": "nodo hijo", "id":2, "kpis":{"kpis_acumulados": {"likes": 0}},"hijos":[]}]}',
+  red jsonb DEFAULT '{"nombre": "nodo padre", "id": 1, "activado": true, "hijos": [{"nombre": "nodo hijo", "id":2, "activado":true,"hijos":[]}]}',
   _create timestamp WITH TIME ZONE,
   _update timestamp WITH TIME ZONE,
   _erase timestamp WITH TIME ZONE
