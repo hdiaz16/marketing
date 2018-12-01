@@ -30,22 +30,24 @@ class AgregarTareas extends CI_Controller {
 
     public function agregarTarea()
     {
-        $requisitos = trim($this->input->post('req'));
-        $condiciones = trim($this->input->post('con'));
-        $fecha = trim($this->input->post('fecha'));
-        $descripcion = trim($this->input->post('descripcion'));
+        $requisitos     = trim($this->input->post('req'));
+        $condiciones    = trim($this->input->post('con'));
+        $fecha          = trim($this->input->post('fecha'));
+        $descripcion    = trim($this->input->post('descripcion'));
+        $nodo           = trim($this->input->post('nodo'));
+        $red            = trim($this->input->post('red'));
 
-        $data = $this->Tarea_Model->registrarTarea($requisitos, $condiciones,$fecha, $descripcion);
+        $data = $this->Tarea_Model->registrarTarea($red, $nodo, $descripcion, $condiciones, $requisitos, $fecha);
 
         if($data == false)
         {
    
-            echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar la Campaña'));
+            echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar la Tarea'));
 
         }
         else
         {
-            echo json_encode($data = array('error' => false, 'mensaje' =>'La Campaña se registro con exito.'));
+            echo json_encode($data = array('error' => false, 'mensaje' =>'La Tarea se registro con exito.'));
 
         }
 

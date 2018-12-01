@@ -43,23 +43,67 @@
 
                                 <!--Panel-->
                                 <div class="card h-100">
-                                    <div class="card-header white-text success-color color" >
 
-                                        <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
-                                       <?php echo $row->razon_social?>
-                                       
+                                    <?php switch ($row['estado_tarea_id']) {
+                                        case '1':
+                                               $color = "info-color";
+                                            break;
+
+                                        case '2':
+                                                $color = "success-color";
+                                        break;
+
+                                        case '3':
+                                            $color = "danger-color";
+                                            break;
+
+                                        case '4':
+                                            $color = "warning-color";
+                                            break;
+                                        
+                                        default:
+                                            # code...
+                                            break;
+                                    } ?>
+
+                                    <div class="card-header white-text <?php echo $color ?> " >  
+                                        <p class="font-small text-right"><?php echo $row['nombre_estado']?></p>
                                     </div>
-                                    
 
-                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
-                                    <p class="ml-3 mt-3 font-small dark-grey-text"> <?php echo $row->contacto?></p>
+                                    <h6 class="ml-4 mt-3 dark-grey-text font-weight-bold">Condiciones</h6>
+                                    <p class="ml-4 mt-3 font-small dark-grey-text"> 
+                                        <?php 
+                                        $condiciones = (json_decode($row['condiciones_aceptacion'], true));
+                                         ?>
+                                        <?php foreach ( $condiciones as $index => $condicion ) { ?>
+
+                                            <div class="row">
+
+                                                <span class="ml-5 mt-1 font-small dark-grey-text "><?php echo $condicion['nombre'] ?> </span> 
+
+                                                <span class="ml-5 mt-2 font-small dark-grey-text "> <!-- Material unchecked -->
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" id=" <?php $row['tarea_id'].$index ?> " <?php echo $condicion['cumplida'] ? 'checked' : '' ?> >
+                                                        <label class="form-check-label" for="materialUnchecked"></label>
+                                                    </div> 
+                                                </span>
+
+                                            </div>
+
+                                            
+                                        <?php } ?>
+                                    </p>
+
+                                    <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold">Descripcion</h6>
+                                    <p class="ml-4 mt-3 font-small dark-grey-text"> <?php echo $row['descripcion']?></p>
+
                                     <!--/.Card Data-->
 
                                     <!--Card content-->
                                     <div class="card-body">
                                         
                                         <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo $row->_create?></p>
+                                        <p class="font-small grey-text">Fecha de Registro: <?php echo $row ['_create']?></p>
                                 
                                     </div>
                                     <!--/.Card content-->

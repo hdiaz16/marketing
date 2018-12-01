@@ -116,7 +116,7 @@
                                     </li>
 
 
-                                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Dashboard/index"><i class="fa fa-tachometer"></i> Dashboard</a>
+                                    <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Inicio/index"><i class="fa fa-tachometer"></i> Dashboard</a>
                                     </li>
 
                                     <li>
