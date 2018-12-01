@@ -8,6 +8,7 @@ class Inicio extends CI_Controller {
     $this->load->model('Root_Model');
     $this->load->model('Empresa_Model');
     $this->load->model('Dashboard_Model');
+    $this->load->model('Tarea_Model');
   }
 
 	public function index(){
@@ -25,6 +26,8 @@ class Inicio extends CI_Controller {
       ];
 
       $data['empleados'] = $this->Dashboard_Model->getEmpleadoNoAsignados($this->session->userdata['perfil-actual']['perfil_id']);
+      
+      $data['tareaAtrasadas'] = $this->Tarea_Model->getTareas($this->session->userdata['perfil-actual']['perfil_id']);
 
   		$this->load->view('core/header');
   		$this->load->view('dashboard', $data);

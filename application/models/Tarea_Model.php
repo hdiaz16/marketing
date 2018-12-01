@@ -8,10 +8,11 @@
 
     public function getTareas($communityManID, $campaniaID = NULL, $eliminadas = NULL){
       #$eliminadas omite a las tareas eliminadas si el valor pasado es true
-      $this->db->select('campania.id as campania_id, campania.nombre as nombre_campania, red_semantica.id as red_id, tarea.id as tarea_id, tarea.descripcion, tarea.condiciones_aceptacion, tarea.requisitos')
+      $this->db->select('campania.id as campania_id, campania.nombre as nombre_campania, red_semantica.id as red_id, tarea.id as tarea_id, tarea.descripcion, tarea.condiciones_aceptacion, tarea.requisitos, tarea.estado_tarea_id, estado_tarea.nombre as nombre_estado, tarea._create')
       ->from('campania')
       ->join('red_semantica', "campania.id = red_semantica.campania_id")
       ->join('tarea', 'tarea.red_id = red_semantica.id')
+      ->join('estado_tarea', 'tarea.estado_tarea_id = estado_tarea.id')
       ->where('community_manager_id', $communityManID);
       
       if(!is_null($campaniaID))
@@ -47,11 +48,11 @@
 
     }
 
-    public function registrarTarea($redID, $nodoID, $descripcion, $condicionesAceptacion, $requisitos){
+    public function registrarTarea($redID, $nodoID, $descripcion, $condicionesAceptacion, $requisitos, $fecha){
       $fechaRegistro = date('Y-m-d H:i');
       $condicionesAceptacion = json_encode($condicionesAceptacion);
       $requisitos = json_encode($requisitos);
-      $data = ['red_id' => $redID, 'nodo_id' => $nodoID,'estado_tarea_id' => 1, '_create' => $fechaRegistro, '_update' => $fechaRegistro, 'condiciones_aceptacion' => $condicionesAceptacion, 'requisitos' => $requisitos];
+      $data = ['red_id' => $redID, 'nodo_id' => $nodoID,'estado_tarea_id' => 1, '_create' => $fechaRegistro, '_update' => $fechaRegistro, 'condiciones_aceptacion' => $condicionesAceptacion, 'requisitos' => $requisitos, 'fecha_entrega' =>$fecha];
 
       try {
         $this->db->insert('tarea', $data);

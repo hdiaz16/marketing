@@ -89,7 +89,7 @@
 		    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tareas Atrasadas</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Estado de Tareas</a>
+		    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Grafica Tareas</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Empleados NO Asignados</a>
@@ -98,14 +98,20 @@
 		<div class="tab-content" id="myTabContent">
 
 		  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-		  	 
-		  	 <ul class="list-group list-group-flush">
-			  <li class="list-group-item">Cras justo odio <button type="btn" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#modalLRFormDemo">Ver</button></li>
-			  <li class="list-group-item">Dapibus ac facilisis in</li>
-			  <li class="list-group-item">Morbi leo risus</li>
-			  <li class="list-group-item">Porta ac consectetur ac</li>
-			  <li class="list-group-item">Vestibulum at eros</li>
-			</ul>
+
+            <?php foreach ($tareaAtrasadas as $row) {?>
+
+                <?php if ($row['estado_tarea_id'] == "4") {?>
+        	  	 
+    		  	 <ul class="list-group list-group-flush">
+    			  <li class="list-group-item"> <?php echo $row['tarea']  ?> <button type="btn" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#modalLRFormDemo">Ver</button></li>
+    			</ul>
+
+                <?php }else{ ?>
+                    <h3 class="text-danger text-center">NO HAY TAREA ATRASADAS, BUEN TRABAJO.</h3>
+                <?php } ?>
+
+            <?php } ?>
 
 		  </div>
 
