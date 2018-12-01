@@ -125,24 +125,6 @@ class Administrador_Model extends CI_Model{
     return $this->db->where('id !=', 1)->get('rol')->result_array();
   }
 
-  public function eliminarUsuario($perfilID){
-    $fechaEliminacion = date('Y-m-d H:i');
-    $data = ['_erase' => $fechaEliminacion, '_update' => $fechaEliminacion];
-
-    try {
-      $this->db->where('id', $perfilID)
-      ->update('perfil', $data);
-
-      $this->db->select('*')
-      ->from('perfil')
-      ->where('id', $perfilID);
-
-      return $this->db->get()->result_array();
-    } catch (Exception $e) {
-      log_message('error', "update/delete eliminarUsuario: ".$e);
-      return false;      
-    }
-  }
 
   public function asignarCampaniaEmpleado( $empleadoID, $campaniaID){
 

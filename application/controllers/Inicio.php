@@ -7,6 +7,7 @@ class Inicio extends CI_Controller {
     parent::__construct();
     $this->load->model('Root_Model');
     $this->load->model('Empresa_Model');
+    $this->load->model('Dashboard_Model');
   }
 
 	public function index(){
@@ -23,8 +24,10 @@ class Inicio extends CI_Controller {
         'empresas' => $empresas ? $empresas : false,
       ];
 
+      $data['empleados'] = $this->Dashboard_Model->getEmpleadoNoAsignados($this->session->userdata['perfil-actual']['perfil_id']);
+
   		$this->load->view('core/header');
-  		$this->load->view('inicio', $data);
+  		$this->load->view('dashboard', $data);
   		$this->load->view('core/footer');
     }
 

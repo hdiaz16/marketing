@@ -1,7 +1,84 @@
 <main>
 
+	<section id="bienvenida" class="mt-2 text-center">
+
+            <h1>Bienvenido al Sistema de Marketing Digital <strong><br><?php echo $this->session->userdata['usuario']['nombres']." ".$this->session->userdata['usuario']['apellidos'] ?></strong></h1>
+            
+        <br>
+ 
+		<?php if($this->session->userdata['perfil-actual']['rol_id'] == 1) {?>
+			<section id="resumen-administrador">
+			</section>
+ 		<?php } ?>
+ 
+		<?php if($this->session->userdata['perfil-actual']['rol_id'] == 1) {?>
+ 		<section id="resumen-root">
+ 			<div class="container">
+ 				<div class="row">
+ 					<div class="col-12 col-md-6">
+ 						<div class="administradores card-header white-text font-weight-bold">
+ 							<h3>Administradores</h3>
+ 						</div>
+ 						<div class="row">
+ 							<?php foreach ($administradores as $posicion => $administrador) { ?>
+ 								<div class="col-12">
+ 									<div class="card">
+										<div class="row">
+											<div class="mx-4 mt-2 col-12">
+												<p class="mr-5  font-weight-bold">
+												<?php  echo $administrador['nombres']." ".$administrador['apellidos'];?> > <i class="font-weight-bold"><?php echo $administrador['correo'] ?></i>
+												</p>
+												<p class="mb-2">Editado por última vez: <span class="blue-text"><?php echo $administrador['_update']; ?></span></p>
+											</div>
+										</div>
+ 									</div>
+ 								</div>
+
+ 							<?php } ?>
+ 						</div>
+ 					</div>
+ 					<div class="col-12 col-md-6">
+ 						<div class="empresas card-header white-text font-weight-bold">
+ 							<h3>Empresas</h3>
+ 						</div>
+
+ 						<div class="row">
+ 							<?php foreach ($empresas as $posicion => $empresa) { ?>
+ 								<div class="col-12">
+ 									<div class="card">
+	 									<div class="row">
+	 										<div class="mx-4 mt-2 col-12">
+	 											<p class="m-0 mr-4 font-weight-bold">
+	 											<?php  echo $empresa['razon_social'];?> > 
+	 											<?php
+	 											$contacto = json_decode($empresa['contacto']);  
+	 											?>
+
+	 											<?php if(isset($contacto)) {?>
+													<span>{ <i><?php echo (isset($contacto->nombre) ? $contacto->nombre : "").", ".(isset($contacto->correo) ? $contacto->correo : "").", ".(isset($contacto->telefono) ? $contacto->telefono : "") ?></i> }</span>
+	 											 <?php }?>
+	 											</p>
+	 											<p>Editado por última vez: <span class="blue-text"><?php echo $empresa['_update']; ?></span></p>
+	 										</div>
+	 									</div>
+ 									</div>
+ 								</div>
+
+ 							<?php } ?>
+ 						</div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</section>
+ 		<?php } ?>
+
+ 	</section>
+
+
+
+
         <section class="mt-2">
-            <h3 class="text-center"><strong>Dashboard Community Manager </strong></h3>
+            <h3 class="text-center"><strong>Dashboard</strong></h3>
 
         </section >
 
@@ -15,7 +92,7 @@
 		    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Estado de Tareas</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+		    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Empleados NO Asignados</a>
 		  </li>
 		</ul>
 		<div class="tab-content" id="myTabContent">
@@ -38,10 +115,56 @@
 		  
 		  </div>
 
-		  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-		  	
-		  </div>
+		  	<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+		  		<div class="row">
+
+				<?php foreach ($empleados as $row) { ?>
+          
+                        <!--Grid column-->
+                    <div class="col-xl-3 col-md-6 mb-4">
+
+                        <!--Panel-->
+                        <div class="card h-100">
+                            <div class="card-header white-text danger-color" >                  
+                            </div>
+                            
+                            <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
+
+                            <p class="ml-3 mt-3 font-small dark-grey-text"> 
+                            	Nombre: <?php echo $row['nombres']?>
+                               	<?php echo $row['apellidos']?>
+                            </p>
+
+                            <p class="ml-3 mt-1 font-small dark-grey-text"> 
+                            	Correo: <?php echo $row['correo']?>                            	
+                            </p>
+                            <!--/.Card Data-->
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                
+                                <!--Text-->
+                                <p class="font-small grey-text">Fecha de Registro, no asigando desde: <?php echo explode(" ",$row['_create'])[0]?></p>
+                            </div>
+                            <!--/.Card content-->
+                        </div>
+                        <!--/.Panel-->
+                    </div>
+                    <!--Grid column-->
+                    <?php } ?>
+		  		</div>
+		  	</div>
 		</div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -129,7 +252,7 @@
 
 
 
-    </main>
+</main>
 
 
 
