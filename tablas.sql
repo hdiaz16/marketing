@@ -107,6 +107,7 @@ CREATE TABLE tarea(
   red_id integer REFERENCES red_semantica ON DELETE CASCADE ON UPDATE CASCADE,
   nodo_id integer,
   descripcion text,
+  fecha_entrega timestamp WITH TIME ZONE,
   condiciones_aceptacion jsonb DEFAULT '[{"nombre": "", "estado": false},{"nombre": "conseguir # likes", "estado": false}]',
   requisitos jsonb DEFAULT '[{"nombre": "", "estado": false},{"nombre": "conseguir # likes", "estado": false}]',
   _create timestamp WITH TIME ZONE,

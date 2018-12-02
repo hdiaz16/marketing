@@ -53,6 +53,7 @@ $route['default_controller'] = 'login';
 $route['login/iniciarsesion']['post'] = 'Login/iniciarSesion';
 $route['usuario/cambiarperfil/(:num)'] = 'Login/cambiarPerfil/$1';
 $route['red/(:num)'] = 'RedSemantica/getRed/$1';
+$route['red/actualizar/(:num)']['post'] = 'RedSemantica/actualizarRed/$1';
 $route['dashboard'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -27,6 +27,13 @@ class RedSemantica extends CI_Controller {
         echo json_encode($this->Red_Model->getRed($campaniaID));
     }
 
+    public function actualizarRed($campaniaID){
+        $red = $this->input->post('red');
+        #echo json_encode([$red, $campaniaID]);
+        echo json_encode($this->Red_Model->editarRed($red, $campaniaID));
+
+    }
+
 
 }
 

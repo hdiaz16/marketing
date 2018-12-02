@@ -15,16 +15,20 @@
 
             <section class="text-right">
 
-                <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modalLRFormDemo">
+                <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modal-insertar">
                 <i class="fa fa-plus"></i>
             </button>
 
-            <button class="btn-floating btn-lg warning-color">
+            <button class="btn-floating btn-lg warning-color" data-toggle="modal" data-target="#modal-editar">
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
-            <button class="btn-floating btn-lg red" onclick="">
+            <button class="btn-floating btn-lg red" onclick="eliminarNodo()">
                 <i class="fa fa-minus"></i>
+            </button>
+
+            <button class="btn-floating btn-lg purple" onclick="mostrarRedTotal()" tooltip="top" title="mostrar nodos eliminados">
+                <i class="fa fa-eye"></i>
             </button>
                 
             </section>
@@ -64,79 +68,142 @@
 </section>
 
 
-<!--Modal: Login / Register Form-->
-                <div class="modal fade" id="modalLRFormDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog cascading-modal" role="document">
-                        <!--Content-->
-                        <div class="modal-content">
+<!--Modal: insertar nodo-->
+<div class="modal fade" id="modal-insertar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
 
-                            <!--Modal cascading tabs-->
-                            <div class="modal-c-tabs">
+            <!--Modal cascading tabs-->
+            <div class="modal-c-tabs">
 
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs tabs-2 green " role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i> Agregar Nodo</a>
-                                    </li>
-                                  
-                                </ul>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabs-2 green " role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i> Agregar Nodo</a>
+                    </li>
+                  
+                </ul>
 
-                                <!-- Tab panels -->
-                                <div class="tab-content">
-                                    <!--Panel 7-->
-                                    <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+                <!-- Tab panels -->
+                <div class="tab-content">
+                    <!--Panel 7-->
+                    <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
 
-                                        <!--Body-->
-                                        <div class="modal-body mb-1">
-                                            <div class="row">
-                                                    <!-- Grid column -->
-                                                    <div class="md-form col-6">
-                                                        
-                                                        <label for="textareaBasic">Nodo: <span id="nodo-nombre-modal"></span></label>
-                                                    </div>
-                                                    <!-- Grid column -->
-                                                    
-                                                    <!-- Grid column -->
-                                                     <div class="col-6 md-form">
-                                                        <!-- Default input -->
-                                                        <input  type="text"  class="form-control nom" id="nodo-nombre-input" name="nodo-nombre-input">
-                                                        <label for="nodo-nombre-input" >Nombre del Nodo</label>
-                                                       
-                                                    </div>
-                                                    <!-- Grid column -->
-
-                                                    
-                                                </div>
-                                                <!-- Grid row -->
-                                            
-                                        </div>
-                                        <!--Footer-->
-                                        <div class="modal-footer">
-                                            <button class="btn-floating btn-lg success-color" onclick="agregarNodo();">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-
+                        <!--Body-->
+                        <div class="modal-body mb-1">
+                            <div class="row">
+                                    <!-- Grid column -->
+                                    <div class="md-form col-6">
+                                        
+                                        <label for="textareaBasic">Nodo: <span class="nodo-nombre-modal"></span></label>
                                     </div>
-                                    <!--/.Panel 7-->
+                                    <!-- Grid column -->
+                                    
+                                    <!-- Grid column -->
+                                     <div class="col-6 md-form">
+                                        <!-- Default input -->
+                                        <input  type="text"  class="form-control nom" id="nodo-nombre-input" name="nodo-nombre-input">
+                                        <label for="nodo-nombre-input" >Nombre del Nodo</label>
+                                       
+                                    </div>
+                                    <!-- Grid column -->
 
+                                    
                                 </div>
-
-                            </div>
+                                <!-- Grid row -->
+                            
                         </div>
-                        <!--/.Content-->
+                        <!--Footer-->
+                        <div class="modal-footer">
+                            <button class="btn-floating btn-lg success-color" onclick="agregarNodo();">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+
                     </div>
+                    <!--/.Panel 7-->
+
                 </div>
-                <!--Modal: Login / Register Form-->
+
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!--Modal: insertar nodo-->
  
+<div class="modal fade" id="modal-editar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+
+            <!--Modal cascading tabs-->
+            <div class="modal-c-tabs">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabs-2 warning-color " role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i> Editar Nodo</a>
+                    </li>
+                  
+                </ul>
+
+                <!-- Tab panels -->
+                <div class="tab-content">
+                    <!--Panel 7-->
+                    <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+                        <!--Body-->
+                        <div class="modal-body mb-1">
+                            <div class="row">
+                                    <!-- Grid column -->
+                                    <div class="md-form col-6">
+                                        
+                                        <label for="textareaBasic">Nodo: <span class="nodo-nombre-modal"></span></label>
+                                    </div>
+                                    <!-- Grid column -->
+                                    
+                                    <!-- Grid column -->
+                                     <div class="col-6 md-form">
+                                        <!-- Default input -->
+                                        <input  type="text"  class="form-control nom" id="nodo-nombre-input-editar" name="nodo-nombre-input-editar">
+                                        <label for="nodo-nombre-input-editar" >Nombre nuevo:</label>
+                                       
+                                    </div>
+                                    <!-- Grid column -->
+
+                                    
+                                </div>
+                                <!-- Grid row -->
+                            
+                        </div>
+                        <!--Footer-->
+                        <div class="modal-footer">
+                            <button class="btn-floating btn-lg success-color" onclick="editarNodo();">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <!--/.Panel 7-->
+
+                </div>
+
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
 
 
 <script type="text/javascript">
 
     var contenedor, nodos, aristas, data;
-    var red = {}, network = {};
+    var redId, red = {}, network = {};
     var nodoSeleccionadoId = '';
     var ultimoNodoId = 0;
+    var ocultarNodosEliminados = true;
 
     var options = {
       edges:{
@@ -160,44 +227,157 @@
                     nombreNodo = nodo.label;
                 }
             });
-
-        document.getElementById('nodo-nombre-modal').innerHTML = nombreNodo;
+        //console.log($('.nodo-nombre-modal').html());
+        $('.nodo-nombre-modal').html(nombreNodo);
+        //console.log($('.nodo-nombre-modal').html());
     }
 
     function agregarNodo(){
         contenedor = document.getElementById('mynetwork');
         var nodo = {};
+        var nuevoNodoId = parseInt(ultimoNodoId) + 1;
         if(nodoSeleccionadoId){
-            nodo = {id: ultimoNodoId+1, label: $('#nodo-nombre-input').val(), color: '#ff45A1', shape: 'box', chosen: {node: clickNodo}};
-            
-            data.nodes.push(nodo);
-            data.edges.push({from: nodoSeleccionadoId, to: nodo.id});
-            network = new vis.Network(contenedor, data, options);
+            insertarNodoRed(red, nuevoNodoId);
+            ultimoNodoId = nuevoNodoId;
         }
+
+    }
+
+    function eliminarNodo(){
+        if(nodoSeleccionadoId == 1)
+            return;
+        desactivarNodoRecursivo(nodoSeleccionadoId, red.hijos);
+        actualizarRed(red);
+    }
+
+    function desactivarNodoRecursivo($nodoId, $hijos){
+        $hijos.forEach((elem, index) => {
+            if(elem.id == $nodoId){
+                elem.activado = false;
+            }else{
+                if(elem.hasOwnProperty('hijos'))
+                    desactivarNodoRecursivo($nodoId, elem.hijos);
+            }
+        });
+    }
+
+    function editarNodo(){
+
+        //console.log(red);
+        var nombreNodo = $('#nodo-nombre-input-editar').val();
+        var idNodo = nodoSeleccionadoId;
+        if(idNodo == red.id){
+            red.nombre = nombreNodo;
+        }else{
+            actualizarNodoRecursivo(idNodo, nombreNodo, red.hijos);
+        }
+        actualizarRed(red);
+        //console.log(red);
+    }
+
+    function actualizarNodoRecursivo($idNodo, $nombreNodo, $hijos){
+        $hijos.forEach((elem, index)=>{
+            if(elem.id == $idNodo){
+                elem.nombre = $nombreNodo;
+            }else{
+                if(elem.hasOwnProperty('hijos'))
+                    actualizarNodoRecursivo($idNodo, $nombreNodo, elem.hijos);
+            }
+        });
+    }
+
+
+
+    function insertarNodoRed($red, $nuevoNodoId){
+        //console.log($red);
+        var nuevoNodo = {
+                nombre: $('#nodo-nombre-input').val(),
+                id: $nuevoNodoId,
+                activado: true,
+                hijos: []
+            };
+
+        if(nodoSeleccionadoId == $red.id){
+            $red.hijos.push(nuevoNodo);
+        }else{
+            if($red.hijos.length > 0)
+                insertarNodoRedRecursivo($red.hijos, nuevoNodo);
+        }
+        //console.log($red);
+        actualizarRed($red);
+    }
+
+    function actualizarRed($redActualizada){
+        var campaniaId = document.getElementById('campania-red').value;
+        //console.log(campaniaId);
+        $.ajax({
+            url: '../red/actualizar/'+campaniaId,
+            type: 'post',
+            data: {
+                red: $redActualizada
+            },
+            success: function(data){
+                redId = JSON.parse(data)[0].id;
+                red = JSON.parse(JSON.parse(data)[0].red);
+                armarRed(red);
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+    }
+
+    function insertarNodoRedRecursivo($hijos, $nuevoNodo){    
+        $hijos.forEach((elem, index)=>{
+            if(elem.id == nodoSeleccionadoId){
+                if(elem.hasOwnProperty('hijos'))
+                    elem.hijos.push($nuevoNodo);
+                else{
+                    elem.hijos = [];
+                    elem.hijos.push($nuevoNodo);
+                }
+            }else{
+                if(elem.hasOwnProperty('hijos'))
+                    insertarNodoRedRecursivo(elem.hijos, $nuevoNodo);
+            }
+        });
     }
 
 
     function mostrarRed($select){
-        contenedor = document.getElementById('mynetwork');
-        nodos = [];
-        aristas = [];
-        data = [];
         //console.log(contenedor);
         fetch('../red/'+$select.value)
             .then(function(response){
                 return response.json();
             })
             .then(function(jsonResponse){
+                redId = jsonResponse[0].id;
                 //console.log(JSON.parse(jsonResponse[0].red));
                 red = JSON.parse(jsonResponse[0].red);
-                getAristasYNodos(red);
-                console.log(ultimoNodoId);
-
-                data = {nodes: nodos, edges: aristas};
+                //console.log(ultimoNodoId);
+                armarRed(red);
                 //console.log(contenedor);
-                network = new vis.Network(contenedor, data, options);
                 //console.log(contenedor);
             });
+    }
+
+    function mostrarRedTotal(){
+        ocultarNodosEliminados = false;
+        armarRed(red);
+        ocultarNodosEliminados = true;
+
+    }
+
+    function armarRed($red){
+        //console.log(red);
+        nodos = [];
+        aristas = [];
+        data = [];
+        contenedor = document.getElementById('mynetwork');
+        getAristasYNodos($red);
+        data = {nodes: nodos, edges: aristas};
+        network = new vis.Network(contenedor, data, options);
+
     }
 
     function getAristasYNodos($red){
@@ -207,34 +387,40 @@
         //console.log(nodos);
         if($red.hijos.length > 0){
             //console.log($red.hijos.length);
-            getNodos($red.hijos, $red.id);
+            getNodos($red.hijos, $red.id, $red.activado);
         }else{
             ultimoNodoId = nodoPadre.id;
         }
     }
 
-    function getNodos($array, $padreID){
+    function getNodos($array, $padreID, $padreActivado){
 
         $array.forEach(function($hijo, $index){
+            $hijo.activado = JSON.parse($hijo.activado);
             //console.log($hijo, $index);
+            ultimoNodoId = $hijo.id > ultimoNodoId ? $hijo.id : ultimoNodoId;
+            
             var nodo = {};
             if($hijo.hasOwnProperty('hijos') && $hijo.hijos.length > 0){
                 //if($hijo.hasOwnProperty('activado') && $hijo.activado){
+                    getNodos($hijo.hijos, $hijo.id, $hijo.activado);
                     nodo = {id: $hijo.id, label: $hijo.nombre, color: '#ff45A1', shape: 'box', chosen: {node: clickNodo}};
-                    getNodos($hijo.hijos, $hijo.id);
                 //}
             }else{
                 nodo = {id: $hijo.id, label: $hijo.nombre, color: '#00ffa1', chosen: {node: clickNodo}};
             }
             
-            ultimoNodoId = nodo.id > ultimoNodoId ? nodo.id : ultimoNodoId; 
-            
-            nodos.push(nodo);
-            aristas.push({from: $padreID, to: $hijo.id});
+            //console.log(nodo);
+            console.log($padreActivado, $padreID, $hijo.activado, $hijo.id, ocultarNodosEliminados);
+            if($padreActivado && $hijo.activado){
+                nodos.push(nodo);
+                aristas.push({from: $padreID, to: $hijo.id});
+            }else if(!ocultarNodosEliminados){
+                nodos.push(nodo);
+                aristas.push({from: $padreID, to: $hijo.id});
+            }
         });
     }
-
-
     // create a network
 
 </script>
