@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="col-md-12 col-lg-6  wow fadeInRight d-flex justify-content-center" data-wow-delay="0.3s">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLRFormDemo">Iniciar Sesion  </button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLRFormDemo">Iniciar Sesión  </button>
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                                             <div class="md-form form-sm">
                                                 <i class="fa fa-lock prefix"></i>
                                                 <input type="password" id="contrasenia" name="contrasenia" class="form-control form-control-sm">
-                                                <label for="form3">Contrasena</label>
+                                                <label for="form3">Contraseña</label>
                                             </div>
 
                                             <div class="text-center mt-2">

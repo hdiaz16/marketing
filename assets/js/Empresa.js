@@ -11,6 +11,14 @@ function addEmpresa()
     var horaFin  = $("#hora-fin-agregar").val();
     
     console.log(razon, nombre, telefono, correo, horaFin, horaInicio);
+    
+    contacto = {
+      nombre: nombre,
+      telefono: telefono,
+      correo: correo,
+      horario: horaInicio+" - "+horaFin
+    };
+
     return;
 
 
@@ -23,13 +31,10 @@ function addEmpresa()
       data: {
         razon: razon,
         contacto: contacto,
-        telefono:telefono
-
       },
-      success: function(data)
-      {
+      success: function(data){
 
-        
+        console.log(data);
 
         if(data == false){
 
@@ -57,6 +62,9 @@ function addEmpresa()
         } 
 
         
+      },
+      error: function(error){
+        console.log(error);
       }
     });
 
@@ -68,7 +76,7 @@ function deleteEm(){
 
   $(".borrar").toggle("shake-little shake-constant");
   $(".color").toggle("danger-color");
-  $(".button").toggle();
+  $(".button-borrar").toggle();
 
 
 }
@@ -139,7 +147,7 @@ function editar(){
 
   $(".borrar1").toggle("shake-little shake-constant");
   $(".color").toggle("warning-color");
-  $(".button1").toggle();
+  $(".button-editar").toggle();
 
 
 }

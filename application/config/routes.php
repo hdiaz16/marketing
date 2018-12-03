@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'login';
 $route['login/iniciarsesion']['post'] = 'Login/iniciarSesion';
 $route['usuario/cambiarperfil/(:num)'] = 'Login/cambiarPerfil/$1';
+$route['usuario/editar']['post'] = 'AgregarAdmin/editAdmin';
 $route['red/(:num)'] = 'RedSemantica/getRed/$1';
 $route['red/actualizar/(:num)']['post'] = 'RedSemantica/actualizarRed/$1';
 $route['dashboard'] = 'dashboard';

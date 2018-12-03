@@ -40,22 +40,28 @@
                 <div class="row">
                     <?php foreach ($adminsNoAsignados as $row) { ?>
                                 <!--Grid column-->
-                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-4 col-md-6 mb-4 borrar editar">
+                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] ? "hidden" : "" ?> class="col-xl-4 col-md-6 mb-4">
 
                                 <!--Panel-->
                                 <div class="card h-100">
                                     <div class="card-header white-text success-color color borrar editar" >
+                                       <div class="row w-100">
+                                           <div class="col-6">
+                                                <?php echo $row['nombres']?>
+                                           </div>
+                                           <div class="col">
+                                                <button onclick="deleteAdmin(<?php echo $row['perfil_id'] ?>)" class="btn btn-sm float-right button black" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button>
+                                                
+                                                <button onclick="editAdmin(
+                                                    <?php echo isset($row['usuario_id']) ? $row['usuario_id'] : 0; ?>,
+                                                    <?php echo isset($row['nombres']) ? "'".$row['nombres']."'" : "''"; ?>,
+                                                    <?php echo isset($row['apellidos']) ? "'".$row['apellidos']."'" : "''"; ?>,
+                                                    <?php echo isset($row['correo']) ? "'".$row['correo']."'" : "''"; ?>
+                                                )" class="btn btn-sm  black float-right button-editar" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button>
+                                               
+                                           </div>
+                                       </div>
 
-                                        <button onclick="deleteAdmin(<?php echo $row['perfil_id'] ?>)" class="btn btn-sm float-right button black" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button>
-                                        
-                                            
-                                        <button onclick="editAdmin(
-                                            <?php echo isset($row['usuario_id']) ? $row['usuario_id'] : 0; ?>,
-                                            <?php echo isset($row['nombres']) ? "'".$row['nombres']."'" : "''"; ?>,
-                                            <?php echo isset($row['apellidos']) ? "'".$row['apellidos']."'" : "''"; ?>,
-                                            <?php echo isset($row['correo']) ? "'".$row['correo']."'" : "''"; ?>
-                                        )" class="btn btn-sm  black float-right button-editar" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button>
-                                       <?php echo $row['nombres']?>
                                        
                                     </div>
        
@@ -102,21 +108,29 @@
                     <?php foreach ($admins as $row) { ?>
                             
                                 <!--Grid column-->
-                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] || $row['usuario_id'] == $this->session->userdata['usuario']['id'] ? "hidden" : "" ?> class="col-xl-4 col-md-6 mb-4 borrar editar">
+                            <div <?php echo $row['perfil_id'] == $this->session->userdata['perfil-actual']['perfil_id'] || $row['usuario_id'] == $this->session->userdata['usuario']['id'] ? "hidden" : "" ?> class="col-xl-4 col-md-6 mb-4">
 
                                 <!--Panel-->
                                 <div class="card h-100">
-                                    <div class="card-header white-text blue-color color" >
+                                    <div class="card-header white-text blue-color color borrar editar" >
+                                       <div class="row w-100">
+                                           <div class="col-8">
+                                               
+                                               <i class="font-weight-bold"><?php echo $row['nombres']?></i>
+                                               <sup><?php echo $row['empresa_nombre']?></sup>
+                                           </div>
+                                           <div class="col">
+                                               
+                                                <button onclick="deleteAdmin(<?php echo $row['perfil_id'] ?>)" class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
+                                                <button onclick="editAdmin(
+                                                    <?php echo isset($row['perfil_id']) ? $row['perfil_id'] : 0; ?>,
+                                                    <?php echo isset($row['nombres']) ? "'".$row['nombres']."'" : "''"; ?>,
+                                                    <?php echo isset($row['apellidos']) ? "'".$row['apellidos']."'" : "''"; ?>,
+                                                    <?php echo isset($row['correo']) ? "'".$row['correo']."'" : "''"; ?>
+                                                )" class="btn btn-sm  black float-right button-editar" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button> 
+                                           </div>
+                                       </div>
 
-                                        <button onclick="deleteAdmin(<?php echo $row['perfil_id'] ?>)" class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
-                                        <button onclick="editAdmin(
-                                            <?php echo isset($row['perfil_id']) ? $row['perfil_id'] : 0; ?>,
-                                            <?php echo isset($row['nombres']) ? "'".$row['nombres']."'" : "''"; ?>,
-                                            <?php echo isset($row['apellidos']) ? "'".$row['apellidos']."'" : "''"; ?>,
-                                            <?php echo isset($row['correo']) ? "'".$row['correo']."'" : "''"; ?>
-                                        )" class="btn btn-sm  black float-right button-edit" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button> 
-                                       <i class="font-weight-bold"><?php echo $row['nombres']?></i>
-                                       <sup><?php echo $row['empresa_nombre']?></sup>
                                        
                                     </div>
                                     
@@ -391,7 +405,7 @@
                             <div class="modal-c-tabs">
 
                                 <!-- Nav tabs -->
-                                <ul class="nav nav-tabs tabs-2 green " role="tablist">
+                                <ul class="nav nav-tabs tabs-2 info-color" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" data-toggle="tab"  role="tab"><i class="fa fa-user mr-1"></i> Asignar Administrador</a>
                                     </li>
@@ -463,8 +477,8 @@
 
                                         <div class="modal-footer">
                                                 
-                                                <button class="btn-floating btn-lg success-color" onclick="asignarAdminEmpresa();">
-                                                    <i class="fa fa-plus"></i>
+                                                <button class="btn-floating btn-lg info-color" onclick="asignarAdminEmpresa();">
+                                                    <i class="fa fa-check"></i>
                                                 </button>
                                         </div>
         

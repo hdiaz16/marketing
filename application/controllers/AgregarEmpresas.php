@@ -28,33 +28,12 @@ class AgregarEmpresas extends CI_Controller {
     }
 
 
-    public function addEmpresa()
-	{
+    public function addEmpresa(){
 		
-		   
-           $data = array(
-                     
-                    '"razon_social"' 	=> 	trim($this->input->post('razon')),
-                    '"sys_admin_id"'    =>	trim($this->session->userdata['perfil-actual']['perfil_id']),
-                    '"contacto"'       	=>	trim($this->input->post('contacto')),
-                    '"_create"'  		=>  date("Y/m/d H:m:s"),
-                    '"_update"'  		=>  date("Y/m/d H:m:s")
-
-           );
-           $razonSocial = trim($this->input->post('razon'));
-           $adminID = trim($this->session->userdata['perfil-actual']['sys_admin_id']);
-           $contacto = $this->input->post('contacto');
-           $this->Empresa_Model->registrarEmpresa($data);
-
-        if($data == false)
-        {
-           
-            echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar la Empresa'));
-
-    	}else{
-          echo json_encode($data = array('error' => true, 'mensaje' =>'Registro completo.'));
-
-    	}
+      $razonSocial = trim($this->input->post('razon'));
+      $adminID = trim($this->session->userdata['perfil-actual']['sys_admin_id']);
+      $contacto = $this->input->post('contacto');
+      $this->Empresa_Model->registrarEmpresa($data);
 
 	}
 

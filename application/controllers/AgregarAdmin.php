@@ -29,8 +29,7 @@ class AgregarAdmin extends CI_Controller {
     }
 
 
-    public function addAdmin()
-	{
+    public function addAdmin(){
 		
     $rootID = $this->input->post('sysAdminID');
     $nombres = $this->input->post('nombres');
