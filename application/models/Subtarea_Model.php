@@ -8,11 +8,12 @@ class Subtarea_Model extends CI_Model {
 
   public function getSubtareas($empleadoID, $tareaID = NULL, $eliminadas = NULL){
       #$eliminadas omite a las tareas eliminadas si el valor pasado es true
-      $this->db->select('campania.id as campania_id, campania.nombre as nombre_campania, red_semantica.id as red_id, tarea.id as tarea_id, tarea.descripcion as descripcion_tarea, subtarea.*')
+      $this->db->select('campania.id as campania_id, campania.nombre as nombre_campania, red_semantica.id as red_id, tarea.id as tarea_id, tarea.descripcion as descripcion_tarea, publicacion.id as publicacion_id, subtarea.*')
       ->from('campania')
       ->join('red_semantica', "campania.id = red_semantica.campania_id")
       ->join('tarea', "tarea.red_id = red_semantica.id")
       ->join('subtarea', "subtarea.tarea_id = tarea.id")
+      ->join('publicacion', "publicacion.tarea_id = tarea.id")
       ->where('subtarea.empleado_id', $empleadoID);
       
       if(!is_null($tareaID))
