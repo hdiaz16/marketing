@@ -14,8 +14,9 @@
             <h3 class="text-center"><strong>Red Semántica</strong></h3>
 
             <section class="text-right">
-
-<<<<<<< 50abee6a0778820133a90972cfc6fa7a6c685f71
+                <button class="btn-floating  btn-lg  blue" data-toggle="modal" data-target="#modal">
+                    <i class="fa fa-list"></i>
+                </button>
                 <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modal-insertar">
                 <i class="fa fa-plus"></i>
             </button>
@@ -31,27 +32,8 @@
             <button class="btn-floating btn-lg purple" onclick="mostrarRedTotal()" tooltip="top" title="mostrar nodos eliminados">
                 <i class="fa fa-eye"></i>
             </button>
-=======
-                <button class="btn-floating  btn-lg  blue" data-toggle="modal" data-target="#modal">
-                    <i class="fa fa-plus"></i>
-                </button>
-
-                <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modalLRFormDemo">
-                    <i class="fa fa-plus"></i>
-                </button>
-
-                <button class="btn-floating btn-lg warning-color">
-                    <i class="fa fa-pencil-square-o"></i>
-                </button>
-
-                <button class="btn-floating btn-lg red" onclick="">
-                    <i class="fa fa-minus"></i>
-                </button>
->>>>>>> tarea en la red semantica
                 
             </section>
-
-             
 
         </section >
 
@@ -143,15 +125,12 @@
                     <!--/.Panel 7-->
 
                 </div>
-<<<<<<< 50abee6a0778820133a90972cfc6fa7a6c685f71
-
             </div>
         </div>
         <!--/.Content-->
     </div>
 </div>
 <!--Modal: insertar nodo-->
-=======
                 <!--Modal: Login / Register Form-->
 
 
@@ -287,9 +266,6 @@
                 </div>
                 <!--Modal: Login / Register Form-->
 
-
-
->>>>>>> tarea en la red semantica
  
 <div class="modal fade" id="modal-editar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog cascading-modal" role="document">
