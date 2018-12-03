@@ -22,7 +22,7 @@ class AgregarEmpresas extends CI_Controller {
       $data['empresas'] = $this->Empresa_Model->getEmpresas($this->session->userdata['perfil-actual']['perfil_id']);
     	$data['empresasNoAsignadas'] = $this->Empresa_Model->getEmpresasNoAsignadas($this->session->userdata['perfil-actual']['perfil_id']);
 
-    	$this->load->view('core/header');
+    $this->load->view('core/header');
 		$this->load->view('agregarEmpresas', $data);
 		$this->load->view('core/footer');
     }
@@ -33,7 +33,14 @@ class AgregarEmpresas extends CI_Controller {
       $razonSocial = trim($this->input->post('razon'));
       $adminID = trim($this->session->userdata['perfil-actual']['sys_admin_id']);
       $contacto = $this->input->post('contacto');
-      $this->Empresa_Model->registrarEmpresa($data);
+      
+      $nuevaEmpresa = $this->Empresa_Model->registrarEmpresa($adminID, $razonSocial, $contacto);
+
+      if($nuevaEmpresa){
+      echo json_encode(['error' => false, 'mensaje' => 'Registro completo']);
+      }else{
+      echo json_encode(['error' => true, 'mensaje' => 'No se pudo registrar administrador']);
+      }
 
 	}
 

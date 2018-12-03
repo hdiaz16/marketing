@@ -104,6 +104,75 @@
             </section>
             <!--Section: Cards color-->
 
+<!--Section: Cards color-->
+            <section class="mt-2">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    
+
+                    <?php foreach ($empresasNoAsignadas as $row) { ?>
+                        <?php if ($row['_erase'] == null) { ?>
+
+                                <!--Grid column-->
+                            <div class="col-xl-3 col-md-6 mb-4 borrar">
+
+                                <!--Panel-->
+                                <div class="card h-100">
+                                    <div class="card-header white-text success-color color" >
+
+
+                                        <button  onclick="delEmpresa1(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button" style="display: none;" >
+                                            <i class="fa fa-times " aria-hidden="true" ></i>
+                                        </button> 
+
+                                        <button  onclick="editarEmp(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button1" style="display: none;" >
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target="#modalLRFormDemo1" ></i>
+                                        </button> 
+                                       <?php echo $row['razon_social']?>
+                                    </div>
+                                    
+
+                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos de contacto</h6>
+                                    <?php $row['contacto'] = json_decode($row['contacto']) ?>
+                                    <p class="ml-3 mt-1 font-small dark-grey-text">Nombre: <?php echo isset($row['contacto']->nombre) ? $row['contacto']->nombre : ""; ?></p>
+                                    <p class="ml-3 mt-1 font-small dark-grey-text">Correo: <?php echo isset($row['contacto']->correo) ? $row['contacto']->correo : "" ?></p>
+                                    <p class="ml-3 mt-1 font-small dark-grey-text">Teléfono: <?php echo isset($row['contacto']->telefono) ? $row['contacto']->telefono : "" ?></p>
+                                    <!--/.Card Data-->
+
+                                    <!--Card content-->
+                                    <div class="card-body">
+                                        
+                                        <!--Text-->
+                                        <?php setlocale(LC_TIME, "es_ES"); ?>
+                                        <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
+                                
+                                    </div>
+                                    <!--/.Card content-->
+
+                                </div>
+                                <!--/.Panel-->
+
+                            </div>
+                            <!--Grid column-->
+
+                        
+                   <?php  } ?>
+                   <?php  } ?>
+
+
+                   
+                   
+
+                   
+   
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Cards color-->
+
 
 
 

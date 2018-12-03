@@ -221,7 +221,33 @@
                         <?php foreach ($this->session->userdata['perfiles'] as $row) {?>
 
                             <a class="dropdown-item" href="http://localhost/marketing/index.php/usuario/cambiarperfil/<?php echo $row['rol_id'] ?>">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <?php 
+                                    switch ($row['rol_id']) {
+                                        case '1':
+                                            $rol_clase = "fa-key";
+                                            break;
+                                        case '2':
+                                            $rol_clase = "fa-building";
+                                            break;
+                                        case '3':
+                                            $rol_clase = "fa-bullhorn";
+                                            break;
+                                        case '4':
+                                            $rol_clase = "fa-newspaper-o";
+                                            break;
+                                        case '5':
+                                            $rol_clase = "fa-facebook";
+                                            break;
+                                        case '6':
+                                            $rol_clase = "fa-users";
+                                            break;
+                                        
+                                        default:
+                                            # code...
+                                            break;
+                                    }
+                                 ?>
+                                <i class="fa <?php echo $rol_clase ?>" aria-hidden="true"></i>
                                 <span ><?php echo $row['nombre'];?></span>
                                 <input type="hidden" id="rolID" value="<?php echo $row['rol_id'];?>" >
                                 <span class="float-right"></span>
@@ -261,7 +287,7 @@
                
                 <li class="nav-item dropdown">
                     <a class="nav-link " data-toggle="modal" data-target="#modalLoginAvatarDemo">
-                        <i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Perfil</span>
+                        <span class="clearfix d-none d-sm-inline-block">Perfil</span>
                     </a>
                     
                    
@@ -287,7 +313,7 @@
 
                             <!--Header-->
                             <div class="modal-header">
-                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(8).jpg" class="rounded-circle img-fluid">
+                                <img src="<?php echo base_url().'/assets/img'.$this->session->userdata['usuario']['imagenurl'] ?>" class="rounded-circle img-fluid">
                             </div>
                             <!--Body-->
                             <div class="modal-body text-center mb-1">

@@ -10,7 +10,7 @@
                 <i class="fa fa-check"></i>
               </button>
 
-              <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modalLRFormDemo">
+              <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modal-agregar">
                 <i class="fa fa-plus"></i>
               </button>
 
@@ -145,8 +145,8 @@
                                     <!--Card content-->
                                     <div class="card-body">
                                         
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo explode(" ",$row['_create'])[0]?></p>
-                                        <p class="font-small grey-text">Última actualización: <?php echo explode(" ", $row['_update'])[0]?></p>
+                                        <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
+                                        <p class="font-small grey-text">Última actualización: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_update']))  ?></p>
                                 
                                     </div>
                                     <!--/.Card content-->
@@ -192,7 +192,7 @@
 
 
         <!--Modal: Login / Register Form Demo-->
-                <div class="modal fade" id="modalLRFormDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modal-agregar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog cascading-modal" role="document">
                         <!--Content-->
                         <div class="modal-content">
@@ -216,7 +216,7 @@
                                     <div class="tab-pane fade in show active" id="panel20" role="tabpanel">
 
                                         <!--Body-->
-                                        <div class="modal-body mb-1">
+                                        <div class="modal-body mb-1">echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) 
                                             <!-- Default form grid -->
                                             <form>
 
