@@ -31,7 +31,7 @@ class Publicacion_Model extends CI_Model {
 
     public function getPublicacion($publicacionID, $eliminada = NULL){
 
-      $this->db->select('*')
+      $this->db->select("contenido ->> 'body' as body, contenido ->> 'link' as link")
       ->from('publicacion')
       ->where('id', $publicacionID);
 
@@ -49,10 +49,10 @@ class Publicacion_Model extends CI_Model {
     }
 
 
-  public function registrarPublicacion($tareaID, $FBID, $contenido){
+  public function registrarPublicacion($tareaID, $contenido, $FBID=''){
 
     $fechaRegistro = date('Y-m-d H:i');
-    $contenido = json_encode($contenido);
+    $contenido = $contenido;
     $data = ['tarea_id' => $tareaID, 'facebook_id' => $FBID, 'contenido' => $contenido, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
 
     try {
@@ -70,10 +70,10 @@ class Publicacion_Model extends CI_Model {
     }
   }
 
-  public function editarPublicacion($publicacionID, $FBID, $contenido){
+  public function editarPublicacion($publicacionID, $contenido, $FBID=''){
 
     $fechaEdicion = date('Y-m-d H:i');
-    $contenido = json_encode($contenido);
+    $contenido = $contenido;
     $data = ['contenido' => $contenido, 'facebook_id' => $FBID, '_update' => $fechaEdicion];
 
     try {
