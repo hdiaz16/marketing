@@ -12,7 +12,7 @@
                 <i class="fa fa-plus"></i>
             </button>
 
-            <button class="btn-floating btn-lg warning-color" onclick="editar()">
+            <button class="btn-floating btn-lg warning-color" onclick="editarCampañas()">
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
@@ -43,11 +43,12 @@
                         <?php if ($row['_erase'] == null) {?>
 
                                 <!--Grid column-->
-                            <div class="col-xl-3 col-md-6 mb-4 borrar editar">
+                            <div class="col-xl-3 col-md-6 mb-4 ">
 
                                 <!--Panel-->
-                                <div class="card h-100">
+                                <div class="card h-100 borrar editar">
                                     <div class="card-header white-text success-color color">
+
                                         <button   class="btn btn-sm  black float-right button " style="display: none;" onclick="delCampanas(<?php echo $row['id'] ?>);"><i class="fa fa-times fa-2x " aria-hidden="true" 
                                              > </i>
                                          </button> 
@@ -317,23 +318,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script type="text/javascript">
         
-        function editar (){
+        function editarCampañas (){
 
           $(".editar").toggleClass("shake-little shake-constant");
           $(".color").toggleClass("warning-color");

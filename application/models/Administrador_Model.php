@@ -147,9 +147,9 @@ class Administrador_Model extends CI_Model{
     }
   }
 
-  public function getEmpleados($communityManagerID, $all = NULL){
+  public function getEmpleados($communityManagerID, $all = TRUE){
 
-    $this->db->select('usuario.nombres, usuario.apellidos, campania.nombre as campania_nombre, rol.nombre as rol_nombre');
+    $this->db->select('usuario.id as usuario_id, usuario.nombres, usuario.apellidos, campania.nombre as campania_nombre, rol.nombre as rol_nombre , perfil.id as empleado_id, campania_empleados._erase as borrados');
     $this->db->from('usuario');
     $this->db->join('perfil', "usuario.id = perfil.usuario_id");
     $this->db->join('rol', "rol.id = perfil.rol_id");
@@ -159,7 +159,7 @@ class Administrador_Model extends CI_Model{
 
 
     if(!is_null($all)){
-      $this->db->where('perfil._erase', NULL);
+      $this->db->where('campania_empleados._erase', NULL);
     }
 
     try {
@@ -170,6 +170,54 @@ class Administrador_Model extends CI_Model{
       
     }
   }
+
+
+  public function getEmpleadosNoAsignados($cmID, $eliminado = TRUE){
+
+    $consulta = 'SELECT usuario.id as usuario_id, usuario.nombres, usuario.apellidos, rol.nombre as rol_nombre, perfil.id as perfil_id, rol.nombre as nombre_rol
+            FROM
+            usuario join perfil on usuario.id = perfil.usuario_id
+            join rol on rol.id = perfil.rol_id 
+            join admin_empleados on admin_empleados.empleado_id = perfil.id
+            where admin_empleados.admin_id = ?
+            AND perfil.id not in
+            (select empleado_id from campania_empleados)';
+
+    if (is_null($eliminado))
+      $consulta .= ' AND perfil._erase IS NULL';
+    try {
+      return $this->db->query($consulta, [$cmID])->result_array();
+      #return $this->db->get()->result_array();
+    } catch (Exception $e) {
+      log_message('error', "get select Administradores no asignados: ".$e);
+      return false;
+    }
+
+  }
+
+
+
+
+
+   public function desasignar($id)
+   {
+    $fecha = date('Y-m-d H:i');
+    $querySQL = "UPDATE campania_empleados 
+    SET _erase = ?, _update = ?  
+    WHERE empleado_id = ?  ";
+
+    return $this->db->query($querySQL, [ $fecha, $fecha,$id]);
+     
+   }
+
+
+
+
+
+
+
+
+
 
 
 }

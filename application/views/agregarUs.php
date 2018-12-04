@@ -1,20 +1,19 @@
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/campania-usuario.js"></script>
+
+
 <!--Main layout-->
     <main>
 
         <section class="mt-2">
-            <h3 class="text-center"><strong>Asignar Campaña a Usuario</strong></h3>
+            <h3 class="text-center"><strong>Asignar Usuarios a Campañas  </strong></h3>
 
             <section class="text-right">
 
-                <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modalLRFormDemo">
-                <i class="fa fa-plus"></i>
+                <button class="btn-floating  btn-lg  info-color" data-toggle="modal" data-target="#modalLRFormDemo">
+                <i class="fa fa-check"></i>
             </button>
 
-            <button class="btn-floating btn-lg warning-color">
-                <i class="fa fa-pencil-square-o"></i>
-            </button>
-
-            <button class="btn-floating btn-lg red " onclick="deleteUs();" >
+            <button class="btn-floating btn-lg red " onclick="desAsigUs();" tooltip="top" title="DESASIGNAR">
                 <i class="fa fa-minus"></i>
             </button>
                 
@@ -35,19 +34,20 @@
 
                 <!--Grid row-->
                 <div class="row">
-                    
 
-
-                    <?php foreach ($userCamania as $row) { ?>
+        
+   <?php print_r($user); ?>
+                    <?php foreach ($user as $row) { ?>
+                        <?php if(!$row['borrados']){ ?>
 
                                 <!--Grid column-->
-                            <div class="col-xl-3 col-md-6 mb-4 borrar">
+                            <div class="col-xl-3 col-md-6 mb-4 ">
 
                                 <!--Panel-->
-                                <div class="card h-100">
-                                    <div class="card-header white-text success-color color" >
+                                <div class="card h-100 borrar ">
+                                    <div class="card-header white-text info-color color" >
 
-                                        <button   class="btn btn-sm  black float-right button" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button> 
+                                        <button   class="btn btn-sm  black float-right button" style="display: none;" onclick="desasignarEmpleado( <?php echo $row['empleado_id'] ?>  );"><i class="fa fa-times " aria-hidden="true" ></i></button> 
                                        <?php echo $row['campania_nombre']?>
                                        
                                     </div>
@@ -64,10 +64,17 @@
                                 </div>
                                 <!--/.Panel-->
 
+                                <div class="card-body">
+                                        
+                                        
+                                
+                                    </div>
+
                             </div>
                             <!--Grid column-->
 
                         
+                   <?php  } ?>
                    <?php  } ?>
                   
    
@@ -104,7 +111,7 @@
                             <div class="modal-c-tabs">
 
                                 <!-- Nav tabs -->
-                                <ul class="nav nav-tabs tabs-2 green " role="tablist">
+                                <ul class="nav nav-tabs tabs-2 info-color " role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" data-toggle="tab"  role="tab"><i class="fa fa-user mr-1"></i> Asignar Campaña a Usuario</a>
                                     </li>
@@ -135,7 +142,7 @@
                                                              
 
 
-                                                            <?php foreach ($user as $row) {
+                                                            <?php foreach ($userCamania as $row) {
 
                                                                 echo '<option id='.$row['perfil_id'].' value='.$row['perfil_id'].'>'.$row['nombres'].' '.$row['apellidos'].' -- '.$row['nombre_rol'].'</option>';
                                                             } ?>
@@ -173,8 +180,8 @@
 
                                         <div class="modal-footer">
                                                 
-                                                <button class="btn-floating btn-lg success-color" onclick="addUsuarios();">
-                                                    <i class="fa fa-plus"></i>
+                                                <button class="btn-floating btn-lg info-color" onclick="addUsuarios();">
+                                                    <i class="fa fa-check"></i>
                                                 </button>
                                         </div>
         
@@ -189,4 +196,4 @@
                     </div>
                 </div>
                 <!--Modal: Login / Register Form Demo-->
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/campania-usuario.js"></script>
+
