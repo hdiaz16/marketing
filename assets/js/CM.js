@@ -104,10 +104,10 @@ function delCM1(id) {
   });
 }
 
-function editar(){
+function editadoCM  (){
   $(".editar").toggleClass("shake-little shake-constant");
   $(".color").toggleClass("warning-color");
-  $(".buttonEdit").toggle();
+  $(".buttonEditar").toggle();
 }
 
 function editarCM(id, nombre, apellido, correo) {

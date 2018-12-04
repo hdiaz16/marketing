@@ -70,6 +70,8 @@
                                     <li><a href="<?php echo base_url();?>index.php/AgregarCM/index" class="waves-effect">Agregar Usuarios</a>
                                     </li>
 
+
+
                                 </ul>
                             </div>
                     </li>
@@ -91,7 +93,7 @@
                                     <li>
                                         <a href="<?php echo base_url();?>index.php/AgregarUsuarios/index" class="waves-effect">
                                             <i class="fa fa-users"></i>
-                                            Agregar Usuarios  a Campañas
+                                            Usuarios-Campañas
                                         </a>
                                     </li>
 
@@ -118,6 +120,8 @@
 
                                     <li><a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Dashboard/index"><i class="fa fa-tachometer"></i> Dashboard</a>
                                     </li>
+
+                                   
 
                                     <li>
                                         <a class="collapsible-header waves-effect arrow-r" href="<?php echo base_url();?>index.php/Chat/index">

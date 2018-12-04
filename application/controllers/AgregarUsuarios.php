@@ -18,9 +18,9 @@ class AgregarUsuarios extends CI_Controller {
 
         $data['campanas'] = $this->Campania_Model->getCampanias($this->session->userdata('perfil-actual')['perfil_id'] );
 
-        $data['user'] = $this->Administrador_Model->getUsuarios($this->session->userdata('perfil-actual')['sys_admin_id'] );
+        $data['user'] = $this->Administrador_Model->getEmpleados($this->session->userdata('perfil-actual')['perfil_id'], NULL );
 
-        $data['userCamania'] = $this->Administrador_Model->getEmpleados($this->session->userdata('perfil-actual')['perfil_id'] );
+        $data['userCamania'] = $this->Administrador_Model->getEmpleadosNoAsignados($this->session->userdata('perfil-actual')['sys_admin_id'], NULL);
     	
       	$this->load->view('core/header');
 		$this->load->view('agregarUs', $data);
@@ -50,6 +50,31 @@ class AgregarUsuarios extends CI_Controller {
 
         }
        
+    }
+
+
+    public function DesasignarEmpleado()
+    {
+
+        $data  = $this->Administrador_Model->desasignar(
+            trim($this->input->post('id')
+
+
+        ));
+
+
+        if($data == false)
+        {
+           
+            echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar la desasignar'));
+
+        }else{
+          echo json_encode($data = array('error' => true, 'mensaje' =>'Se desasigno correctamente.'));
+
+        }
+
+
+        
     }
 
 
