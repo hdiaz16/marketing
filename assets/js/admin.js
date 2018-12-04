@@ -1,3 +1,11 @@
+function showPass($checkbox){
+    if ($checkbox.type === "password") {
+        $checkbox.type = "text";
+    } else {
+        $checkbox.type = "password";
+    }
+}
+
 function addAdmin($sysAdminID){
   var nombres = $("input[name=nombres]").val();
   var correo = $("input[name=correo]").val();
@@ -159,19 +167,20 @@ function asignarAdminEmpresa(){
 }
 
 function editarAdmins(){
-  console.log($(".editar"));
+  //console.log($(".editar"));
   $(".editar").toggleClass("shake-little shake-constant");
   $(".color").toggleClass("warning-color");
   $(".button-editar").toggle();
 }
 
-function editAdmin($id, $nombres, $apellidos, $correo){
-  //console.log($id, $nombres, $apellidos, $correo);
+function editAdmin($id, $nombres, $apellidos, $correo, $contrasenia){
+  console.log($id, $nombres, $apellidos, $correo, $contrasenia);
   
   $("#usuario-id").val($id);
   $("#nombres-editar").val($nombres);
   $("#apellidos-editar").val($apellidos);
   $("#correo-editar").val($correo);
+  $("#contrasenia-editar").val($contrasenia);
 
   $('#modal-editar').modal();
 

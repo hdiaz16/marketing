@@ -14,18 +14,18 @@
             <h3 class="text-center"><strong>Red Semántica</strong></h3>
 
             <section class="text-right">
-                <button class="btn-floating  btn-lg  blue" data-toggle="modal" data-target="#modal">
+                <button class="btn-floating  btn-lg  blue" data-toggle="modal" data-target="#modal" tooltip="top" title="agregar tarea a nodo">
                     <i class="fa fa-list"></i>
                 </button>
-                <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modal-insertar">
+                <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modal-insertar" tooltip="top" title="insertar nodo">
                 <i class="fa fa-plus"></i>
             </button>
 
-            <button class="btn-floating btn-lg warning-color" data-toggle="modal" data-target="#modal-editar">
+            <button class="btn-floating btn-lg warning-color" data-toggle="modal" data-target="#modal-editar" tooltip="top" title="editar nodo">
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
-            <button class="btn-floating btn-lg red" onclick="eliminarNodo()">
+            <button class="btn-floating btn-lg red" onclick="eliminarNodo()" tooltip="top" title="eliminar nodo">
                 <i class="fa fa-minus"></i>
             </button>
 

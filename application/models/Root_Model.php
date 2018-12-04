@@ -58,7 +58,7 @@ class Root_Model extends CI_Model {
     return $this->db->get()->result_array();
   }
 
-  public function registrarAdministrador($sysAdminID, $correo, $nombres = "John Doe", $contrasenia = "12345678"){
+  public function registrarAdministrador($sysAdminID, $correo, $nombres = "John Doe", $contrasenia = "1234"){
 
     $fechaRegistro = date('Y-m-d H:i');
     $data = ['nombres' => $nombres, 'correo' => $correo, 'contrasenia' => $contrasenia, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
@@ -81,10 +81,16 @@ class Root_Model extends CI_Model {
     
   }
 
-  public function editarAdministrador($adminID, $nombres, $correo, $apellidos = "", $imagenURL = "usuario.png"){
+  public function editarAdministrador($adminID, $nombres, $correo, $contrasenia, $apellidos = "", $imagenURL = "/usuario.png"){
 
     $fechaEdicion = date('Y-m-d H:i');
-    $data = ['nombres' => $nombres, 'apellidos' => $apellidos, 'correo' => $correo, 'imagenurl' => $imagenURL];
+    if ($contrasenia == "") {
+      # code...
+      $data = ['nombres' => $nombres, 'apellidos' => $apellidos, 'correo' => $correo, 'imagenurl' => $imagenURL];
+    }else{
+
+      $data = ['nombres' => $nombres, 'apellidos' => $apellidos, 'correo' => $correo, 'imagenurl' => $imagenURL, 'contrasenia' => $contrasenia];
+    }
 
     try {
 

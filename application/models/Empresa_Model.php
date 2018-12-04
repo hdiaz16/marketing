@@ -11,7 +11,8 @@ class Empresa_Model extends CI_Model {
     $this->db->select('*');
     $this->db->from('empresa');
     $this->db->join('empresa_admin', 'empresa.id = empresa_admin.empresa_id');
-    $this->db->where('sys_admin_id', $sysAdminID);
+    $this->db->join('perfil', 'perfil.id = empresa_admin.admin_id');
+    $this->db->where('empresa.sys_admin_id', $sysAdminID);
   
     if(is_null($all))
       $this->db->where('empresa._erase', NULL);

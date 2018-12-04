@@ -32,7 +32,7 @@ class AgregarEmpresas extends CI_Controller {
 		
       $razonSocial = trim($this->input->post('razon'));
       $adminID = trim($this->session->userdata['perfil-actual']['sys_admin_id']);
-      $contacto = $this->input->post('contacto');
+      $contacto = json_encode($this->input->post('contacto'));
       
       $nuevaEmpresa = $this->Empresa_Model->registrarEmpresa($adminID, $razonSocial, $contacto);
 

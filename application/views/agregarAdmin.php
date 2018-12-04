@@ -75,8 +75,8 @@
                                     <div class="card-body">
                                         
                                         <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo explode(" ", $row['_create'])[0]?></p>
-                                        <p class="font-small grey-text">Última actualización: <?php echo explode(" ", $row['_update'])[0]?></p>
+                                        <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
+                                        <p class="font-small grey-text">Última actualización: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
                                 
                                     </div>
                                     <!--/.Card content-->
@@ -191,7 +191,7 @@
 
 
 
-        <!--Modal: Login / Register Form Demo-->
+        <!--Modal:registrar-->
                 <div class="modal fade" id="modal-agregar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog cascading-modal" role="document">
                         <!--Content-->
@@ -216,7 +216,7 @@
                                     <div class="tab-pane fade in show active" id="panel20" role="tabpanel">
 
                                         <!--Body-->
-                                        <div class="modal-body mb-1">echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) 
+                                        <div class="modal-body mb-1">
                                             <!-- Default form grid -->
                                             <form>
 
@@ -225,16 +225,22 @@
                                                     <!-- Grid column -->
                                                     <div class="col">
                                                         <!-- Default input -->
-                                                        <label>Nombres</label>
-                                                        <input type="text" class="form-control" id="nombres" name="nombres">
+                                                        <div class="md-form">
+                                                            
+                                                            <label for="nombres">Nombre</label>
+                                                            <input type="text" class="form-control" id="nombres" name="nombres">
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
 
                                                     <!-- Grid column -->
                                                     <div class="col">
                                                         <!-- Default input -->
-                                                        <label>Correo</label>
-                                                        <input type="email" class="form-control" id="correo" name="correo">
+                                                        <div class="md-form">
+                                                            <label for="correo">Correo</label>
+                                                            <input type="email" class="form-control" id="correo" name="correo">
+                                                            
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
 
@@ -245,10 +251,21 @@
                                                 <!-- Grid row -->
                                                 <div class="row">
                                                     <!-- Grid column -->
-                                                    <div class="col-6">
+                                                    <div class="col-12">
                                                         <!-- Default input -->
-                                                        <label>Contraseña</label>
-                                                        <input type="text" class="form-control" id="contrasenia" name="contrasenia">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="md-form">
+                                                                    <label for="contrasenia">Contraseña</label>
+                                                                    <input type="password" class="form-control" id="contrasenia" name="contrasenia">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col d-flex align-items-end">
+                                                                <input onclick="showPass(document.getElementById('contrasenia'))" type="checkbox" class="form-check-input" id="ver-pass">
+                                                                <label for="ver-pass">Ver contraseña</label>
+                                                                
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
 
@@ -289,7 +306,8 @@
                         <!--/.Content-->
                     </div>
                 </div>
-                <!--Modal: Login / Register Form Demo-->
+                <!--Modal:registrar-->
+
         <!--modal editar -->
                 <div class="modal fade" id="modal-editar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog cascading-modal" role="document">
@@ -324,16 +342,22 @@
                                                     <!-- Grid column -->
                                                     <div class="col">
                                                         <!-- Default input -->
-                                                        <label>Nombres</label>
+                                                        <div class="md-form">
+                                                            <label for="nombres-editar">Nombres</label>
 
-                                                        <input type="text" class="form-control" id="nombres-editar" name="nombres-editar">
+                                                            <input type="text" class="form-control" id="nombres-editar" name="nombres-editar">
+                                                            
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
                                                     <!-- Grid column -->
                                                     <div class="col">
                                                         <!-- Default input -->
-                                                        <label>Apellidos</label>
-                                                        <input type="text" class="form-control" id="apellidos-editar" name="apellidos-editar">
+                                                        <div class="md-form">
+                                                            
+                                                            <label for="apellidos-editar">Apellidos</label>
+                                                            <input type="text" class="form-control" id="apellidos-editar" name="apellidos-editar">
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
                                                 </div>
@@ -345,16 +369,21 @@
 
                                                     <div class="col">
                                                         <!-- Default input -->
-                                                        <label>Correo</label>
-                                                        <input type="email" class="form-control" id="correo-editar" name="correo-editar">
+                                                        <div class="md-form">
+                                                            <label for="correo-editar">Correo</label>
+                                                            <input type="email" class="form-control" id="correo-editar" name="correo-editar">
+                                                            
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
 
                                                     <!-- Grid column -->
                                                     <div class="col-6">
                                                         <!-- Default input -->
-                                                        <label>Contraseña</label>
-                                                        <input type="text" class="form-control" id="contrasenia-editar" name="contrasenia-editar">
+                                                        <div class="md-form">
+                                                            <label for="contrasenia-editar">Contraseña</label>
+                                                            <input type="password" class="form-control" id="contrasenia-editar" name="contrasenia-editar">
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
 

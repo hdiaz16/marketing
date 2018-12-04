@@ -15,11 +15,11 @@
                 <i class="fa fa-plus"></i>
             </button>
 
-            <button onclick="editar();" class="btn-floating btn-lg warning-color" >
+            <button onclick="editEmpresas();" class="btn-floating btn-lg warning-color" >
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
-            <button onclick="deleteEm();" class="btn-floating btn-lg red ">
+            <button onclick="deleteEmpresas();" class="btn-floating btn-lg red ">
                 <i class="fa fa-minus"></i>
             </button>
                 
@@ -35,75 +35,6 @@
 
         <div class="container-fluid">
 
-            <!--Section: Cards color-->
-            <section class="mt-2">
-
-                <!--Grid row-->
-                <div class="row">
-
-                    
-
-                    <?php foreach ($empresas as $row) { ?>
-                        <?php if ($row['_erase'] == null) { ?>
-
-                                <!--Grid column-->
-                            <div class="col-xl-3 col-md-6 mb-4 borrar">
-
-                                <!--Panel-->
-                                <div class="card h-100">
-                                    <div class="card-header white-text success-color color" >
-
-
-                                        <button  onclick="delEmpresa1(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button" style="display: none;" >
-                                            <i class="fa fa-times " aria-hidden="true" ></i>
-                                        </button> 
-
-                                        <button  onclick="editarEmp(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button1" style="display: none;" >
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target="#modalLRFormDemo1" ></i>
-                                        </button> 
-                                       <?php echo $row['razon_social']?>
-                                    </div>
-                                    
-
-                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos de contacto</h6>
-                                    <?php $row['contacto'] = json_decode($row['contacto']) ?>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text">Nombre: <?php echo isset($row['contacto']->nombre) ? $row['contacto']->nombre : ""; ?></p>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text">Correo: <?php echo isset($row['contacto']->correo) ? $row['contacto']->correo : "" ?></p>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text">Teléfono: <?php echo isset($row['contacto']->telefono) ? $row['contacto']->telefono : "" ?></p>
-                                    <!--/.Card Data-->
-
-                                    <!--Card content-->
-                                    <div class="card-body">
-                                        
-                                        <!--Text-->
-                                        <?php setlocale(LC_TIME, "es_ES"); ?>
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
-                                
-                                    </div>
-                                    <!--/.Card content-->
-
-                                </div>
-                                <!--/.Panel-->
-
-                            </div>
-                            <!--Grid column-->
-
-                        
-                   <?php  } ?>
-                   <?php  } ?>
-
-
-                   
-                   
-
-                   
-   
-                </div>
-                <!--Grid row-->
-
-            </section>
-            <!--Section: Cards color-->
-
 <!--Section: Cards color-->
             <section class="mt-2">
 
@@ -116,18 +47,18 @@
                         <?php if ($row['_erase'] == null) { ?>
 
                                 <!--Grid column-->
-                            <div class="col-xl-3 col-md-6 mb-4 borrar">
+                            <div class="col-xl-3 col-md-6 mb-4 borrar editar">
 
                                 <!--Panel-->
-                                <div class="card h-100">
+                                <div class="card h-100 ">
                                     <div class="card-header white-text success-color color" >
 
 
-                                        <button  onclick="delEmpresa1(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button" style="display: none;" >
+                                        <button  onclick="delEmpresa1(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button-borrar" style="display: none;" >
                                             <i class="fa fa-times " aria-hidden="true" ></i>
                                         </button> 
 
-                                        <button  onclick="editarEmp(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button1" style="display: none;" >
+                                        <button  onclick="editarEmp(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button-editar" style="display: none;" >
                                             <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target="#modalLRFormDemo1" ></i>
                                         </button> 
                                        <?php echo $row['razon_social']?>
@@ -172,6 +103,76 @@
 
             </section>
             <!--Section: Cards color-->
+
+            <!--Section: Cards color-->
+            <section class="mt-2">
+
+                <!--Grid row-->
+                <div class="row">
+
+                    
+
+                    <?php foreach ($empresas as $row) { ?>
+                        <?php if ($row['_erase'] == null) { ?>
+
+                                <!--Grid column-->
+                            <div class="col-xl-3 col-md-6 mb-4 borrar editar">
+
+                                <!--Panel-->
+                                <div class="card h-100">
+                                    <div class="card-header white-text info-color color" >
+
+
+                                        <button  onclick="delEmpresa1(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button-borrar" style="display: none;" >
+                                            <i class="fa fa-times " aria-hidden="true" ></i>
+                                        </button> 
+
+                                        <button  onclick="editarEmp(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button-editar" style="display: none;" >
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target="#modalLRFormDemo1" ></i>
+                                        </button> 
+                                       <?php echo $row['razon_social']?>
+                                    </div>
+                                    
+
+                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos de contacto</h6>
+                                    <?php $row['contacto'] = json_decode($row['contacto']) ?>
+                                    <p class="ml-3 mt-1 font-small dark-grey-text">Nombre: <?php echo isset($row['contacto']->nombre) ? $row['contacto']->nombre : ""; ?></p>
+                                    <p class="ml-3 mt-1 font-small dark-grey-text">Correo: <?php echo isset($row['contacto']->correo) ? $row['contacto']->correo : "" ?></p>
+                                    <p class="ml-3 mt-1 font-small dark-grey-text">Teléfono: <?php echo isset($row['contacto']->telefono) ? $row['contacto']->telefono : "" ?></p>
+                                    <!--/.Card Data-->
+
+                                    <!--Card content-->
+                                    <div class="card-body">
+                                        
+                                        <!--Text-->
+                                        <?php setlocale(LC_TIME, "es_ES"); ?>
+                                        <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
+                                
+                                    </div>
+                                    <!--/.Card content-->
+
+                                </div>
+                                <!--/.Panel-->
+
+                            </div>
+                            <!--Grid column-->
+
+                        
+                   <?php  } ?>
+                   <?php  } ?>
+
+
+                   
+                   
+
+                   
+   
+                </div>
+                <!--Grid row-->
+
+            </section>
+            <!--Section: Cards color-->
+
 
 
 
@@ -325,7 +326,7 @@
                                                     <div class="col-12">
                                                         <!-- Default input -->
                                                         <div class="md-form mt-1">
-                                                            <input type="text" class="form-control" id="razon" name="razon">
+                                                            <input type="text" class="form-control" id="razon-agregar" name="razon-agregar">
                                                             <label for="razon-agregar">Razón Social</label>
                                                         </div>
                                                     </div>
@@ -353,8 +354,8 @@
                                                             
                                                             <div class="col-12 col-md-6">
                                                                 <div class="md-form mt-3">
-                                                                    <input type="text" class="form-control" id="correo-asignar" name="correo-asignar">
-                                                                    <label for="correo-asignar">Correo electrónico</label>
+                                                                    <input type="text" class="form-control" id="correo-agregar" name="correo-agregar">
+                                                                    <label for="correo-agregar">Correo electrónico</label>
                                                                 </div>
                                                             </div>
 
