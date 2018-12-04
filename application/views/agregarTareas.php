@@ -10,7 +10,7 @@
                 <i class="fa fa-plus"></i>
             </button>
 
-            <button class="btn-floating btn-lg warning-color">
+            <button onclick="editTareas()" class="btn-floating btn-lg warning-color">
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
@@ -37,9 +37,8 @@
                 <div class="row">
 
                     <?php foreach ($tarea as $row) { ?>
-
                                 <!--Grid column-->
-                            <div class="col-xl-3 col-md-6 mb-4 borrar d-flex">
+                            <div class="col-xl-3 col-md-6 mb-4 borrar editar d-flex">
 
                                 <!--Panel-->
                                 <div class="card h-300 d-flex">
@@ -66,27 +65,50 @@
                                             break;
                                     } ?>
 
-                                    <div class="card-header white-text <?php echo $color ?> " >  
+                                    <div class="card-header white-text <?php echo $color ?> color" >  
                                         <p class="font-small text-right"><?php echo $row['nombre_estado']?></p>
+                                        <div>
+                                            <button onclick="deleteTarea(<?php echo $row['tarea_id'] ?>)" class="btn btn-sm float-right button-borrar black" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button>
+                                                
+                                                <button onclick="editTarea(
+                                                )" 
+                                                class="btn btn-sm  black float-right button-editar" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button>
+                                        </div>
                                     </div>
 
-                                    <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold">Descripción</h6>
-                                    <p class="ml-4 mt-3 font-small dark-grey-text"><i> <?php echo $row['descripcion']?></i></p>
-                                    <h6 class="mt-3 dark-grey-text font-weight-bold text-center">Condiciones de aceptación</h6>
+                                    <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold"><?php echo $row['descripcion']?></h6>
+                                    <div class="container">
+                                    <hr>
+                                    </div>
+                                    <h6 class=" dark-grey-text font-weight-bold text-center">Requisitos </h6>
                                         <?php 
                                         $condiciones = (json_decode($row['condiciones_aceptacion'], true));
+                                        $requisitos = (json_decode($row['requisitos'], true));
                                          ?>
-                                        <?php foreach ( $condiciones as $index => $condicion ) { ?>
+                                        <?php foreach ( $requisitos as $index => $requisito ) { ?>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <span class="ml-2 mt-1 font-small dark-grey-text "><?php echo $requisito['nombre'] ?> </span> 
+                                                </div>          
+                                                <div class="col-3">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" id=" <?php echo $row['tarea_id'].$index ?> " <?php echo $requisito['cumplida'] ? 'checked' : '' ?> >
+                                                        <label for="<?php echo $row['tarea_id'].$index ?>"></label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            
+                                        <?php } ?>
+
+                                    <h6 class="mt-3 dark-grey-text font-weight-bold text-center">Condiciones de aceptación</h6>
+                                    <?php foreach ( $condiciones as $index => $condicion ) { ?>
 
                                             <div class="row">
                                                 <div class="col">
                                                     <span class="ml-2 mt-1 font-small dark-grey-text "><?php echo $condicion['nombre'] ?> </span> 
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id=" <?php $row['tarea_id'].$index ?> " <?php echo $condicion['cumplida'] ? 'checked' : '' ?> >
-                                                        <label for="<?php $row['tarea_id'].$index ?>"></label>
-                                                    </div>
                                                 </div>
 
                                             </div>
@@ -102,7 +124,11 @@
                                         
                                         <!--Text-->
                                         <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
-                                
+                                        <div class="row">
+                                            <div class="col-12 text-right">
+                                                <a href="<?php echo base_url().'/index.php/AgregarSubtarea' ?>">Ir a subtareas</a>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!--/.Card content-->
 
@@ -180,7 +206,7 @@
                                                      <div class="col-6 md-form">
                                                         <!-- Default input -->
                                                         <input  type="text"  class="form-control " id="desc" name="desc">
-                                                        <label for="form3" >Descripcion de la tarea</label>
+                                                        <label for="form3" >Descripción de la tarea</label>
                                                        
                                                     </div>
                                                     <!-- Grid column -->
@@ -249,4 +275,101 @@
                     </div>
                 </div>
                 <!--Modal: Login / Register Form-->
+ <!--editar-->
+                <div class="modal fade" id="modal-editar-tarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog cascading-modal modal-lg" role="document">
+                        <!--Content-->
+                        <div class="modal-content">
+
+                            <!--Modal cascading tabs-->
+                            <div class="modal-c-tabs">
+
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs tabs-2 green " role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i> Editar Tarea</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panels -->
+                                <div class="tab-content">
+                                    <!--Panel 7-->
+                                    <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+                                        <!--Body-->
+                                        <div class="modal-body mb-1">
+                                            <div class="row">
+                                                    <!-- Grid column -->
+                                                     <div class="col-6 md-form">
+                                                        <!-- Default input -->
+                                                        <input  type="text"  class="form-control " id="desc" name="desc">
+                                                        <label for="form3" >Descripción de la tarea</label>
+                                                       
+                                                    </div>
+                                                    <!-- Grid column -->
+
+
+                                                    <div class="md-form col-6">
+                                                        <input  type="text"  class="form-control datepicker" id="fechaIn" name="fechaIn">
+                                                        <label for="date-picker-example">Fecha de entrega</label>
+                                                    </div>
+                                                    
+                                             
+
+                                                    <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                        <input  type="text"  class="form-control " id="req">
+                                                        <label for="form3">Requisitos de la tarea</label>
+                                                        <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="agregarRequisitos();">Agregar</button>
+                                                    </div>
+
+                                                    <!-- Grid column -->
+
+                                                    <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                        <textarea type="text" id="textReq" class="md-textarea form-control" rows="3"></textarea>
+                                                        <label for="form10">Requisitos Agregados</label>
+                                                    </div>
+                                                    <!-- Grid column -->
+
+                                                     <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                        <input  type="text"  class="form-control text" id="cond">
+                                                        <label for="form3">Condiciones de Aceptacion</label>
+                                                        <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="agregarCondiciones();">Agregar</button>
+                                                    </div>
+
+                                                    <!-- Grid column -->
+
+                                                    <!-- Grid column -->
+                                                    <div class="md-form col-6">
+                                                        <textarea type="text" id="textCond" class="md-textarea form-control" rows="3"></textarea>
+                                                        <label for="form10">Condiciones Agregados</label>
+                                                    </div>
+                                                    <!-- Grid column -->
+
+
+                                                    
+                                                </div>
+                                                <!-- Grid row -->
+                                            
+                                        </div>
+                                        <!--Footer-->
+                                        <div class="modal-footer">
+                                            <button class="btn-floating btn-lg success-color" onclick="addUsuarios();">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                        </div>
+
+                                    </div>
+                                    <!--/.Panel 7-->
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+                <!--editar-->
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/agregarTarea.js"></script>

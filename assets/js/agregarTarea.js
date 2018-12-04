@@ -117,9 +117,27 @@ agregarTarea = function(){
 
 }
 
+function editTareas(){
+  $(".editar").toggleClass("shake-little shake-constant");
+  $(".color").toggleClass("warning-color");
+  $(".button-editar").toggle();
+}
 
+function deleteTareas(){
+  console.log("algo");
+  $(".borrar").toggleClass("shake-little shake-constant");
+  $(".color").toggleClass("danger-color");
+  $(".button-borrar").toggle();
+}
 
+function editTarea($tareaId){
+  console.log($tareaId);
+  $('#modal-editar-tarea').modal();
+}
 
-
-
-
+/*
+, $nodoId, $descripcion, $condiciones, $requisitos, $estadoTarea
+  console.log($tareaId, $nodo, $descripcion, $condiciones, $requisitos, $estadoTarea);
+, 
+                                                            <?php echo "'".$row['requisitos']."'" ?>
+*/

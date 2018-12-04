@@ -8,7 +8,7 @@
 
     public function getTareas($communityManID, $campaniaID = NULL, $eliminadas = NULL){
       #$eliminadas omite a las tareas eliminadas si el valor pasado es true
-      $this->db->select('campania.id as campania_id, campania.nombre as nombre_campania, red_semantica.id as red_id, tarea.id as tarea_id, tarea.descripcion, tarea.condiciones_aceptacion, tarea.requisitos, tarea.estado_tarea_id, estado_tarea.nombre as nombre_estado, tarea._create')
+      $this->db->select('campania.id as campania_id, campania.nombre as nombre_campania, red_semantica.id as red_id, tarea.id as tarea_id, tarea.descripcion, tarea.condiciones_aceptacion, tarea.requisitos, tarea.estado_tarea_id, estado_tarea.nombre as nombre_estado, tarea._create, tarea.nodo_id')
       ->from('campania')
       ->join('red_semantica', "campania.id = red_semantica.campania_id")
       ->join('tarea', 'tarea.red_id = red_semantica.id')
@@ -57,7 +57,7 @@
       try {
         $this->db->insert('tarea', $data);
         $nuevaTareaID = $this->db->insert_id();
-
+        $data = [];
         $data['tarea_id'] = $nuevaTareaID;
         $data['_erase'] = $fechaRegistro;
         $data['_update'] = $fechaRegistro;
