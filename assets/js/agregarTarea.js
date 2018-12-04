@@ -1,33 +1,24 @@
+/*
+var requisitos = [];
 
-var req = [];
+var requisitosString =[];
 
-var reqString =[];
+var condiciones = [];
 
-var con = [];
-
-var conString =[];
+var condicionesString =[];
 
 
 agregarRequisitos = function(){
  
 
-  var requ = $("#req").val();
+  var requisito = $("#req").val();
+  var requisitosEnString;
+  var objeto = { estado: false, nombre: requisito };
+  requisitos.push(objeto);
 
-  reqString.push(requ);
-
-
-  var requisitosString
-
-  var objets = { cumplida: false  };
-
-  objets.nombre = req;
-
-  req.push(objets);
-
-  requisitosString = reqString.join("\n");
-
+  requisitosString.push(requisito);
+  requisitosEnString = requisitosString.join("\n");
   $("#textReq").val(requisitosString);
-
   $("#req").val("");
 
 
@@ -36,21 +27,14 @@ agregarRequisitos = function(){
 
 agregarCondiciones = function(){
  
+  var condicion = $("#cond").val();
+  var condicionesEnString;
+  condicionesString.push(condicion);
+  var objeto = { estado: false, nombre: condicion };
 
-  var cond = $("#cond").val();
 
-  conString.push(cond);
-
-
-  var requisitosString
-
-  var objets = { cumplida: false  };
-
-  objets.nombre = con;
-
-  con.push(objets);
-
-  requisitosString = conString.join("\n");
+  condiciones.push(objeto);
+  condicionesEnString = condicionesString.join("\n");
 
   $("#textCond").val(requisitosString);
 
@@ -60,11 +44,12 @@ agregarCondiciones = function(){
 }
 
 
-agregarTarea = function(){
+agregarTareaDos = function(){
 
   var descripcion  = $("#desc").val();
   var fecha        = $("#fechaIn").val();
-
+  console.log(req, con);
+  return;
 
 
   $.ajax({
@@ -116,6 +101,7 @@ agregarTarea = function(){
 
 
 }
+*/
 
 function editTareas(){
   $(".editar").toggleClass("shake-little shake-constant");
@@ -131,6 +117,8 @@ function deleteTareas(){
 }
 
 function editTarea($tareaId){
+  console.log(requisitos, condiciones);
+  requisitos = [], condiciones = [], requisitosString = [], condicionesString = [];
   console.log($tareaId);
   $('#modal-editar-tarea').modal();
 }

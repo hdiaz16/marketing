@@ -109,7 +109,7 @@ CREATE TABLE tarea(
   descripcion text,
   fecha_entrega timestamp WITH TIME ZONE,
   condiciones_aceptacion jsonb DEFAULT '[{"nombre": "", "estado": false},{"nombre": "conseguir # likes", "estado": false}]',
-  requisitos jsonb DEFAULT '[{"nombre": "", "estado": false},{"nombre": "conseguir # likes", "estado": false}]',
+  requisitos jsonb DEFAULT '[{"nombre": "nice", "estado": false},{"nombre": "conseguir # likes", "estado": false}]',
   _create timestamp WITH TIME ZONE,
   _update timestamp WITH TIME ZONE,
   _erase timestamp WITH TIME ZONE

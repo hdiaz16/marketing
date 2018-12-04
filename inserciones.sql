@@ -76,8 +76,8 @@ VALUES
 
 INSERT INTO tarea (estado_tarea_id, red_id, nodo_id, descripcion, condiciones_aceptacion, requisitos, _create, _update)
 VALUES
-(1, 1, 2, 'publicitar examenes de retina', '[{"condicion": "condicion 1", "aceptada": false}, {"condicion": "condicion 2", "aceptada": true}]', '[{"requisito": "requisito 1", "aceptado": false}, {"requisito": "requisito 2", "aceptado": true}]', now(), now()),
-(1, 2, 3, 'resaltar la importancia de higiene de mascotas', '[{"condicion": "condicion 1", "aceptada": false}, {"condicion": "condicion 2", "aceptada": true}]', '[{"requisito": "requisito 1", "aceptado": false}, {"requisito": "requisito 2", "aceptado": true}]', now(), now());
+(1, 1, 2, 'publicitar examenes de retina', '[{"nombre": "condicion 1", "estado": false}, {"nombre": "condicion 2", "estado": true}]', '[{"nombre": "requisito 1", "cumplido": false}, {"nombre": "requisito 2", "cumplido": true}]', now(), now()),
+(1, 2, 3, 'resaltar la importancia de higiene de mascotas', '[{"nombre": "condicion 1", "estado": false}, {"nombre": "condicion 2", "estado": true}]', '[{"nombre": "requisito 1", "cumplido": false}, {"nombre": "requisito 2", "cumplido": true}]', now(), now());
 
 INSERT INTO publicacion (tarea_id, _create, _update)
 VALUES

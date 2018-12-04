@@ -223,31 +223,27 @@
     }
     // create a network
 
-var req = [];
+var requisitos = [];
 
-var requisitosStringArray =[];
+var requisitosString =[];
 
-var con = [];
+var condiciones = [];
 
-var conString =[];
+var condicionesString =[];
 
 
 agregarRequisitos = function(){
  
-
   var requisito = $("#req").val();
 
-  requisitosStringArray.push(requisito);
-
-  var requisitosString = requisitosStringArray.join('\n');
-
-  var requisitoObjeto = { cumplida: false, nombre: requisito};
-
-
-  req.push(requisitoObjeto);
-
-  $("#textReq").val(requisitosString);
+  var requisitosEnString;
+  requisitosString.push(requisito);
+  requisitosEnString = requisitosString.join("\n");
   
+  var objeto = { estado: false, nombre: requisito };
+  requisitos.push(objeto);
+
+  $("#textReq").val(requisitosEnString);
   $("#req").val("");
 
 
@@ -256,21 +252,16 @@ agregarRequisitos = function(){
 
 agregarCondiciones = function(){
  
+  var condicion = $("#cond").val();
+  var condicionesEnString;
+  condicionesString.push(condicion);
+  var objeto = { estado: false, nombre: condicion };
 
-  var cond = $("#cond").val();
 
-  conString.push(cond);
+  condiciones.push(objeto);
+  condicionesEnString = condicionesString.join("\n");
 
-
-  var condicionesString = conString.join("\n") ;
-
-  var objets = { cumplida: false, nombre: cond  };
-
-  con.push(objets);
-
-  con.push(objets);
-
-  $("#textCond").val(condicionesString);
+  $("#textCond").val(condicionesEnString);
 
   $("#cond").val("");
 
@@ -287,8 +278,9 @@ agregarTarea = function(){
   var red          = $("#red_id").val();
   
 
-  console.log(red, nodo, descripcion, fecha, JSON.stringify(req),
-   JSON.stringify(con));
+  //console.log(condiciones, requisitos);
+  //console.log(red, nodo, descripcion, fecha, JSON.stringify(req),
+   //JSON.stringify(con));
 
   $.ajax({
       type: 'POST',
@@ -301,8 +293,8 @@ agregarTarea = function(){
         nodo:nodo,
         descripcion:descripcion,
         fecha:fecha,
-        req:JSON.stringify(req),
-        con:JSON.stringify(con)
+        req:JSON.stringify(requisitos),
+        con:JSON.stringify(condiciones)
       },
       success: function(data)
       {
