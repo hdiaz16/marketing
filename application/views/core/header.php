@@ -32,7 +32,7 @@
 </head>
 
 <body class="fixed-sn mdb-skin" >
-
+    <?php setlocale(LC_TIME, "es_ES"); ?>
      <!--Main Navigation-->
     <header>
 

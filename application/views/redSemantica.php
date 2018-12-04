@@ -162,30 +162,25 @@
                                                      <div class="col-4 md-form">
                                                         <!-- Default input -->
                                                         
-                                                        <h4 for="form3"> Nodo:</h4>
-                                                        <p id="nodo_select"> </p>
+                                                        <h4 for="form3"> Nodo: <spanid="nodo_select" class="nodo-nombre-modal"></span></h4>
                                                     
 
                                                     </div>
                                                     <!-- Grid column -->
 
                                                     <!-- Grid column -->
-                                                     <div class="col-4 md-form" hidden>
+                                                     <div class="col-4 md-form">
                                                         <!-- Default input -->
                                                         
-                                                        <label for="form3" >ID Nodo</label>
-                                                        <input  type="text"  class="form-control" 
-                                                         id="nodo_id">
+                                                        <input  type="hidden"  class="form-control" id="nodo_id">
                                                     </div>
                                                     <!-- Grid column -->
 
                                                     <!-- Grid column -->
-                                                     <div class="col-4 md-form" hidden>
+                                                     <div class="col-4 md-form">
                                                         <!-- Default input -->
                                                         
-                                                        <label for="form3" >ID Red</label>
-                                                        <input  type="text"  class="form-control" 
-                                                         id="red_id">
+                                                        <input  type="hidden"  class="form-control" id="red_id">
                                                     </div>
                                                     <!-- Grid column -->
                                                 
@@ -196,7 +191,7 @@
                                                      <div class="col-6 md-form">
                                                         <!-- Default input -->
                                                         <input  type="text"  class="form-control " id="desc" name="desc">
-                                                        <label for="form3" >Descripcion de la tarea</label>
+                                                        <label for="form3" >Descripción de la tarea</label>
                                                        
                                                     </div>
                                                     <!-- Grid column -->

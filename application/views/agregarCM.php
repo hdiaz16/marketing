@@ -26,7 +26,7 @@
             <!--Grid row-->
             <div class="row">
             
-                <?php foreach ($CM as $row) { ?>
+                <?php foreach ($CM as $row) { ?>    
                     <?php if ($row['_erase'] == null) { ?>
                     <!--Grid column-->
                     <div class="col-xl-3 col-md-6 mb-4 borrar editar">
@@ -45,7 +45,8 @@
                                     <?php echo isset($row['perfil_id']) ? $row['perfil_id'] : 0; ?>,
                                     <?php echo isset($row['nombres']) ? "'".$row['nombres']."'" : "''"; ?>,
                                     <?php echo isset($row['apellidos']) ? "'".$row['apellidos']."'" : "''"; ?>,
-                                    <?php echo isset($row['correo']) ? "'".$row['correo']."'" : "''"; ?>
+                                    <?php echo isset($row['correo']) ? "'".$row['correo']."'" : "''"; ?>,
+                                    <?php echo isset($row['rol_id']) ? "'".$row['rol_id']."'" : "''"; ?>
                                 )">
                                     <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                                 </button>
@@ -55,26 +56,22 @@
                             </div>
 
                             <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
-                            <p class="ml-3 mt-3 font-small dark-grey-text">
+                            <p class="ml-3 font-small dark-grey-text">
                                 <?php echo $row['correo']?>
                             </p>
 
                             <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Rol</h6>
-                            <p class="ml-3 mt-3 font-small dark-grey-text">
+                            <p class="ml-3 font-small dark-grey-text">
                                 <?php echo $row['nombre_rol']?>
                             </p>
                             <!--/.Card Data-->
 
-                            <!--Card content-->
-                            <div class="card-body">
-
+    
                                 <!--Text-->
-                                <p class="font-small grey-text">Fecha de Inicio:
-                                    <?php echo $row['_create']?>
+                                <p class="  mx-3 font-small grey-text">Fecha de Inicio:
+                                    <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?>
                                 </p>
 
-                            </div>
-                            <!--/.Card content-->
 
                         </div>
                         <!--/.Panel-->
@@ -153,7 +150,8 @@
                                         <select class="mdb-select" id="selRol">
                                             <option value="" disabled selected>Seleccionar Rol</option>
                                             <?php foreach ($rol as $row) {
-                                                echo '<option value='.$row['id'].'>'.$row['nombre'].'</option>';
+                                                if( $row['id'] != 2 )
+                                                    echo '<option value='.$row['id'].'>'.$row['nombre'].'</option>';
                                             } ?>
                                         </select>
                                         <button type="button" class="btn-save btn btn-primary btn-sm">Guardar</button>
@@ -241,7 +239,8 @@
                                         <select class="mdb-select" id="selRol_update">
                                             <option value="" disabled selected>Seleccionar Rol</option>
                                             <?php foreach ($rol as $row) {
-                                                echo '<option value='.$row['id'].'>'.$row['nombre'].'</option>';
+                                                if($row['id'] != 2)
+                                                    echo '<option value='.$row['id'].'>'.$row['nombre'].'</option>';
                                             } ?>
                                         </select>
                                         <button type="button" class="btn-save btn btn-primary btn-sm">Guardar</button>

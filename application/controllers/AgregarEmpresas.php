@@ -54,7 +54,7 @@ class AgregarEmpresas extends CI_Controller {
 
       if($data){
 
-           echo json_encode($data = array('error' => false, 'mensaje' =>'Se elimino correctamente'));
+           echo json_encode($data = array('error' => false, 'mensaje' =>'Se eliminó correctamente'));
 
       }else{
           echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo eliminar'));

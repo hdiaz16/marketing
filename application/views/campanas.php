@@ -30,7 +30,7 @@
  
 
 
-        <div class="container-fluid">
+        <div class="">
 
             <!--Section: Cards color-->
             <section class="mt-2">
@@ -43,10 +43,10 @@
                         <?php if ($row['_erase'] == null) {?>
 
                                 <!--Grid column-->
-                            <div class="col-xl-3 col-md-6 mb-4 ">
+                            <div class="col-xl-3 col-md-6 mb-4 borrar editar">
 
                                 <!--Panel-->
-                                <div class="card h-100 borrar editar">
+                                <div class="card h-100">
                                     <div class="card-header white-text success-color color">
 
                                         <button   class="btn btn-sm  black float-right button " style="display: none;" onclick="delCampanas(<?php echo $row['id'] ?>);"><i class="fa fa-times fa-2x " aria-hidden="true" 
@@ -60,10 +60,10 @@
                                        <?php echo $row['nombre']?>
                                     </div>
 
-                                    <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold">Objetivo</h6>
+                                    <h6 class="ml-3 mt-2 dark-grey-text font-weight-bold">Objetivo</h6>
                                     <p class="ml-3 mt-1 font-small dark-grey-text"> <?php echo $row['objetivos']?></p>
 
-                                    <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold">Proposito</h6>
+                                    <h6 class="ml-3 mt-2 dark-grey-text font-weight-bold">Próposito</h6>
                                     <p class="ml-3 mt-1 font-small dark-grey-text"> <?php echo $row['propositos']?></p>
                                     <!--/.Card Data-->
 
@@ -71,8 +71,8 @@
                                     <div class="card-body">
                                         
                                         <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Inicio: <?php echo $row['fecha_inicio']?></p>
-                                        <p class="font-small grey-text">Fecha de Cierre: <?php echo $row['fecha_cierre']?></p>
+                                        <p class="font-small grey-text">Fecha de Inicio: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
+                                        <p class="font-small grey-text">Fecha de Cierre: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
                                     </div>
                                     <!--/.Card content-->
 
@@ -360,7 +360,7 @@
                   success: function(data)
                   {
 
-                    $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se edito correctamente',type: 'green',buttons: {
+                    $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se editó correctamente',type: 'green',buttons: {
                                 Aceptar: function (e,data) {
 
                                   setTimeout(function(){window.location.reload(1);},1000);

@@ -47,7 +47,7 @@ class AgregarTareas extends CI_Controller {
         }
         else
         {
-            echo json_encode($data = array('error' => false, 'mensaje' =>'La Tarea se registro con exito.'));
+            echo json_encode($data = array('error' => false, 'mensaje' =>'La Tarea se registró con éxito.'));
 
         }
 

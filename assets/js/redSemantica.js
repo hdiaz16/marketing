@@ -19,7 +19,6 @@
     function clickNodo(values, id, selected, hovering){
         nodoSeleccionadoId = id;
         var nombreNodo;
-        
         nodos.find(
             nodo => {
                 if(nodo.id == nodoSeleccionadoId) {
@@ -28,6 +27,8 @@
             });
         //console.log($('.nodo-nombre-modal').html());
         $('.nodo-nombre-modal').html(nombreNodo);
+        $('#red_id').val(redId);
+        $('#nodo_id').val(nodoSeleccionadoId);
         //console.log($('.nodo-nombre-modal').html());
     }
 
@@ -210,7 +211,7 @@
             }
             
             //console.log(nodo);
-            console.log($padreActivado, $padreID, $hijo.activado, $hijo.id, ocultarNodosEliminados);
+            //console.log($padreActivado, $padreID, $hijo.activado, $hijo.id, ocultarNodosEliminados);
             if($padreActivado && $hijo.activado){
                 nodos.push(nodo);
                 aristas.push({from: $padreID, to: $hijo.id});
@@ -306,14 +307,14 @@ agregarTarea = function(){
       success: function(data)
       {
 
-        console.log(data);
+        //console.log(data);
 
-        if(data == false){
+        if(data.error){
 
           $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al agregar tarea.',type: 'red',buttons: {
                     Aceptar: function (e,data) {
-
-                      setTimeout(function(){window.location.reload(1);},1000);
+                       
+                      //setTimeout(function(){window.location.reload(1);},1000);
                     } 
                 }});
    
@@ -321,10 +322,14 @@ agregarTarea = function(){
         }else{
 
 
-           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Tarea registrada con exito',type: 'green',buttons: {
+           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Tarea registrada con éxito',type: 'green',buttons: {
                     Aceptar: function (e,data) {
-                      setTimeout(function(){window.location.reload(1);},1000);
-                     
+                      //setTimeout(function(){window.location.reload(1);},1000);
+                        $('#modal').modal('hide');
+                        $("#desc").val("");
+                        $("#fechaIn").val("");
+                        $("#nodo_id").val("");
+                        $("#red_id").val("");
                     } 
                 }});
 

@@ -70,32 +70,30 @@
                                         <p class="font-small text-right"><?php echo $row['nombre_estado']?></p>
                                     </div>
 
-                                    <h6 class="ml-4 mt-3 dark-grey-text font-weight-bold d-flex">Condiciones</h6>
-                                    <p class="ml-4 mt-3 font-small dark-grey-text"> 
+                                    <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold">Descripción</h6>
+                                    <p class="ml-4 mt-3 font-small dark-grey-text"><i> <?php echo $row['descripcion']?></i></p>
+                                    <h6 class="mt-3 dark-grey-text font-weight-bold text-center">Condiciones de aceptación</h6>
                                         <?php 
                                         $condiciones = (json_decode($row['condiciones_aceptacion'], true));
                                          ?>
                                         <?php foreach ( $condiciones as $index => $condicion ) { ?>
 
                                             <div class="row">
-
-                                                <span class="ml-5 mt-1 font-small dark-grey-text "><?php echo $condicion['nombre'] ?> </span> 
-
-                                                <span class="ml-5 mt-2 font-small dark-grey-text "> <!-- Material unchecked -->
+                                                <div class="col">
+                                                    <span class="ml-2 mt-1 font-small dark-grey-text "><?php echo $condicion['nombre'] ?> </span> 
+                                                </div>
+                                                <div class="col-3">
                                                     <div class="form-check">
                                                         <input type="checkbox" class="form-check-input" id=" <?php $row['tarea_id'].$index ?> " <?php echo $condicion['cumplida'] ? 'checked' : '' ?> >
-                                                        <label class="form-check-label" for="materialUnchecked"></label>
-                                                    </div> 
-                                                </span>
+                                                        <label for="<?php $row['tarea_id'].$index ?>"></label>
+                                                    </div>
+                                                </div>
 
                                             </div>
 
                                             
                                         <?php } ?>
-                                    </p>
 
-                                    <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold">Descripcion</h6>
-                                    <p class="ml-4 mt-3 font-small dark-grey-text"> <?php echo $row['descripcion']?></p>
 
                                     <!--/.Card Data-->
 
@@ -103,7 +101,7 @@
                                     <div class="card-body">
                                         
                                         <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo $row ['_create']?></p>
+                                        <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
                                 
                                     </div>
                                     <!--/.Card content-->

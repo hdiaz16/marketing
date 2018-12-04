@@ -113,7 +113,7 @@ function delEmpresa1 (id) {
             }else{
 
 
-               $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se elimino correctamente',type: 'green',buttons: {
+               $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se eliminó correctamente',type: 'green',buttons: {
                         Aceptar: function (e,data) {
                              setTimeout(function(){window.location.reload(1);},1000);
                          

@@ -94,7 +94,7 @@ addUsuarios = function ()
 
         if(data == false){
 
-          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al registrar el Usuario a la Campaña.',type: 'red',buttons: {
+          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al registrar al usuario a la campaña.',type: 'red',buttons: {
                     Aceptar: function (e,data) {
 
                       setTimeout(function(){window.location.reload(1);},1000);
@@ -105,7 +105,7 @@ addUsuarios = function ()
         }else{
 
 
-           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se registro con exito al Usuario a la Campaña.',type: 'green',buttons: {
+           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se registró con éxito al usuario a la campaña.',type: 'green',buttons: {
                     Aceptar: function (e,data) {
                          setTimeout(function(){window.location.reload(1);},1000);
                       

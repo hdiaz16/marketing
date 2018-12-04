@@ -147,15 +147,17 @@ class Administrador_Model extends CI_Model{
     }
   }
 
-  public function getEmpleados($communityManagerID, $all = TRUE){
+  public function getEmpleados($adminID, $all = TRUE){
 
-    $this->db->select('usuario.id as usuario_id, usuario.nombres, usuario.apellidos, campania.nombre as campania_nombre, rol.nombre as rol_nombre , perfil.id as empleado_id, campania_empleados._erase as borrados');
+    log_message('error', "uggg".$adminID);
+    #$this->db->select('usuario.id as usuario_id, usuario.nombres, usuario.apellidos, campania.nombre as campania_nombre, rol.nombre as rol_nombre , perfil.id as empleado_id, campania_empleados._erase as borrados');
+    $this->db->select('usuario.id as usuario_id');
     $this->db->from('usuario');
     $this->db->join('perfil', "usuario.id = perfil.usuario_id");
     $this->db->join('rol', "rol.id = perfil.rol_id");
-    $this->db->join('campania_empleados', "campania_empleados.empleado_id = perfil.id");
-    $this->db->join('campania', "campania_empleados.campania_id = campania.id");
-    $this->db->where('campania.community_manager_id', $communityManagerID);
+    $this->db->join('admin_empleados', "perfil.id = admin_empleados.empleado_id");
+    #$this->db->join('campania', "campania_empleados.campania_id = campania.id");
+    $this->db->where('admin_empleados.admin_id', $adminID);
 
 
     if(!is_null($all)){

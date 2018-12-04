@@ -41,7 +41,7 @@ function addCM() {
           icon: 'fa fa-check',
           title: '<strong>Realizado</strong><br>',
           theme: 'supervan',
-          content: 'Registro con exito',
+          content: 'Registro con éxito',
           type: 'green',
           buttons: {
             Aceptar: function (e, data) {
@@ -78,7 +78,7 @@ function delCM1(id) {
           icon: 'fa fa-times',
           title: '<strong>Error</strong><br>', 
           theme: 'supervan',
-          content: 'No se elimino.',
+          content: 'No se eliminó.',
           type: 'red',
           buttons: {
             Aceptar: function (e, data) {
@@ -91,7 +91,7 @@ function delCM1(id) {
           icon: 'fa fa-check',
           title: '<strong>Realizado</strong><br>',
           theme: 'supervan',
-          content: 'Se elimino correctamente',
+          content: 'Se eliminó correctamente',
           type: 'green',
           buttons: {
             Aceptar: function (e, data) {
@@ -110,12 +110,12 @@ function editadoCM  (){
   $(".buttonEditar").toggle();
 }
 
-function editarCM(id, nombre, apellido, correo) {
+function editarCM(id, nombre, apellido, correo, rolId) {
   $('#usuario_id').val(id);
   $('#nombre_update').val(nombre);
   $('#apellido_update').val(apellido);
   $('#correo_update').val(correo);
-
+  $('#selRol_update').val(rolId).material_select();
   $('#modal-editar').modal();
 }
 
@@ -163,7 +163,7 @@ function updateCM() {
           icon: 'fa fa-check',
           title: '<strong>Realizado</strong><br>',
           theme: 'supervan',
-          content: 'Usuario editado con exito',
+          content: 'Usuario editado con éxito',
           type: 'green',
           buttons: {
             Aceptar: function (e, data) {

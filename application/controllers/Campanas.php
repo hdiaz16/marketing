@@ -47,7 +47,7 @@ class Campanas extends CI_Controller {
       		echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar la Campaña'));
 
   	     }else{
-  			   echo json_encode($data = array('error' => false, 'mensaje' =>'La Campaña se registro con exito.'));
+  			   echo json_encode($data = array('error' => false, 'mensaje' =>'La Campaña se registró con éxito.'));
 
 	       }
 
@@ -67,7 +67,7 @@ class Campanas extends CI_Controller {
 
       if($data){
 
-           echo json_encode($data = array('error' => false, 'mensaje' =>'Se elimino correctamente'));
+           echo json_encode($data = array('error' => false, 'mensaje' =>'Se eliminó correctamente'));
 
       }else{
           echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo eliminar'));
@@ -96,11 +96,11 @@ class Campanas extends CI_Controller {
 
       if($data){
 
-           echo json_encode($data = array('error' => false, 'mensaje' =>'Se edito correctamente'));
+           echo json_encode($data = array('error' => false, 'mensaje' =>'Se editó correctamente'));
 
       }else{
 
-          echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo edito'));
+          echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo editar'));
 
 
 
