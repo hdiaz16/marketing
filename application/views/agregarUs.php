@@ -36,7 +36,7 @@
                 <div class="row">
 
         
-   <?php print_r($user); ?>
+   <!-- <?php print_r($user); ?> -->
                     <?php foreach ($user as $row) { ?>
                         <?php if(!$row['borrados']){ ?>
 
@@ -142,7 +142,7 @@
                                                              
 
 
-                                                            <?php foreach ($userCamania as $row) {
+                                                            <?php foreach ($userCampania as $row) {
 
                                                                 echo '<option id='.$row['perfil_id'].' value='.$row['perfil_id'].'>'.$row['nombres'].' '.$row['apellidos'].' -- '.$row['nombre_rol'].'</option>';
                                                             } ?>

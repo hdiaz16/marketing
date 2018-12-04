@@ -173,6 +173,7 @@
                                                         <!-- Default input -->
                                                         
                                                         <input  type="hidden"  class="form-control" id="nodo_id">
+
                                                     </div>
                                                     <!-- Grid column -->
 
@@ -181,6 +182,7 @@
                                                         <!-- Default input -->
                                                         
                                                         <input  type="hidden"  class="form-control" id="red_id">
+
                                                     </div>
                                                     <!-- Grid column -->
                                                 

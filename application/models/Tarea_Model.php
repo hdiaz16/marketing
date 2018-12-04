@@ -18,7 +18,7 @@
       if(!is_null($campaniaID))
         $this->db->where('campania.id', $campaniaID);
       
-      if($eliminadas)
+      if(!is_null($eliminadas))
         $this->db->where('tarea._erase', NULL);
 
       try {
@@ -57,6 +57,14 @@
       try {
         $this->db->insert('tarea', $data);
         $nuevaTareaID = $this->db->insert_id();
+
+        $data['tarea_id'] = $nuevaTareaID;
+        $data['_erase'] = $fechaRegistro;
+        $data['_update'] = $fechaRegistro;
+
+        $this->db->insert('publicacion', $data);
+        $nuevaPublicacionID = $this->db->insert_id();
+        
         $this->db->select('*')
         ->from('tarea')
         ->where('id', $nuevaTareaID);

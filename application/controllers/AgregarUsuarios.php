@@ -18,9 +18,9 @@ class AgregarUsuarios extends CI_Controller {
 
         $data['campanas'] = $this->Campania_Model->getCampanias($this->session->userdata('perfil-actual')['perfil_id'], NULL);
 
-        $data['user'] = $this->Administrador_Model->getEmpleados($this->session->userdata('perfil-actual')['sys_admin_id'], NULL );
+        $data['user'] = $this->Administrador_Model->getEmpleados($this->session->userdata('perfil-actual')['sys_admin_id'], NULL);
 
-        $data['userCamania'] = $this->Administrador_Model->getEmpleadosNoAsignados($this->session->userdata('perfil-actual')['sys_admin_id'], NULL);
+        $data['userCampania'] = $this->Administrador_Model->getEmpleadosNoAsignados($this->session->userdata('perfil-actual')['sys_admin_id'], NULL);
     	
       	$this->load->view('core/header');
 		$this->load->view('agregarUs', $data);
@@ -46,7 +46,7 @@ class AgregarUsuarios extends CI_Controller {
             echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar la Empresa'));
 
         }else{
-          echo json_encode($data = array('error' => true, 'mensaje' =>'Registro completo.'));
+          echo json_encode($data = array('error' => false, 'mensaje' =>'Registro completo.'));
 
         }
        
@@ -58,9 +58,9 @@ class AgregarUsuarios extends CI_Controller {
 
         $data  = $this->Administrador_Model->desasignar(
             trim($this->input->post('id')
-
-
         ));
+
+
 
 
         if($data == false)
@@ -69,7 +69,7 @@ class AgregarUsuarios extends CI_Controller {
             echo json_encode($data = array('error' => true, 'mensaje' =>'No se pudo registrar la desasignar'));
 
         }else{
-          echo json_encode($data = array('error' => true, 'mensaje' =>'Se desasigno correctamente.'));
+          echo json_encode($data = array('error' => false, 'mensaje' =>'Se desasignó correctamente.'));
 
         }
 

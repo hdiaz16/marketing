@@ -30,7 +30,7 @@ desasignarEmpleado = function (id){
 
         if(data == false){
 
-          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al registrar el Usuario a la Campaña.',type: 'red',buttons: {
+          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al desasignar el Usuario de la campaña.',type: 'red',buttons: {
                     Aceptar: function (e,data) {
 
                       setTimeout(function(){window.location.reload(1);},1000);
@@ -41,7 +41,7 @@ desasignarEmpleado = function (id){
         }else{
 
 
-           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se registro con exito al Usuario a la Campaña.',type: 'green',buttons: {
+           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Se desasignó con éxito al usuario de la Campaña.',type: 'green',buttons: {
                     Aceptar: function (e,data) {
                          setTimeout(function(){window.location.reload(1);},1000);
                       

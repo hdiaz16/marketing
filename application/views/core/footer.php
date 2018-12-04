@@ -4,6 +4,10 @@
 <!-- SCRIPTS -->
     <!-- JQuery -->
     
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+
+    <script src="<?php echo base_url();?>assets/js/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->

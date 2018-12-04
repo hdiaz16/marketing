@@ -126,7 +126,7 @@ class Administrador_Model extends CI_Model{
   }
 
 
-  public function asignarCampaniaEmpleado( $empleadoID, $campaniaID){
+  public function asignarCampaniaEmpleado($empleadoID, $campaniaID){
 
     $fechaRegistro = date('Y-m-d H:i');
     $data = ['campania_id' => $campaniaID, 'empleado_id' => $empleadoID, '_create' => $fechaRegistro, '_update' => $fechaRegistro];
@@ -147,21 +147,25 @@ class Administrador_Model extends CI_Model{
     }
   }
 
-  public function getEmpleados($adminID, $all = TRUE){
+  public function getEmpleados($adminID, $eliminados = NULL){
 
     log_message('error', "uggg".$adminID);
-    #$this->db->select('usuario.id as usuario_id, usuario.nombres, usuario.apellidos, campania.nombre as campania_nombre, rol.nombre as rol_nombre , perfil.id as empleado_id, campania_empleados._erase as borrados');
-    $this->db->select('usuario.id as usuario_id');
+    $this->db->select('usuario.id as usuario_id, usuario.nombres, usuario.apellidos, campania.nombre as campania_nombre, rol.nombre as rol_nombre , perfil.id as empleado_id, campania_empleados._erase as borrados');
+    #$this->db->select('usuario.id as usuario_id, perfil.id as perfil_id, perfil.sys_admin_id, rol.nombre as nombre_rol');
     $this->db->from('usuario');
     $this->db->join('perfil', "usuario.id = perfil.usuario_id");
     $this->db->join('rol', "rol.id = perfil.rol_id");
     $this->db->join('admin_empleados', "perfil.id = admin_empleados.empleado_id");
-    #$this->db->join('campania', "campania_empleados.campania_id = campania.id");
-    $this->db->where('admin_empleados.admin_id', $adminID);
+    $this->db->join('campania_empleados', "campania_empleados.empleado_id = admin_empleados.empleado_id");
+    $this->db->join('campania', "campania_empleados.campania_id = campania.id");
+    $this->db->where('perfil.sys_admin_id', $adminID);
+    $this->db->where('rol.id >', 3);
+    #$this->db->where('perfil.rol_id <', '4');
+    #$this->db->where('admin_empleados.admin_id', $adminID);
 
 
-    if(!is_null($all)){
-      $this->db->where('campania_empleados._erase', NULL);
+    if(is_null($eliminados)){
+      $this->db->where('admin_empleados._erase', NULL);
     }
 
     try {
@@ -182,6 +186,7 @@ class Administrador_Model extends CI_Model{
             join rol on rol.id = perfil.rol_id 
             join admin_empleados on admin_empleados.empleado_id = perfil.id
             where admin_empleados.admin_id = ?
+            AND rol.id > 3
             AND perfil.id not in
             (select empleado_id from campania_empleados)';
 
@@ -203,12 +208,10 @@ class Administrador_Model extends CI_Model{
 
    public function desasignar($id)
    {
-    $fecha = date('Y-m-d H:i');
-    $querySQL = "UPDATE campania_empleados 
-    SET _erase = ?, _update = ?  
-    WHERE empleado_id = ?  ";
+    $querySQL = "DELETE FROM campania_empleados
+    WHERE empleado_id = ?";
 
-    return $this->db->query($querySQL, [ $fecha, $fecha,$id]);
+    return $this->db->query($querySQL, [$id]);
      
    }
 

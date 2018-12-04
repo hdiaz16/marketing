@@ -328,8 +328,6 @@ agregarTarea = function(){
                         $('#modal').modal('hide');
                         $("#desc").val("");
                         $("#fechaIn").val("");
-                        $("#nodo_id").val("");
-                        $("#red_id").val("");
                     } 
                 }});
 
