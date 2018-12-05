@@ -16,9 +16,9 @@ class AgregarAdmin extends CI_Controller {
 
     public function index()
     {
-      $data['adminsNoAsignados'] = $this->Root_Model->getAdministradoresNoAsignados($this->session->userdata['perfil-actual']['perfil_id'], NULL);
+      $data['adminsNoAsignados'] = $this->Root_Model->getAdministradoresNoAsignados($this->session->userdata['perfil-actual']['perfil_id']);
 
-      $data['admins'] = $this->Root_Model->getAdministradores($this->session->userdata['perfil-actual']['perfil_id'], NULL);
+      $data['admins'] = $this->Root_Model->getAdministradores($this->session->userdata['perfil-actual']['perfil_id']);
       
       $data['empresasNoAsignadas'] = $this->Empresa_Model->getEmpresasNoAsignadas($this->session->userdata['perfil-actual']['perfil_id'], NULL);
 

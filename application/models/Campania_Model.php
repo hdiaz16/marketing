@@ -6,7 +6,7 @@ class Campania_Model extends CI_Model{
     $this->load->database();
   }
 
-  public function getCampanias($communityManID, $all = TRUE){
+  public function getCampanias($communityManID, $all = NULL){
 
       $this->db->select('*');
       $this->db->from('campania');

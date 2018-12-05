@@ -8,7 +8,7 @@
 
     public function getTareas($communityManID, $campaniaID = NULL, $eliminadas = NULL){
       #$eliminadas omite a las tareas eliminadas si el valor pasado es true
-      $this->db->select('campania.id as campania_id, campania.nombre as nombre_campania, red_semantica.id as red_id, tarea.id as tarea_id, tarea.descripcion, tarea.condiciones_aceptacion, tarea.requisitos, tarea.estado_tarea_id, estado_tarea.nombre as nombre_estado, tarea._create, tarea.nodo_id')
+      $this->db->select('campania.id as campania_id, campania.nombre as nombre_campania, red_semantica.id as red_id, tarea.id as tarea_id, tarea.descripcion, tarea.condiciones_aceptacion, tarea.requisitos, tarea.estado_tarea_id, estado_tarea.nombre as nombre_estado, tarea._create, tarea.nodo_id, tarea.fecha_entrega')
       ->from('campania')
       ->join('red_semantica', "campania.id = red_semantica.campania_id")
       ->join('tarea', 'tarea.red_id = red_semantica.id')
@@ -18,7 +18,7 @@
       if(!is_null($campaniaID))
         $this->db->where('campania.id', $campaniaID);
       
-      if(!is_null($eliminadas))
+      if(is_null($eliminadas))
         $this->db->where('tarea._erase', NULL);
 
       try {
@@ -78,13 +78,13 @@
 
     }
 
-    public function editarTarea($tareaID, $descripcion, $condicionesAceptacion, $requisitos, $estadoTarea){
+    public function editarTarea($tareaID, $descripcion, $condicionesAceptacion, $requisitos, $estadoTarea, $fechaEntrega){
 
       $fechaEdicion = date('Y-m-d H:i');
-      $condicionesAceptacion = json_encode($condicionesAceptacion);
-      $requisitos = json_encode($requisitos);
+      $condicionesAceptacion = $condicionesAceptacion;
+      $requisitos = $requisitos;
 
-      $data = ['_update' => $fechaEdicion, 'descripcion' => $descripcion, 'requisitos' => $requisitos, 'condiciones_aceptacion' => $condicionesAceptacion, 'estado_tarea_id' => $estadoTarea];
+      $data = ['_update' => $fechaEdicion, 'descripcion' => $descripcion, 'requisitos' => $requisitos, 'condiciones_aceptacion' => $condicionesAceptacion, 'estado_tarea_id' => $estadoTarea, 'fecha_entrega' => $fechaEntrega];
       try {
         $this->db->where('id', $tareaID)
         ->update('tarea', $data);

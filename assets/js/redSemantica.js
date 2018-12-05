@@ -320,11 +320,16 @@ agregarTarea = function(){
                         $('#modal').modal('hide');
                         $("#desc").val("");
                         $("#fechaIn").val("");
+                        $("#textCond").val("");
+                        $("#textReq").val("");
+                        
+                        requisitos = [];
+                        condiciones = [];
+                          
                     } 
                 }});
 
 
-              
 
         } 
 

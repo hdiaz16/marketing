@@ -1,4 +1,4 @@
-/*
+
 var requisitos = [];
 
 var requisitosString =[];
@@ -44,64 +44,89 @@ agregarCondiciones = function(){
 }
 
 
-agregarTareaDos = function(){
 
-  var descripcion  = $("#desc").val();
-  var fecha        = $("#fechaIn").val();
-  console.log(req, con);
-  return;
+function deleteTareas(){
+  $(".borrar").toggleClass("shake-little shake-constant");
+  $(".color").toggleClass("danger-color");
+  $(".button-borrar").toggle();
+}
 
+function deleteTarea($id){
 
   $.ajax({
-      type: 'POST',
-      url:  "../AgregarTarea/agregarTarea",
-      cache: false,
-      async: true,
-      dataType: 'json',
-      data: {
-        descripcion:descripcion,
-        fecha:fecha,
-        req:req,
-        con:con
-      },
-      success: function(data)
-      {
+    url: "../AgregarTareas/eliminarTarea",
+    type: "post",
+    data: {
+      id: $id
+    },
+    success: function(data){
 
-        console.log(data);
+      if(JSON.parse(data).error){
 
-        if(data == false){
+        $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al eliminar la tarea.',type: 'red',buttons: {
+                  Aceptar: function (e,data) {
 
-          $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al agregar tarea.',type: 'red',buttons: {
-                    Aceptar: function (e,data) {
-
-                      setTimeout(function(){window.location.reload(1);},1000);
-                    } 
-                }});
-   
+                    setTimeout(function(){window.location.reload(1);},1000);
+                  } 
+              }});
  
-        }else{
+
+      }else{
 
 
-           $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Tarea registrada con exito',type: 'green',buttons: {
-                    Aceptar: function (e,data) {
-                      setTimeout(function(){window.location.reload(1);},1000);
-                     
-                    } 
-                }});
+         $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Eliminación con éxito',type: 'green',buttons: {
+                  Aceptar: function (e,data) {
+                    setTimeout(function(){window.location.reload(1);},1000);
+                   
+                  } 
+              }});
 
 
-              
+            
 
-        } 
-
-        
       }
-    });
-
-
+    },
+    error: function(error){
+      console.log(error);
+    }
+  });
 
 }
-*/
+
+
+
+function editTarea($tareaId, $descripcion, $requisitos, $condiciones, $fechaEntrega, $estado){
+  //console.log($tareaId, $descripcion, $requisitos, $condiciones, $fechaEntrega);
+  var requisitos = JSON.parse($requisitos);
+  var condiciones = JSON.parse($condiciones);
+
+  requisitos.forEach((requisito, index) => {
+    var checkbox = $('<input data-nombre="'+requisito.nombre+'" name="requisitos" id="req'+index+'" type="checkbox" class="form-check-input" '+(requisito.estado ? "checked": "")+' />');
+    var label = $('<label for="req'+index+'"></label>');
+    var requisitoTexto = $('<div class="col-4 mt-2">'+requisito.nombre+'</div>');
+    var colRequisito = $('<div class="col text-right"></div>').append(checkbox, label);
+    var row = $('<div class="row"></div>').append(requisitoTexto, colRequisito);
+    $('#requisitos-editar').append(row);
+    //console.log(row);
+  });
+  
+  condiciones.forEach((condicion, index) => {
+    var checkbox = $('<input data-nombre="'+condicion.nombre+'" name="condiciones" id="con'+index+'" type="checkbox" class="form-check-input" '+(condicion.estado ? "checked": "")+' />');
+    var label = $('<label for="con'+index+'"></label>');
+    var condicionTexto = $('<div class="col-4 mt-2">'+condicion.nombre+'</div>');
+    var colCondicion = $('<div class="col text-right"></div>').append(checkbox, label);
+    var row = $('<div class="row"></div>').append(condicionTexto, colCondicion);
+    $('#condiciones-editar').append(row);
+    //console.log(row);
+  });
+
+  //console.log(requisitos, condiciones);
+  $('#desc-editar').val($descripcion);
+  $('#tarea_id').val($tareaId);
+  $('#fecha-entrega-editar').val($fechaEntrega.split(' ')[0]);
+  $('#estado-tarea-editar').val($estado).material_select();
+  $('#modal-editar-tarea').modal();
+}
 
 function editTareas(){
   $(".editar").toggleClass("shake-little shake-constant");
@@ -109,18 +134,72 @@ function editTareas(){
   $(".button-editar").toggle();
 }
 
-function deleteTareas(){
-  console.log("algo");
-  $(".borrar").toggleClass("shake-little shake-constant");
-  $(".color").toggleClass("danger-color");
-  $(".button-borrar").toggle();
-}
+function editarTarea(){
+  var descripcion = $('#desc-editar').val();
+  var id = $('#tarea_id').val();
+  var fechaEntrega = $('#fecha-entrega-editar').val();
+  var estadoTarea = $('#estado-tarea-editar').val();
 
-function editTarea($tareaId){
-  console.log(requisitos, condiciones);
-  requisitos = [], condiciones = [], requisitosString = [], condicionesString = [];
-  console.log($tareaId);
-  $('#modal-editar-tarea').modal();
+  var condiciones = $("input[name^=condiciones]");
+  var requisitos = $("input[name^=requisitos]");
+
+  var condicionesData = [];
+  var requisitosData = [];
+  //console.log(condiciones, requisitos);
+  condiciones.each((index, elem)=>{
+    condicionesData.push( {nombre: elem.getAttribute('data-nombre'), estado: elem.checked} );
+  });
+  requisitos.each((index, elem)=>{
+    requisitosData.push( {nombre: elem.getAttribute('data-nombre'), estado: elem.checked} );
+    //console.log(elem.getAttribute('data-nombre'));
+
+  });
+
+
+  $.ajax({
+    url: "../AgregarTareas/editarTarea",
+    type: "post",
+    data: {
+      id: id,
+      descripcion: descripcion,
+      fechaEntrega: fechaEntrega,
+      estadoTarea: estadoTarea,
+      condiciones: JSON.stringify(condicionesData),
+      requisitos: JSON.stringify(requisitosData)
+    },
+    success: function(data){
+
+      //console.log(data);
+      if(JSON.parse(data).error){
+
+        $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al eliminar la tarea.',type: 'red',buttons: {
+                  Aceptar: function (e,data) {
+
+                    setTimeout(function(){window.location.reload(1);},1000);
+                  } 
+              }});
+ 
+
+      }else{
+
+
+         $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Eliminación con éxito',type: 'green',buttons: {
+                  Aceptar: function (e,data) {
+                    setTimeout(function(){window.location.reload(1);},1000);
+                   
+                  } 
+              }});
+
+
+            
+
+      }
+    },
+    error: function(error){
+      console.log(error);
+    }
+  });
+  //console.log(condicionesData, requisitosData);
 }
 
 /*

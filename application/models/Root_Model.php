@@ -6,7 +6,7 @@ class Root_Model extends CI_Model {
     $this->load->database();
   }
 
-  public function getAdministradores($rootID, $eliminado = TRUE){
+  public function getAdministradores($rootID, $eliminado = NULL){
 
     $this->db->select('usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl, perfil._create, perfil._erase, perfil._update, empresa.razon_social as empresa_nombre');
     $this->db->from('usuario');
@@ -24,7 +24,7 @@ class Root_Model extends CI_Model {
     return $this->db->get()->result_array();
   }
 
-  public function getAdministradoresNoAsignados($rootID, $eliminado = TRUE){
+  public function getAdministradoresNoAsignados($rootID, $eliminado = NULL){
 
     $consulta = 'SELECT usuario.id as usuario_id, perfil.id as perfil_id, usuario.nombres, usuario.apellidos, usuario.correo, usuario.imagenurl, perfil._create, perfil._erase, perfil._update
       FROM usuario join perfil on usuario.id = perfil.usuario_id
@@ -113,6 +113,9 @@ class Root_Model extends CI_Model {
     try {
       $this->db->where('id', $adminID);
       $this->db->update('perfil', $data);
+
+      $this->db->where('admin_id', $adminID);
+      $this->db->delete('empresa_admin');
 
       $this->db->select('_erase');
       $this->db->from('perfil');

@@ -8,10 +8,11 @@ class Empresa_Model extends CI_Model {
   
   public function getEmpresas($sysAdminID, $all = true){
 
-    $this->db->select('*');
+    $this->db->select('empresa.id as empresa_id, empresa.razon_social, empresa.logourl, empresa.sys_admin_id, empresa.contacto, empresa._create, empresa._erase, perfil.id as perfil_id, usuario.nombres, usuario.apellidos');
     $this->db->from('empresa');
     $this->db->join('empresa_admin', 'empresa.id = empresa_admin.empresa_id');
     $this->db->join('perfil', 'perfil.id = empresa_admin.admin_id');
+    $this->db->join('usuario', 'perfil.usuario_id = usuario.id');
     $this->db->where('empresa.sys_admin_id', $sysAdminID);
   
     if(is_null($all))
@@ -44,7 +45,10 @@ class Empresa_Model extends CI_Model {
 
       $this->db->select('*');
       $this->db->from('empresa');
-      $this->db->where('id', $empresaID);
+      $this->db->join('empresa_admin', 'empresa.id = empresa_admin.empresa_id');
+      $this->db->join('perfil', 'perfil.id = empresa_admin.admin_id');
+      $this->db->join('usuario', 'perfil.usuario_id = usuario.id');
+      $this->db->where('empresa.id', $empresaID);
     
       if(is_null($eliminada))
         $this->db->where('_erase', NULL);
@@ -79,6 +83,8 @@ class Empresa_Model extends CI_Model {
     $fechaEdicion = date('Y-m-d H:i');
     $data = ['razon_social' => $razonSocial, 'contacto' => $contacto, 'logourl' => $logoURL, '_update' => $fechaEdicion];
 
+    #print_r([$data, $empresaID]);
+
     try {
       $this->db->where('id', $empresaID);
       $this->db->update('empresa', $data);
@@ -86,8 +92,9 @@ class Empresa_Model extends CI_Model {
       $this->db->select('*');
       $this->db->from('empresa');
       $this->db->where('id', $empresaID);
-
-      return $this->db->get()->result_array();
+      $resultado =  $this->db->get()->result_array();
+      #print_r($resultado);
+      return $resultado;
 
     } catch (Exception $e) {
       log_message('error', "editar editarEmpresa:".$e);
@@ -103,7 +110,10 @@ class Empresa_Model extends CI_Model {
       $this->db->where('id', $empresaID);
       $this->db->update('empresa', $data);
 
-      $this->db->select('*');
+      $this->db->where('empresa_id', $empresaID);
+      $this->db->delete('empresa_admin');
+
+      $this->db->select('_erase');
       $this->db->from('empresa');
       $this->db->where('id', $empresaID);
 

@@ -10,7 +10,7 @@
                 <i class="fa fa-plus"></i>
             </button>
 
-            <button onclick="editTareas()" class="btn-floating btn-lg warning-color">
+            <button onclick="editTareas();" class="btn-floating btn-lg warning-color">
                 <i class="fa fa-pencil-square-o"></i>
             </button>
 
@@ -65,18 +65,40 @@
                                             break;
                                     } ?>
 
-                                    <div class="card-header white-text <?php echo $color ?> color" >  
-                                        <p class="font-small text-right"><?php echo $row['nombre_estado']?></p>
-                                        <div>
-                                            <button onclick="deleteTarea(<?php echo $row['tarea_id'] ?>)" class="btn btn-sm float-right button-borrar black" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button>
+                                    <div class="card-header white-text <?php echo $color; ?> color" >  
+                                        <div class="row">
+                                            <div class="col">
+                                                
+                                                <p class="font-small text-left m-0 p-0"><?php echo $row['nombre_campania'];?></p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="font-small text-right m-0 p-0 font-italic"><?php echo $row['nombre_estado'];?></p>
+                                            </div>
+                                        </div>
+                                                <button onclick="deleteTarea(<?php echo $row['tarea_id']; ?>)" class="btn btn-sm float-right button-borrar black" style="display: none;"><i class="fa fa-times " aria-hidden="true" ></i></button>
                                                 
                                                 <button onclick="editTarea(
-                                                )" 
+                                                <?php echo $row['tarea_id']; ?>,
+                                                <?php echo "'".$row['descripcion']."'"; ?>,
+                                                <?php echo "'".htmlspecialchars($row['requisitos'], ENT_QUOTES, 'UTF-8')."'"; ?>,
+                                                <?php echo "'".htmlspecialchars($row['condiciones_aceptacion'], ENT_QUOTES, 'UTF-8')."'";?>,
+                                                <?php echo "'".$row['fecha_entrega']."'";?>,
+                                                <?php echo "'".$row['estado_tarea_id']."'";?>
+                                                );" 
                                                 class="btn btn-sm  black float-right button-editar" style="display: none;"><i class="fa fa-pencil" aria-hidden="true" ></i></button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold"><?php echo $row['descripcion'];?></h6>
+                                            
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="ml-4 my-0 font-small text-muted"> Entrega en 
+                                            <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['fecha_entrega'])); ?>
+                                                
+                                            </p>
                                         </div>
                                     </div>
-
-                                    <h6 class="ml-4 mt-2 dark-grey-text font-weight-bold"><?php echo $row['descripcion']?></h6>
                                     
                                     <div class="container">
                                         <hr>
@@ -91,12 +113,12 @@
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <span class="ml-2 mt-1 font-small dark-grey-text "><?php echo $requisito['nombre'] ?> </span> 
+                                                    <span class="ml-3 mt-1 font-small dark-grey-text "><?php echo $requisito['nombre']; ?> </span> 
                                                 </div>          
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id=" <?php echo $row['tarea_id'].$index ?> " <?php echo $requisito['estado'] ? 'checked' : '' ?> >
-                                                        <label for="<?php echo $row['tarea_id'].$index ?>"></label>
+                                                <div class="col-3 mr-2">
+                                                    <div class="form-check mt-0">
+                                                        <input type="checkbox" disabled class="form-check-input" id="<?php echo $row['tarea_id'].$index ?>" <?php echo $requisito['estado'] ? 'checked' : '' ?> >
+                                                        <label class="form-check-label" for="<?php echo $row['tarea_id'].$index; ?>"></label>
                                                     </div>
                                                 </div>
 
@@ -107,11 +129,11 @@
 
                                 
                                     
-                                    <h6 class="mt-3 dark-grey-text font-weight-bold text-center">Condiciones de aceptación</h6>
+                                    <h6 class="dark-grey-text font-weight-bold text-center">Condiciones de aceptación</h6>
                                     <?php foreach ( $condiciones as $index => $condicion ) { ?>
                                             <div class="row">
                                                 <div class="col">
-                                                    <span class="ml-2 mt-1 font-small dark-grey-text "><?php echo $condicion['nombre'] ?> </span> 
+                                                    <span class="ml-3 font-small dark-grey-text "><?php echo $condicion['nombre'];?> </span> 
                                                 </div>
 
                                             </div>
@@ -126,13 +148,13 @@
                                     <div class="container">
                                         <hr>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body pt-0 ">
                                         
                                         <!--Text-->
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
+                                        <p class="mt-0 font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])); ?></p>
                                         <div class="row">
                                             <div class="col-12 text-right">
-                                                <a href="<?php echo base_url().'/index.php/AgregarSubtarea' ?>">Ir a subtareas</a>
+                                                <a href="<?php echo base_url().'/index.php/AgregarSubtarea' ;?>">Ir a subtareas</a>
                                             </div>
                                         </div>
                                     </div>
@@ -291,9 +313,9 @@
                             <div class="modal-c-tabs">
 
                                 <!-- Nav tabs -->
-                                <ul class="nav nav-tabs tabs-2 green " role="tablist">
+                                <ul class="nav nav-tabs tabs-2 warning-color " role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i> Editar Tarea</a>
+                                        <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i>Editar Tarea</a>
                                     </li>
                                 </ul>
 
@@ -305,65 +327,83 @@
                                         <!--Body-->
                                         <div class="modal-body mb-1">
                                             <div class="row">
+                                                <input type="hidden" id="tarea_id">
                                                     <!-- Grid column -->
-                                                     <div class="col-6 md-form">
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-6 p-0">
+                                                            <div class="md-form">
+                                                                
+                                                                <input  type="text"  class="form-control " id="desc-editar" name="desc-editar">
+                                                                <label for="desc-editar" >Descripción de la tarea</label>
+                                                            </div>
+                                                            
+                                                        </div>
                                                         <!-- Default input -->
-                                                        <input  type="text"  class="form-control " id="desc" name="desc">
-                                                        <label for="form3" >Descripción de la tarea</label>
-                                                       
+                                                        <div class="col-6 p-0">
+                                                            <div class="md-form">
+                                                                
+                                                                <input  type="text"  class="form-control datepicker" id="fecha-entrega-editar" name="fecha-entrega-editar">
+                                                                <label for="fecha-entrega-editar" >Fecha de Entrega</label>
+                                                            </div>
+                                                            
+                                                        </div>
                                                     </div>
-                                                    <!-- Grid column -->
+                                                    <!-- Default input -->
 
-
-                                                    <div class="md-form col-6">
-                                                        <input  type="text"  class="form-control datepicker" id="fechaIn" name="fechaIn">
-                                                        <label for="date-picker-example">Fecha de entrega</label>
-                                                    </div>
-                                                    
-                                             
-
-                                                    <!-- Grid column -->
-                                                    <div class="md-form col-6">
-                                                        <input  type="text"  class="form-control " id="req">
-                                                        <label for="form3">Requisitos de la tarea</label>
-                                                        <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="agregarRequisitos();">Agregar</button>
-                                                    </div>
-
-                                                    <!-- Grid column -->
-
-                                                    <!-- Grid column -->
-                                                    <div class="md-form col-6">
-                                                        <textarea type="text" id="textReq" class="md-textarea form-control" rows="3"></textarea>
-                                                        <label for="form10">Requisitos Agregados</label>
-                                                    </div>
-                                                    <!-- Grid column -->
-
-                                                     <!-- Grid column -->
-                                                    <div class="md-form col-6">
-                                                        <input  type="text"  class="form-control text" id="cond">
-                                                        <label for="form3">Condiciones de Aceptacion</label>
-                                                        <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="agregarCondiciones();">Agregar</button>
-                                                    </div>
-
-                                                    <!-- Grid column -->
-
-                                                    <!-- Grid column -->
-                                                    <div class="md-form col-6">
-                                                        <textarea type="text" id="textCond" class="md-textarea form-control" rows="3"></textarea>
-                                                        <label for="form10">Condiciones Agregados</label>
-                                                    </div>
-                                                    <!-- Grid column -->
-
-
-                                                    
                                                 </div>
+                                                <!-- Grid column -->
+
+
+                                                <div class="md-form col-6">
+                                                    <div class="row">
+                                                        <div class="col-12">    
+                                                            Condiciones de aceptación                
+                                                        </div>
+                                                        <div class="col-12" id="condiciones-editar">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="md-form col-6">
+                                                    <div class="row">
+                                                        <div class="col-12">    
+                                                            Requisitos de la tarea              
+                                                        </div>
+                                                        <div class="col-12" id="requisitos-editar">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="md-form col-6">
+                                                    <div class="row">
+                                                        <div class="col-12">    
+                                                            Estado de la tarea              
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <select name="estado-tarea-editar" id="estado-tarea-editar">
+                                                                <?php foreach ($estadosTarea as $index => $estado): ?>
+                                                                    <option value="<?php echo $estado['id'] ?>"><?php echo $estado['nombre'] ?></option>
+                                                                <?php endforeach ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                    
+
+                                                    
+                                            </div>
                                                 <!-- Grid row -->
                                             
                                         </div>
                                         <!--Footer-->
                                         <div class="modal-footer">
-                                            <button class="btn-floating btn-lg success-color" onclick="addUsuarios();">
-                                                    <i class="fa fa-plus"></i>
+                                            <button class="btn-floating btn-lg warning-color" onclick="editarTarea();">
+                                                    <i class="fa fa-edit"></i>
                                                 </button>
                                         </div>
 
@@ -378,3 +418,4 @@
                     </div>
                 </div>
                 <!--editar-->
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/agregarTarea.js"></script>

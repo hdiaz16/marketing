@@ -55,18 +55,39 @@
 
                             </div>
 
-                            <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos</h6>
-                            <p class="ml-3 font-small dark-grey-text">
-                                <?php echo $row['correo']?>
-                            </p>
+                            <h6 class="ml-3 mt-4 dark-grey-text font-weight-bold">Datos</h6>
+                            <div class="row">
+                                <div class="col-4">
+                                    <p class="ml-3 font-small dark-grey-text">Correo:</p>
+                                </div>
+                                <div class="col">
+                                    <p class="font-small dark-grey-text">
+                                        <?php echo $row['correo']?>
+                                    </p>
+                                    
+                                </div>
+                            </div>
 
-                            <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Rol</h6>
-                            <p class="ml-3 font-small dark-grey-text">
-                                <?php echo $row['nombre_rol']?>
-                            </p>
+                            <div class="row">
+                                <div class="col-4">
+                                    <p class="ml-3 font-small dark-grey-text">Rol:</p>
+                                </div>
+                                <div class="col">
+                                    <p class="font-small dark-grey-text">
+                                        <?php echo $row['nombre_rol']?>
+                                    </p>
+                                    
+                                </div>
+                            </div>
+
                             <!--/.Card Data-->
 
-    
+                                <div class="row">
+                                    <div class="px-5 col-12">
+                                        
+                                    <hr>
+                                    </div>
+                                </div>
                                 <!--Text-->
                                 <p class="  mx-3 font-small grey-text">Fecha de Inicio:
                                     <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?>

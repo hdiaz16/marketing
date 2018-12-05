@@ -109,7 +109,7 @@ function delCampanas(id) {
 
             if(data == true){
 
-              $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'No se elimino.',type: 'red',buttons: {
+              $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'No se eliminó.',type: 'red',buttons: {
                         Aceptar: function (e,data) {
 
                           setTimeout(function(){window.location.reload(1);},1000);

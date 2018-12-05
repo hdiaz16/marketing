@@ -28,8 +28,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/Empresa.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/redSemantica.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/agregarTarea.js"></script>
 
     
 

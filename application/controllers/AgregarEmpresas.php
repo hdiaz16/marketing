@@ -42,8 +42,24 @@ class AgregarEmpresas extends CI_Controller {
       echo json_encode(['error' => true, 'mensaje' => 'No se pudo registrar administrador']);
       }
 
-	}
+    }
 
+    public function editEmpresa(){
+
+      $id =  $this->input->post('id');
+      $razon =  $this->input->post('razon');
+      $contacto =  $this->input->post('contacto');
+
+      $empresaEditada = $this->Empresa_Model->editarEmpresa($id, $razon, $contacto);
+
+      if($empresaEditada){
+        echo json_encode(['error' => false, 'mensaje' => 'Registro completo', 'empresa' => $empresaEditada]);
+      }
+      else{
+        echo json_encode(['error' => true, 'mensaje' => 'No se pudo editar la empresa']);
+      }
+
+    }
 
     public function deleteEmpresa()
     {

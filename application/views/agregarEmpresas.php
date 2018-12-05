@@ -45,39 +45,79 @@
 
                     <?php foreach ($empresasNoAsignadas as $row) { ?>
                         <?php if ($row['_erase'] == null) { ?>
-
                                 <!--Grid column-->
                             <div class="col-xl-3 col-md-6 mb-4 borrar editar">
 
                                 <!--Panel-->
                                 <div class="card h-100 ">
                                     <div class="card-header white-text success-color color" >
-
+                                        <?php $row['contacto']  = json_decode($row['contacto']); ?>
 
                                         <button  onclick="delEmpresa1(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button-borrar" style="display: none;" >
                                             <i class="fa fa-times " aria-hidden="true" ></i>
                                         </button> 
-
-                                        <button  onclick="editarEmp(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button-editar" style="display: none;" >
+                            
+                                        <button  onclick="editarEmp(<?php echo $row['id']?>,
+                                            <?php echo "'".$row['razon_social']."'" ?>,
+                                            <?php echo "'".(isset($row['contacto']->correo) ? $row['contacto']->correo : "")."'" ?>,
+                                            <?php echo "'".(isset($row['contacto']->telefono) ? $row['contacto']->telefono : "")."'" ?>,
+                                            <?php echo "'".(isset($row['contacto']->nombre) ? $row['contacto']->nombre : "")."'" ?>,
+                                            <?php echo "'".(isset($row['contacto']->horario) ? $row['contacto']->horario : "")."'" ?>
+                                        );" class="btn btn-sm  black float-right button-editar" style="display: none;" >
                                             <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target="#modalLRFormDemo1" ></i>
                                         </button> 
                                        <?php echo $row['razon_social']?>
                                     </div>
                                     
 
-                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos de contacto</h6>
-                                    <?php $row['contacto'] = json_decode($row['contacto']) ?>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text">Nombre: <?php echo isset($row['contacto']->nombre) ? $row['contacto']->nombre : ""; ?></p>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text">Correo: <?php echo isset($row['contacto']->correo) ? $row['contacto']->correo : "" ?></p>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text">Teléfono: <?php echo isset($row['contacto']->telefono) ? $row['contacto']->telefono : "" ?></p>
+                                    <h6 class="ml-3 mt-4 dark-grey-text font-weight-bold">Datos de contacto</h6>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="ml-3 mt-1 font-small dark-grey-text">Nombre: </p>
+                                                
+                                            </div>
+                                            <div class="col">
+                                                <p class="mt-1 font-small dark-grey-text"><?php echo isset($row['contacto']->nombre) ? $row['contacto']->nombre : ""; ?></p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="ml-3 mt-1 font-small dark-grey-text">Correo: </p>
+                                                
+                                            </div>
+                                            <div class="col">
+                                                <p class="mt-1 font-small dark-grey-text"><?php echo isset($row['contacto']->correo) ? $row['contacto']->correo : "" ?></p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="ml-3 mt-1 font-small dark-grey-text">Teléfono: </p>
+                                                
+                                            </div>
+                                            <div class="col">
+                                                <p class="mt-1 font-small dark-grey-text"><?php echo isset($row['contacto']->telefono) ? $row['contacto']->telefono : "" ?></p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="ml-3 mb-0 font-small dark-grey-text">Horario: </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="mb-0 font-small dark-grey-text"><?php echo isset($row['contacto']->horario) ? $row['contacto']->horario : "" ?></p>
+                                                
+                                            </div>
+                                        </div>
                                     <!--/.Card Data-->
 
                                     <!--Card content-->
                                     <div class="card-body">
-                                        
+                                        <hr class="mt-0">
                                         <!--Text-->
                                         <?php setlocale(LC_TIME, "es_ES"); ?>
-                                        <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
+                                        <p class="font-small grey-text mt-0">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
                                 
                                     </div>
                                     <!--/.Card content-->
@@ -111,9 +151,9 @@
                 <div class="row">
 
                     
-
                     <?php foreach ($empresas as $row) { ?>
                         <?php if ($row['_erase'] == null) { ?>
+                            <?php $row['contacto'] = json_decode($row['contacto']) ?>
 
                                 <!--Grid column-->
                             <div class="col-xl-3 col-md-6 mb-4 borrar editar">
@@ -121,29 +161,77 @@
                                 <!--Panel-->
                                 <div class="card h-100">
                                     <div class="card-header white-text info-color color" >
+                                        <div class="row w-100">
+                                            <div class="col-8">
+                                               
+                                           </div>
+                                        </div>
 
-
-                                        <button  onclick="delEmpresa1(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button-borrar" style="display: none;" >
+                                        <button  onclick="delEmpresa1(<?php echo $row['empresa_id']?>);" class="btn btn-sm  black float-right button-borrar" style="display: none;" >
                                             <i class="fa fa-times " aria-hidden="true" ></i>
                                         </button> 
 
-                                        <button  onclick="editarEmp(<?php echo $row['id']?>);" class="btn btn-sm  black float-right button-editar" style="display: none;" >
+                                        <button  onclick="editarEmp(
+                                            <?php echo $row['empresa_id']?>,
+                                            <?php echo "'".$row['razon_social']."'" ?>,
+                                            <?php echo "'".(isset($row['contacto']->correo) ? $row['contacto']->correo : "")."'" ?>,
+                                            <?php echo "'".(isset($row['contacto']->telefono) ? $row['contacto']->telefono : "")."'" ?>,
+                                            <?php echo "'".(isset($row['contacto']->nombre) ? $row['contacto']->nombre : "")."'" ?>,
+                                            <?php echo "'".(isset($row['contacto']->horario) ? $row['contacto']->horario : "")."'" ?>
+                                            );" class="btn btn-sm  black float-right button-editar" style="display: none;" >
                                             <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="modal" data-target="#modalLRFormDemo1" ></i>
                                         </button> 
-                                       <?php echo $row['razon_social']?>
+                                            <i><?php echo $row['razon_social']?></i>
+                                            <sup><?php echo $row['nombres']?></sup>
                                     </div>
                                     
 
-                                    <h6 class="ml-4 mt-4 dark-grey-text font-weight-bold">Datos de contacto</h6>
-                                    <?php $row['contacto'] = json_decode($row['contacto']) ?>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text">Nombre: <?php echo isset($row['contacto']->nombre) ? $row['contacto']->nombre : ""; ?></p>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text">Correo: <?php echo isset($row['contacto']->correo) ? $row['contacto']->correo : "" ?></p>
-                                    <p class="ml-3 mt-1 font-small dark-grey-text">Teléfono: <?php echo isset($row['contacto']->telefono) ? $row['contacto']->telefono : "" ?></p>
+                                    <h6 class="ml-3 mt-4 dark-grey-text font-weight-bold">Datos de contacto</h6>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="ml-3 mt-1 font-small dark-grey-text">Nombre: </p>
+                                                
+                                            </div>
+                                            <div class="col">
+                                                <p class="mt-1 font-small dark-grey-text"><?php echo isset($row['contacto']->nombre) ? $row['contacto']->nombre : ""; ?></p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="ml-3 mt-1 font-small dark-grey-text">Correo: </p>
+                                                
+                                            </div>
+                                            <div class="col">
+                                                <p class="mt-1 font-small dark-grey-text"><?php echo isset($row['contacto']->correo) ? $row['contacto']->correo : "" ?></p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="ml-3 mt-1 font-small dark-grey-text">Teléfono: </p>
+                                                
+                                            </div>
+                                            <div class="col">
+                                                <p class="mt-1 font-small dark-grey-text"><?php echo isset($row['contacto']->telefono) ? $row['contacto']->telefono : "" ?></p>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p class="ml-3 mb-0 font-small dark-grey-text">Horario: </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="mb-0 font-small dark-grey-text"><?php echo isset($row['contacto']->horario) ? $row['contacto']->horario : "" ?></p>
+                                                
+                                            </div>
+                                        </div>
+
                                     <!--/.Card Data-->
 
                                     <!--Card content-->
                                     <div class="card-body">
-                                        
+                                        <hr>
                                         <!--Text-->
                                         <?php setlocale(LC_TIME, "es_ES"); ?>
                                         <p class="font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])) ?></p>
@@ -422,7 +510,7 @@
 
 
  <!--Modal: Login / Register Form Demo-->
-                <div class="modal fade" id="modalLRFormDemo1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                <div class="modal fade" id="modal-editar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                     <div class="modal-dialog cascading-modal" role="document">
                         <!--Content-->
                         <div class="modal-content">
@@ -446,35 +534,72 @@
                                     <div class="tab-pane fade in show active" id="panel17" role="tabpanel">
 
                                         <!--Body-->
-                                        <div class="modal-body mb-1">
+                                        <div class="modal-body mb-1" style="height: 80%">
                                             <!-- Default form grid -->
                                             <form>
+                                                <input type="hidden" id="empresa-id">
 
                                                 <!-- Grid row -->
                                                 <div class="row">
                                                     <!-- Grid column -->
-                                                    <div class="col">
+                                                    <div class="col-12">
                                                         <!-- Default input -->
-                                                        <label>Razon Social</label>
-                                                        <input type="text" class="form-control" id="razon">
+                                                        <div class="md-form mt-1">
+                                                            <input type="text" class="form-control" id="razon-editar" name="razon-editar">
+                                                            <label for="razon-editar">Razón Social</label>
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
 
                                                     <!-- Grid column -->
-                                                    <div class="col">
+                                                    <div class="col-12">
                                                         <!-- Default input -->
-                                                        <label>Contacto</label>
-                                                        <input type="text" class="form-control" id="contacto">
+                                                        <label class="font-weight-bold">Contacto</label>
+                                                        <div class="row">
+
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="md-form mt-1">
+                                                                    <input type="text" class="form-control" id="nombre-editar" name="nombre-editar">
+                                                                    <label for="nombre-editar">Nombre</label>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="md-form mt-1">
+                                                                    <input type="text" class="form-control" id="telefono-editar" name="telefono-editar">
+                                                                    <label for="telefono-editar">Teléfono</label>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="md-form mt-3">
+                                                                    <input type="text" class="form-control" id="correo-editar" name="correo-editar">
+                                                                    <label for="correo-editar">Correo electrónico</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12 col-md-6 mt-4">
+                                                                <span class="font-weight-bold">Horario de disponibilidad</span>
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <div class="md-form mt-1">
+                                                                          <input type="text" id="hora-inicio-editar" name="hora-inicio-editar" class="form-control time-picker">
+                                                                          <label for="hora-inicio-editar">De</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <div class="md-form mt-1">
+                                                                          <input type="text" id="hora-fin-editar" name="hora-fin-editar" class="form-control time-picker">
+                                                                          <label for="hora-fin-editar">A</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
                                                     <!-- Grid column -->
 
-                                                    <!-- Grid column -->
-                                                    <div class="col">
-                                                        <!-- Default input -->
-                                                        <label>Telefono</label>
-                                                        <input type="text" class="form-control" id="telefono">
-                                                    </div>
-                                                    <!-- Grid column -->
 
                                                     
                                                 </div>
@@ -497,7 +622,7 @@
 
                                         <div class="modal-footer">
                                                 
-                                                <button class="btn-floating btn-lg warning-color" onclick="addEmpresa();">
+                                                <button class="btn-floating btn-lg warning-color" onclick="editarEmpresa();">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                         </div>
