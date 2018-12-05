@@ -64,8 +64,8 @@ VALUES
 
 INSERT INTO red_semantica (campania_id, red, _create,_update)
 VALUES
-(1, '{"id": 1, "nombre": "exámenes de la visión", "hijos":[{"id": 2, "nombre": "prevencion"}, {"id": 3, "nombre": "tratamientos", "hijos":[]}]}', now(), now()),
-(2, '{"id": 1, "nombre": "Desparasitación", "hijos":[{"id": 2, "nombre": "prevencion"}, {"id": 3, "nombre": "tratamientos", "hijos":[]}]}', now(), now());
+(1, '{"id": 1, "nombre": "exámenes de la visión", "activado": true, "hijos":[{"id": 2, "nombre": "prevencion", "activado": true}, {"id": 3, "nombre": "tratamientos", "activado": true, "hijos":[]}]}', now(), now()),
+(2, '{"id": 1, "nombre": "Desparasitación", , "activado": true, "hijos":[{"id": 2, "nombre": "prevencion", "activado": true}, {"id": 3, "nombre": "tratamientos", "activado": true, "hijos":[]}]}', now(), now());
 
 INSERT INTO campania_empleados (campania_id, empleado_id, _visible)
 VALUES
@@ -76,8 +76,8 @@ VALUES
 
 INSERT INTO tarea (estado_tarea_id, red_id, nodo_id, descripcion, condiciones_aceptacion, requisitos, _create, _update)
 VALUES
-(1, 1, 2, 'publicitar examenes de retina', '[{"nombre": "condicion 1", "estado": false}, {"nombre": "condicion 2", "estado": true}]', '[{"nombre": "requisito 1", "cumplido": false}, {"nombre": "requisito 2", "cumplido": true}]', now(), now()),
-(1, 2, 3, 'resaltar la importancia de higiene de mascotas', '[{"nombre": "condicion 1", "estado": false}, {"nombre": "condicion 2", "estado": true}]', '[{"nombre": "requisito 1", "cumplido": false}, {"nombre": "requisito 2", "cumplido": true}]', now(), now());
+(1, 1, 2, 'publicitar examenes de retina', '[{"nombre": "condicion 1", "estado": false}, {"nombre": "condicion 2", "estado": true}]', '[{"nombre": "requisito 1", "estado": false}, {"nombre": "requisito 2", "estado": true}]', now(), now()),
+(1, 2, 3, 'resaltar la importancia de higiene de mascotas', '[{"nombre": "condicion 1", "estado": false}, {"nombre": "condicion 2", "estado": true}]', '[{"nombre": "requisito 1", "estado": false}, {"nombre": "requisito 2", "estado": true}]', now(), now());
 
 INSERT INTO publicacion (tarea_id, _create, _update)
 VALUES
