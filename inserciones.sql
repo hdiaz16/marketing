@@ -64,8 +64,8 @@ VALUES
 
 INSERT INTO red_semantica (campania_id, red, _create,_update)
 VALUES
-(1, '{"id": 1, "nombre": "exámenes de la visión", "hijos":[{"id": 2, "nombre": "prevencion"}, {"id": 3, "nombre": "tratamientos", "hijos":[]}]}', now(), now()),
-(2, '{"id": 1, "nombre": "Desparasitación", "hijos":[{"id": 2, "nombre": "prevencion"}, {"id": 3, "nombre": "tratamientos", "hijos":[]}]}', now(), now());
+(1, '{"id": 1, "nombre": "exámenes de la visión", "activado": true, "hijos":[{"id": 2, "nombre": "prevencion", "activado": true}, {"id": 3, "nombre": "tratamientos", "activado": true, "hijos":[]}]}', now(), now()),
+(2, '{"id": 1, "nombre": "Desparasitación", "activado": true, "hijos":[{"id": 2, "nombre": "prevencion", "activado": true}, {"id": 3, "nombre": "tratamientos", "activado": true, "hijos":[]}]}', now(), now());
 
 INSERT INTO campania_empleados (campania_id, empleado_id, _visible)
 VALUES

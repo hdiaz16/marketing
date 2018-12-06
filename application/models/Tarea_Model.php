@@ -6,6 +6,24 @@
       $this->load->database();
     }
 
+    public function getEmpleados($tarea_id) {
+      $this->db->select('usuario.id, usuario.nombres, usuario.apellidos')
+        ->from('tarea')
+        ->join('red_semantica', 'red_semantica.id = tarea.red_id')
+        ->join('campania', 'campania.id = red_semantica.campania_id')
+        ->join('campania_empleados', 'campania_empleados.campania_id = campania.id')
+        ->join('usuario', 'usuario.id = campania_empleados.empleado_id')
+        ->where('tarea.id', $tarea_id);
+
+
+      try {
+        return $this->db->get()->result_array();
+      } catch (Exception $e) {
+        log_message('error', "get empleados:".$e);
+        return false;
+      }
+    }
+
     public function getTareas($communityManID, $campaniaID = NULL, $eliminadas = NULL){
       #$eliminadas omite a las tareas eliminadas si el valor pasado es true
       $this->db->select('campania.id as campania_id, campania.nombre as nombre_campania, red_semantica.id as red_id, tarea.id as tarea_id, tarea.descripcion, tarea.condiciones_aceptacion, tarea.requisitos, tarea.estado_tarea_id, estado_tarea.nombre as nombre_estado, tarea._create, tarea.nodo_id')
