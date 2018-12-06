@@ -116,6 +116,9 @@
                                                     <div class="form-check mt-0">
                                                         <input type="checkbox" disabled class="form-check-input" id="<?php echo $row['tarea_id'].$index ?>" <?php echo $requisito['estado'] ? 'checked' : '' ?> >
                                                         <label class="form-check-label" for="<?php echo $row['tarea_id'].$index; ?>"></label>
+                                                <div class="col-3">
+                                                    <div class="form-check">
+                                                        <label for="<?php echo $row['tarea_id'].$index ?>"></label>
                                                     </div>
                                                 </div>
 
@@ -151,7 +154,7 @@
                                         <p class="mt-0 font-small grey-text">Fecha de Registro: <?php echo strftime("%e de %B de %Y, %H:%M", strtotime($row['_create'])); ?></p>
                                         <div class="row">
                                             <div class="col-12 text-right">
-                                                <a href="<?php echo base_url().'/index.php/AgregarSubtarea' ;?>">Ir a subtareas</a>
+                                                <a href="<?php echo base_url().'/index.php/Subtareas/'.$row['tarea_id'] ?>">Ir a subtareas</a>
                                             </div>
                                         </div>
                                     </div>
