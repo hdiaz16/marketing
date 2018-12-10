@@ -6,9 +6,6 @@
 
             <section class="text-right">
 
-                <button class="btn-floating  btn-lg  green" data-toggle="modal" data-target="#modalLRFormDemo">
-                <i class="fa fa-plus"></i>
-            </button>
 
             <button onclick="editTareas();" class="btn-floating btn-lg warning-color">
                 <i class="fa fa-pencil-square-o"></i>

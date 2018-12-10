@@ -139,8 +139,6 @@
                                                         <!--Name-->
                                                         <select class="mdb-select"  id="selUser">
                                                             <option value="" disabled selected>Seleccionar Usuario</option>
-                                                             
-
 
                                                             <?php foreach ($userCampania as $row) {
 

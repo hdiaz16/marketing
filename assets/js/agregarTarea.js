@@ -103,7 +103,7 @@ function editTarea($tareaId, $descripcion, $requisitos, $condiciones, $fechaEntr
   requisitos.forEach((requisito, index) => {
     var checkbox = $('<input data-nombre="'+requisito.nombre+'" name="requisitos" id="req'+index+'" type="checkbox" class="form-check-input" '+(requisito.estado ? "checked": "")+' />');
     var label = $('<label for="req'+index+'"></label>');
-    var requisitoTexto = $('<div class="col-4 mt-2">'+requisito.nombre+'</div>');
+    var requisitoTexto = $('<div class="col-8 mt-2">'+requisito.nombre+'</div>');
     var colRequisito = $('<div class="col text-right"></div>').append(checkbox, label);
     var row = $('<div class="row"></div>').append(requisitoTexto, colRequisito);
     $('#requisitos-editar').append(row);
@@ -113,7 +113,7 @@ function editTarea($tareaId, $descripcion, $requisitos, $condiciones, $fechaEntr
   condiciones.forEach((condicion, index) => {
     var checkbox = $('<input data-nombre="'+condicion.nombre+'" name="condiciones" id="con'+index+'" type="checkbox" class="form-check-input" '+(condicion.estado ? "checked": "")+' />');
     var label = $('<label for="con'+index+'"></label>');
-    var condicionTexto = $('<div class="col-4 mt-2">'+condicion.nombre+'</div>');
+    var condicionTexto = $('<div class="col-8 mt-2">'+condicion.nombre+'</div>');
     var colCondicion = $('<div class="col text-right"></div>').append(checkbox, label);
     var row = $('<div class="row"></div>').append(condicionTexto, colCondicion);
     $('#condiciones-editar').append(row);
@@ -172,7 +172,7 @@ function editarTarea(){
       //console.log(data);
       if(JSON.parse(data).error){
 
-        $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al eliminar la tarea.',type: 'red',buttons: {
+        $.confirm({ icon: 'fa fa-times',title: '<strong>Error</strong><br>',theme: 'supervan',content: 'Error al editar la tarea.',type: 'red',buttons: {
                   Aceptar: function (e,data) {
 
                     setTimeout(function(){window.location.reload(1);},1000);
@@ -183,7 +183,7 @@ function editarTarea(){
       }else{
 
 
-         $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Eliminación con éxito',type: 'green',buttons: {
+         $.confirm({ icon: 'fa fa-check',title: '<strong>Realizado</strong><br>',theme: 'supervan',content: 'Edición con éxito',type: 'green',buttons: {
                   Aceptar: function (e,data) {
                     setTimeout(function(){window.location.reload(1);},1000);
                    

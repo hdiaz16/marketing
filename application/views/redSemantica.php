@@ -311,8 +311,8 @@
                         </div>
                         <!--Footer-->
                         <div class="modal-footer">
-                            <button class="btn-floating btn-lg success-color" onclick="editarNodo();">
-                                <i class="fa fa-plus"></i>
+                            <button class="btn-floating btn-lg warning-color" onclick="editarNodo();">
+                                <i class="fa fa-edit"></i>
                             </button>
                         </div>
 

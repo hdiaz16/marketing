@@ -178,7 +178,7 @@ class Administrador_Model extends CI_Model{
   }
 
 
-  public function getEmpleadosNoAsignados($cmID, $eliminado = TRUE){
+  public function getEmpleadosNoAsignados($cmID, $eliminado = NULL){
 
     $consulta = 'SELECT usuario.id as usuario_id, usuario.nombres, usuario.apellidos, rol.nombre as rol_nombre, perfil.id as perfil_id, rol.nombre as nombre_rol
             FROM

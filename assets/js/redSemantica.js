@@ -40,6 +40,9 @@
             insertarNodoRed(red, nuevoNodoId);
             ultimoNodoId = nuevoNodoId;
         }
+        $('#modal').modal('hide');
+        $('#nodo-nombre-input').val("")
+
 
     }
 
@@ -72,6 +75,10 @@
             actualizarNodoRecursivo(idNodo, nombreNodo, red.hijos);
         }
         actualizarRed(red);
+        $('#nodo-nombre-input-editar').val("");
+        $('#modal-editar').modal('hide');
+
+
         //console.log(red);
     }
 

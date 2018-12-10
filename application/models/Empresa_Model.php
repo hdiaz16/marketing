@@ -8,7 +8,7 @@ class Empresa_Model extends CI_Model {
   
   public function getEmpresas($sysAdminID, $all = true){
 
-    $this->db->select('empresa.id as empresa_id, empresa.razon_social, empresa.logourl, empresa.sys_admin_id, empresa.contacto, empresa._create, empresa._erase, perfil.id as perfil_id, usuario.nombres, usuario.apellidos');
+    $this->db->select('empresa.id as empresa_id, empresa.razon_social, empresa.logourl, empresa.sys_admin_id, empresa.contacto, empresa._create, empresa._erase, empresa._update, perfil.id as perfil_id, usuario.nombres, usuario.apellidos');
     $this->db->from('empresa');
     $this->db->join('empresa_admin', 'empresa.id = empresa_admin.empresa_id');
     $this->db->join('perfil', 'perfil.id = empresa_admin.admin_id');
